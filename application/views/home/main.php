@@ -1,7 +1,3 @@
-       <?php
-       //var_dump($featured);
-       ?>
-
        <!-- Start Index Body -->
        <div class="jumbotron">
                 <h1>LabelleAurore Bookshop</h1>

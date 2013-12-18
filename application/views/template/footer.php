@@ -3,12 +3,52 @@
 <hr>
 <footer>
 
-<div id="templatemo_footer"><a href="#" onclick="return false;">
-    
-	       </a><a href="subpage.html">Home</a> | <a href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a href="#">New Releases</a> | <a href="#">FAQs</a> | <a href="#">Contact Us</a><br>
-        Copyright © 2013 <a href="#"><strong>labelleaurore</strong></a> 
-    <!-- end of footer -->
-<!--  Free CSS Template www.templatemo.com -->
+<div class="col-md-3">
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+</div>
+
+<div class="col-md-3">
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+</div>
+
+<div class="col-md-3">
+	<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+</div>
+
+<div class="col-md-3">
+	Subscribe to newsletter!
+	<input type="text" name="newsletter"> <button class="btn btn-success">Go</button> 
+	<span class="glyphicon glyphicon-facebook"></span>
 </div>
 
 </footer>
