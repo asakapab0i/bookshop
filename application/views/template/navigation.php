@@ -39,8 +39,10 @@
                         <div class="collapse navbar-collapse">
                             <ul class="nav nav-tabs">
 
+                                <li class="active">
+                                    <a href="<?php echo site_url('home');?>">Home</a>
+                                </li>
 
-                                
                                 <li>
                                     <a href="#">Books</a>
                                 </li>
@@ -67,15 +69,15 @@
                                <li class="dropdown pull-right">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
-                                    <li><a href="#dropdowns">Login Account</a></li>
-                                    <li><a href="#input-groups">Register Account</a></li>
+                                    <li><a href="<?php echo site_url('account/login');?>">Login Account</a></li>
+                                    <li><a href="<?php echo site_url('account/register');?>">Register Account</a></li>
                                     <li class="divider"></li>
                                      <li><a href="#input-groups">Browse History</a></li>
                                   </ul>
                                 </li>    
 
                                 <li class="pull-right">
-                                    <a href="#">My Cart</a>
+                                    <a href="<?echo site_url('cart'); ?>">My Cart  <span class="badge badge-info">42</span></a>
                                 </li>
 
 

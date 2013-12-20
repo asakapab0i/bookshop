@@ -13,12 +13,14 @@
             <div class="row">
             
             {featured}
+                
+
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 250px;" height="250px" width="250px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <h6>{title}</h6>
+                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <small>{title}</small>
                     </a>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-success">&#8369 {price}.00</button>
+                      <button type="button" class="btn btn-success">&#8369 {price}</button>
                       <button type="button" class="btn btn-default">Add cart</button>
                      
                     </div>
@@ -35,11 +37,11 @@
             <div class="row">
             {releases}
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 250px;" height="250px" width="250px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <h6>{title}</h6>
                     </a>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-success">&#8369 {price}.00</button>
+                      <button type="button" class="btn btn-success">&#8369 {price}</button>
                       <button type="button" class="btn btn-default">Add cart</button>
                      
                     </div>
@@ -54,11 +56,11 @@
             <div class="row">
             {random}
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 250px;" height="250px" width="250px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <h6>{title}</h6>
                     </a>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-success">&#8369 {price}.00</button>
+                      <button type="button" class="btn btn-success">&#8369 {price}</button>
                       <button type="button" class="btn btn-default">Add cart</button>
                      
                     </div>
