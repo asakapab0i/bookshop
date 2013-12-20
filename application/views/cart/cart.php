@@ -48,7 +48,7 @@
 
 
             <div class="panel-footer">
-            <a href="#" class="btn btn-info">Continue Shopping</a>
+            <a href="<?php echo site_url() ?>" class="btn btn-info">Continue Shopping</a>
             <button type="submit" href="#" class="pull-right btn btn-primary">Update Shopping Cart</button>
             <a href="<?php echo site_url('cart/destroy') ?>" class="pull-right btn btn-danger">Clear Shopping Cart</a>
             

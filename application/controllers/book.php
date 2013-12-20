@@ -11,8 +11,16 @@ class Book extends CI_Controller {
 	public function view($product_id){
 
 		$book['bookview'] = $this->book_model->get_book_by_id($product_id);
+		$book['subtotal'] = $this->cart->total();
+		$book['items'] = $this->cart->total_items();
+		
+
+		$q1 = $this->cart->contents();
+		shuffle($q1);
 
 
+
+		$book['recent_cart'] = $q1;
 		//Prepare Header Data
 		$header['page_title'] = 'Book';
 		
