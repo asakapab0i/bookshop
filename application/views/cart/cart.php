@@ -26,7 +26,7 @@
               
               <tr>
                   <td class="text-center"><img src="<?php echo base_url().'assets/img/books_image' . '/{image}' ?>" width="75" height="75" alt="The Smurfs My Busy Books"></td>
-                  <td><a href="<?php echo base_url() . 'book/' . '{id}/{link}' ?>">{name}</a></td>
+                  <td><a href="<?php echo base_url() . 'book/view/' . '{id}/{link}' ?>">{name}</a></td>
                   <td><a href="#">Move</a></td>
                   <td>{price}</td>
                   <td><input size=5 name="cart[{rowid}]" type="text" value="{qty}"></td>

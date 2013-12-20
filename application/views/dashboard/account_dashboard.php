@@ -70,7 +70,9 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 			            </div>
 
 	            	</div>
+{/user_info}
 
+{user_shipping_info}
 	            	<div class="col-md-6">
 	            		<div class="panel panel-info">
 				            <div class="panel-heading">Default Shipping Address 
@@ -98,4 +100,4 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
           </div>
 	</div>
 </div>
-{/user_info}
+{/user_shipping_info}

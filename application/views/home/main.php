@@ -16,7 +16,7 @@
                 
 
                 <div class="col-md-2">
-                    <a  href="<?php echo base_url() . 'book/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <small>{title}</small>
                     </a>
                     <div class="btn-group">
@@ -38,7 +38,7 @@
             <div class="row">
             {releases}
                 <div class="col-md-2">
-                    <a  href="<?php echo base_url() . 'book/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="<?php echo base_url() . 'book/view/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <small>{title}</small>
                     </a>
                     <div class="btn-group">
@@ -58,7 +58,7 @@
             <div class="row">
             {random}
                 <div class="col-md-2">
-                    <a  href="<?php echo base_url() . 'book/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="<?php echo base_url() . 'book/view/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <small>{title}</small>
                     </a>
                     <div class="btn-group">

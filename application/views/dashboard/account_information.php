@@ -27,7 +27,7 @@
         
            <?php
                   $attributes = array('class' => 'form-horizontal', 'id' => 'edit_personal');
-                  echo form_open('dashboard/account_information', $attributes);
+                  echo form_open('customer/account_validate', $attributes);
             ?>
 <fieldset>
 

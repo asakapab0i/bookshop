@@ -116,7 +116,8 @@ class Account extends CI_Controller {
 						  'state' => $this->input->post('state'),
 						  'country' => $this->input->post('country'),
 						  'street' => $this->input->post('street'),
-						  'telephone' => $this->input->post('telephone')
+						  'telephone' => $this->input->post('telephone'),
+						  'type' => 'primary'
 						 );
 
 		$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span>');

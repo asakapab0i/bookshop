@@ -35,15 +35,7 @@ class Account_model extends CI_Model {
 		
 	}
 
-	public function insert_personal_record($personal, $user_id){
+	
 
-		$this->db->where('id', $user_id);
-		$this->db->update('users', $personal); 
-
-		return TRUE;
-		// Produces:
-		// UPDATE mytable 
-		// SET title = '{$title}', name = '{$name}', date = '{$date}'
-		// WHERE id = $id
-	}
+	
 }

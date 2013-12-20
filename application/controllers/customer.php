@@ -11,7 +11,10 @@ class Customer extends CI_Controller {
 		$this->dashboard();
 	}
 
-	public function dashboard(){
+	public function dashboard($user_id = 40){
+		/*
+		@task : remember to get the session user id
+		*/
 
 		//Prepare Header Data
 		$header['page_title'] = 'Customer Dashboard';
@@ -20,9 +23,8 @@ class Customer extends CI_Controller {
 		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Main Content
-		$dashboard['user_info'] = $this->customer_model->customer_info($user_id = 40);
-
-
+		$dashboard['user_info'] = $this->customer_model->customer_info($user_id);
+		$dashboard['user_shipping_info'] = $this->customer_model->customer_shipping_info($user_id);
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
@@ -35,6 +37,7 @@ class Customer extends CI_Controller {
 	}
 
 	public function account(){
+
 		//Prepare Header Data
 		$header['page_title'] = 'Account Information';
 		
@@ -56,7 +59,7 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function account_validate(){
+	public function account_validate($user_id = 40){
 		/*
 		@task : remember to get the session user id
 		*/
@@ -83,11 +86,11 @@ class Customer extends CI_Controller {
 
 
 		if ($this->form_validation->run() == FALSE){
-			$this->register_validate_error();
+			$this->account_validate_error();
 		}
 		else{
 
-			if ($this->account_model->insert_personal_record($personal, $user_id)) {
+			if ($this->customer_model->insert_personal_record($personal, $user_id)) {
 				redirect('customer/dashboard');
 			}
 		}

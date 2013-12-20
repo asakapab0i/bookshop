@@ -77,7 +77,7 @@
                                 </li>    
 
                                 <li class="pull-right">
-                                    <a href="<?echo site_url('cart'); ?>">My Cart  <span class="badge badge-info">42</span></a>
+                                    <a href="<?echo site_url('cart'); ?>">My Cart  <span class="badge badge-info"><?php echo $this->cart->total_items(); ?></span></a>
                                 </li>
 
 
