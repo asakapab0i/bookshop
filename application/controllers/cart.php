@@ -38,7 +38,11 @@ class Cart extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function add($id=9, $qty=3){
+	public function add($id, $qty=1){
+
+	
+		$this->check_cart($id);
+		
 
 		$product_info = $this->cart_model->get_product_info($id);
 		
@@ -47,7 +51,8 @@ class Cart extends CI_Controller {
                'qty'     => $qty,
                'price'   => $product_info[0]['price'],
                'name'    => $product_info[0]['title'],
-               'image' => $product_info[0]['image']
+               'image' => $product_info[0]['image'],
+               'link' => url_title($product_info[0]['title'])
             );
 
 		if($this->cart->insert($product)){
@@ -87,6 +92,29 @@ class Cart extends CI_Controller {
 		*/
 		$this->cart->destroy();
 		redirect('cart');
+	}
+
+	public function check_cart($id, $qty = 1){
+		$data = array();
+		foreach ($this->cart->contents() as $key => $inner) {
+				foreach ($inner as $key => $value) {
+					if ($inner[$key] == $id) {
+						$data[] = array('rowid' => $inner['rowid'],
+										'qty' => $inner['qty'] + $qty);
+					}
+				}
+			}
+
+			if (count($data) > 0) {
+
+				if ($this->cart->update($data)) {
+					redirect('cart');
+				}else{
+					echo 'Error';
+				}
+			}else{
+				return FALSE;
+			}
 	}
 
 

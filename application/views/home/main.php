@@ -16,12 +16,13 @@
                 
 
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <a  href="<?php echo base_url() . 'book/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
                     <small>{title}</small>
                     </a>
                     <div class="btn-group">
                       <button type="button" class="btn btn-success">&#8369 {price}</button>
-                      <button type="button" class="btn btn-default">Add cart</button>
+                      <a href="<?php $segments = array('cart', 'add', '{product_id}');
+                                    echo site_url($segments); ?>" class="btn btn-default">Add cart</a>
                      
                     </div>
 
@@ -37,12 +38,13 @@
             <div class="row">
             {releases}
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <h6>{title}</h6>
+                    <a  href="<?php echo base_url() . 'book/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <small>{title}</small>
                     </a>
                     <div class="btn-group">
                       <button type="button" class="btn btn-success">&#8369 {price}</button>
-                      <button type="button" class="btn btn-default">Add cart</button>
+                      <a href="<?php $segments = array('cart', 'add', '{product_id}');
+                                    echo site_url($segments); ?>" class="btn btn-default">Add cart</a>
                      
                     </div>
                 </div>
@@ -56,12 +58,13 @@
             <div class="row">
             {random}
                 <div class="col-md-2">
-                    <a  href="#"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <h6>{title}</h6>
+                    <a  href="<?php echo base_url() . 'book/' . '{id}/{category}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <small>{title}</small>
                     </a>
                     <div class="btn-group">
                       <button type="button" class="btn btn-success">&#8369 {price}</button>
-                      <button type="button" class="btn btn-default">Add cart</button>
+                      <a href="<?php $segments = array('cart', 'add', '{product_id}');
+                                    echo site_url($segments); ?>" class="btn btn-default">Add cart</a>
                      
                     </div>
                 </div>
