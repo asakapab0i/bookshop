@@ -1,5 +1,5 @@
 
-<div class="panel panel-primary" id="panels">
+<div class="row panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Shopping Cart</h4>
             </div>
             <div class="panel-body">
@@ -27,11 +27,11 @@
               <tr>
                   <td class="text-center"><img src="<?php echo base_url().'assets/img/books_image' . '/{image}' ?>" width="75" height="75" alt="The Smurfs My Busy Books"></td>
                   <td><a href="<?php echo base_url() . 'book/view/' . '{id}/{link}' ?>">{name}</a></td>
-                  <td><a href="#">Move</a></td>
-                  <td>{price}</td>
+                  <td class="text-center"><a class="btn btn-xs btn-warning" href="#">Move</a></td>
+                  <td>PHP {price}</td>
                   <td><input size=5 name="cart[{rowid}]" type="text" value="{qty}"></td>
                   <td>PHP {subtotal}.00</td>
-                  <td><a href="#">Edit</a>/<a href="#">Delete</a></td>
+                  <td><a class="btn btn-xs btn-warning" href="#">Edit</a>/<a class="btn btn-xs btn-danger" href="#">Delete</a></td>
                 </tr>
 
               {/cart_contents}

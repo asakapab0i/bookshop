@@ -2,7 +2,10 @@
 
       <div class="row">
        
-            
+          <div class="panel panel-primary" id="panels">
+            <div class="panel-heading"><h4>Create/Register Account</h4></div>
+            <div class="panel-body">
+              
             <div class="col-md-12">
 
         
@@ -237,5 +240,13 @@
             </div>
 
             </div>
+            <div class="panel-footer">This is a footer
+            </div>
+          </div>
+
+
+
+  
+      </div>
 
         <!-- End Index Body -->

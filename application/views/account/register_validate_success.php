@@ -1,8 +1,12 @@
-       <!-- Start Index Body -->
-      <div class="row">
-       <span class="alert alert-success">Account Registration Successful</span><a href="<?php echo site_url('account/login')?>" class="btn btn-success">Account Login</a>
+<!-- Start Index Body -->
 
-            
+      <div class="row">
+       
+          <div class="panel panel-primary" id="panels">
+            <div class="panel-heading"><h4>Create an account</h4></div>
+            <div class="panel-body">
+               <span class="alert alert-success">Account Registration Successful</span><a href="<?php echo site_url('account/login')?>" class="btn btn-success">Account Login</a>
+      
             <div class="col-md-12">
 
         
@@ -13,10 +17,11 @@
 <fieldset>
 
 <!-- Form Name -->
-<h1>Create an account</h1>
+
 
 <h4>Personal Information</h4>
 <div class="row">
+
 <div class="col-md-3">
 <!-- Text input-->
 <div class="control-group">
@@ -236,5 +241,12 @@
             </div>
 
             </div>
+            <div class="panel-footer"></div>
+          </div>
+
+
+
+  
+      </div>
 
         <!-- End Index Body -->

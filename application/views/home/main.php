@@ -1,5 +1,5 @@
        <!-- Start Index Body -->
-       <div class="jumbotron">
+       <div class="row jumbotron">
                 <h1>LabelleAurore Bookshop</h1>
                 <p>is a second-hand bookstore located in Hernan Cortes St., Mandaue City, Cebu. It was established in December 2009. It currently carries more than seven thousand volumes of used and overstock books.</p>
                 <p><a class="btn btn-primary btn-lg">Browse Books</a></p>
