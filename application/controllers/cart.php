@@ -19,9 +19,17 @@ class Cart extends CI_Controller {
 
 		//Main Content
 		$cart['cart_contents'] = $this->cart->contents();
-		$cart['total_price'] = number_format($this->cart->total(), 2, '.', '');
+		$cart['total_price'] = $this->cart->format_number($this->cart->total());
 		$cart['total_items'] = $this->cart->total_items();
 
+	
+
+
+		$cart['available'] = $this->cart_model->check_product_qty($this->cart->contents());
+
+		// echo "<pre>";
+			//var_dump($cart['available']);
+		// die();
 
 
 		//Page Header
@@ -55,13 +63,22 @@ class Cart extends CI_Controller {
 		
 
 		$product_info = $this->cart_model->get_product_info($id);
+
+		if ($product_info[0]['product_qty'] >= $qty) {
+			$available = '';
+		}else{
+			$available = 'This book(s) that you ordered is either on limited stock or not available.';
+		}
+
+
 		$product = array(
                'id'      => $product_info[0]['product_id'],
                'qty'     => $qty,
                'price'   => $product_info[0]['price'],
                'name'    => $product_info[0]['title'],
                'image' => $product_info[0]['image'],
-               'link' => url_title($product_info[0]['title'])
+               'link' => url_title($product_info[0]['title']),
+               'available' => $available
             );
 
 		if($this->cart->insert($product)){
@@ -81,7 +98,7 @@ class Cart extends CI_Controller {
 
 		foreach ($update as $key => $value) {
 
-			$data[] = array_merge(array('rowid' => $key, 'qty' => $value ));
+			$data[] = array_merge(array('rowid' => $key, 'qty' => $value));
 		}
 
 		if ($this->cart->update($data)) {
