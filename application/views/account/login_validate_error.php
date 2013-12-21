@@ -1,11 +1,19 @@
        <!-- Start Index Body -->
       <div class="row">
        
-       <h1>Create/Register Account</h1>
+
+      <div class="panel panel-primary" id="panels">
+            <div class="panel-heading"><h4>Create/Register Account</h4>
+            </div>
+            <div class="panel-body">
+              
+       
             <div class="col-md-6">
-              <h4>New Customers</h4>
+              
+                <h4>New Customers</h4>
                 <p>By creating an account with our store, you will be able to move through the checkout process faster, store shipping addresses, view and track your orders in your account and more.</p>
                 <a href="<?php echo site_url('account/register');?>" class="btn btn-info">Create An Account</a >
+              
             </div>
             <div class="col-md-6">
               <h4>Registered Customers</h4>
@@ -54,6 +62,14 @@
 
 
             </div>
+
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+
+
+
 
             </div>
 

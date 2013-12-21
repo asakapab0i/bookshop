@@ -1,4 +1,12 @@
        <!-- Start Index Body -->
+      
+
+              <div class="panel panel-primary" id="panels">
+            <div class="panel-heading"><h4>Create an account</h4>
+            </div>
+            <div class="panel-body">
+
+
       <div class="row">
        
             
@@ -11,7 +19,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<h1>Create an account</h1>
+
 
 <h4>Personal Information</h4>
 <div class="row">
@@ -229,5 +237,14 @@
             </div>
 
             </div>
+
+
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+
+
+
 
         <!-- End Index Body -->

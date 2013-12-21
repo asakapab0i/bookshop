@@ -46,7 +46,7 @@
 							   				
 							   				
 
-							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1') ?>" class="btn btn-info">Add to cart</a href="<?php echo site_url('cart/update/{product_id}/') ?>"><button class="btn btn-danger">Add to Wishlist</button>
+							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-info">Add to cart</a href="<?php echo site_url('cart/update/{product_id}/') ?>"><button class="btn btn-danger">Add to Wishlist</button>
 							   		
 							   			<script type="text/javascript">
 							   				$(document).on('keyup', '#qty', function(){
@@ -54,6 +54,8 @@
 							   					var link = "<?php echo site_url();?>";
 							   					link = link.concat('cart/add/{product_id}/');
 							   					link = link.concat(value);
+							   					var pathname = window.location.pathname;
+							   					link = link.concat(pathname);
 
 							   					$("#add_cart").attr("href", link);
 
@@ -91,13 +93,14 @@
            		{recent_cart}
 	            <div class="row">
 	            	<div class="col-md-6 text-center">
-	            		<a href="#" class="label label-info">Edit</a>
-	            		<a href="#" class="label label-danger">Delete</a>
+	            		
 	            		<img style="height: 100px;" width="100" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
 	            	</div>
 	            	<div class="col-md-6">
-	            		<small>Into Thin Air: A Personal Account of the Mt. Everest Disaster</small><br/>
+	            		<small>{name}</small><br/>
 	            		<small><strong>{qty}</strong> x PHP {price}</small>
+	            		<a href="#" class="label label-info">Edit</a>
+	            		<a href="#" class="label label-danger">Delete</a>
 	            	</div>
 	            	
 	            </div>

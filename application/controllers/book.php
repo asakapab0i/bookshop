@@ -22,7 +22,7 @@ class Book extends CI_Controller {
 
 		$book['recent_cart'] = $q1;
 		//Prepare Header Data
-		$header['page_title'] = 'Book';
+		$header['page_title'] = 'Book | ' .$book['bookview'][0]['title'];
 		
 		//Navigation
 		$navigation['page_cur_nav'] = 'Book';

@@ -40,11 +40,21 @@ class Cart extends CI_Controller {
 
 	public function add($id, $qty=1){
 
+
+		//Store the referring link to the sessions
+		// $ref = $this->uri->uri_to_assoc(5);
+		// echo '<pre>';
+		// var_dump($ref);
+		// echo '</pre>';
+		// die();
+		//Retrivie later when in cart.
+		
+		//Check if the book already exist in the cart.
 		$this->check_cart($id);
+		//If yes it append +1 qty in the cart.
 		
 
 		$product_info = $this->cart_model->get_product_info($id);
-		
 		$product = array(
                'id'      => $product_info[0]['product_id'],
                'qty'     => $qty,
