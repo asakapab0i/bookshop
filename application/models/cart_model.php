@@ -32,24 +32,13 @@ class Cart_model extends CI_Model {
 								// 							   'availability' => True));
 
 							
-								$data[] = array('rowid' => $inner['rowid'],
-									'qty' => $inner['qty'],
-									'id' => $inner['id'],
-									'availability' => TRUE);
+								$data[] = array('rowid' => $inner['rowid'], 'availability' => TRUE);
 
 
 							}else{
-								$data[] = array('rowid' => $inner['rowid'],
-									'qty' => $inner['qty'],
-									'id' => $inner['id'],
-									'availability' => FALSE);
 
+								$data[] = array('rowid' => $inner['rowid'], 'availability' => FALSE);
 							}
-
-
-							
-
-
 						
 					}
 					

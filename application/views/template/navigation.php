@@ -44,11 +44,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">Books</a>
+                                    <a href="<?php echo site_url('book/browse');?>">Books</a>
                                 </li>
 
                                 <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                                  <a href="<?php echo site_url('book/browse');  ?>" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                     <li><a href="#dropdowns">Dropdowns</a></li>
                                     <li><a href="#input-groups">Input Groups</a></li>

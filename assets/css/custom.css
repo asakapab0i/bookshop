@@ -5,3 +5,19 @@
 h6{
 	font-size: 14px;
 }
+
+hr{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.image-size{
+	height: 200px; width: 100%; overflow: hidden;
+}

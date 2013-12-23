@@ -28,7 +28,16 @@ class Cart extends CI_Controller {
 		$cart['available'] = $this->cart_model->check_product_qty($this->cart->contents());
 
 		// echo "<pre>";
-			//var_dump($cart['available']);
+		// 	var_dump($cart['available']);
+
+		// 	$var = array_merge();
+
+
+		// 	var_dump($this->cart->contents());
+
+
+		// 	$test = array_merge($cart['available'][0], $this->cart->contents());
+		// 	var_dump($test);
 		// die();
 
 

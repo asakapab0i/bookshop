@@ -10,4 +10,16 @@ class Book_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function get_books($limit = 8){
+		$this->load->helper('text');
+
+		$sql = $this->db->get('books');
+		return $sql->result_array();
+
+		
+
+		//var_dump($sql);
+		//die();
+	}
+
 }

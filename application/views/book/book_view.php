@@ -5,10 +5,10 @@
 	
 
 
-<div class="col-md-9">
+<div class="row col-md-9">
 
 <div class="panel panel-primary" id="panels">
-            <div class="panel-heading">Book Details</div>
+            <div class="panel-heading"><h4>Book Details</h4></div>
             
             <div class="panel-body">
             
@@ -16,7 +16,7 @@
 						<div class="col-md-6">
 							
 								<img style="float: left; margin-right: 20px; height: 250;" width="150" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
-								<h6>{title}</h6>
+								<h6><strong>{title}</strong></h6>
 							<small> 
 							   Author: {author} <br/>
 							   Publisher: {publisher} <br/>
@@ -77,9 +77,9 @@
 
 		
 	</div>
-	<div class="col-md-3">
+	<div class="row pull-right col-md-3">
 		<div class="panel panel-primary" id="panels">
-            <div class="panel-heading">My Cart</div>
+            <div class="panel-heading"><h4>My Cart</h4></div>
             
             <div class="panel-body text-center">
             	<p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>
@@ -97,7 +97,7 @@
 	            		<img style="height: 100px;" width="100" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
 	            	</div>
 	            	<div class="col-md-6">
-	            		<small>{name}</small><br/>
+	            		<small><strong>{name}</strong></small><br/>
 	            		<small><strong>{qty}</strong> x PHP {price}</small>
 	            		<a href="#" class="label label-info">Edit</a>
 	            		<a href="#" class="label label-danger">Delete</a>
@@ -109,7 +109,7 @@
 	          	 {/recent_cart}
 
             </div>
-</div>
+		</div>
 	</div>
 
 
