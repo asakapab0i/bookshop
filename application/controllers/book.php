@@ -44,15 +44,19 @@ class Book extends CI_Controller {
 
 	}
 
-	public function browse($category = 'all', $mode = 'grid', $order = 'asc', $limit = 10, $page = 0){
+	public function browse($category = 'all', $mode = 'grid', $order_by = 'title', $order = 'asc', $limit = 10, $page = 0){
 
 
-		$url = site_url("book/browse/$category/$mode/$order/$limit/");
+		$url = site_url("book/browse/$category/$mode/$order_by/$order/$limit/");
 
 		$config['base_url'] = $url;
-		$config['total_rows'] = $this->book_model->get_total_books();
+		$config['total_rows'] = $this->book_model->get_total_books($category);
+		if ($limit > $config['total_rows']) {
+			//Temporary Solution
+			$limit = 10;
+		}
 		$config['per_page'] = $limit;
-		$config['uri_segment'] = 7;
+		$config['uri_segment'] = 8;
 		$this->pagination->initialize($config); 
 
 
@@ -71,7 +75,8 @@ class Book extends CI_Controller {
 		shuffle($q1);
 		$book['recent_cart'] = $q1;
 		$book['url'] = $url;
-		$result = $this->book_model->get_books($page, $limit);
+		$book['category'] = $this->book_model->get_categories();
+		$result = $this->book_model->get_books($page, $limit, $order_by, $order, $category);
 
 		 foreach ($result as $key => $value) {		 	
 		 	
@@ -112,7 +117,11 @@ class Book extends CI_Controller {
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->parser->parse('book/book_browse', $book);
+		if ($mode == 'grid') {
+			$this->parser->parse('book/book_browse', $book);
+		}else{
+			$this->parser->parse('book/book_browse_listmode', $book);
+		}
 		//Page Footer
 		$this->load->view('template/footer');
 	}

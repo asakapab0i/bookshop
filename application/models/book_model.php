@@ -10,7 +10,13 @@ class Book_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function get_books($page = 0, $limit = 0){
+	public function get_books($page, $limit, $order_by, $order, $category){
+			
+			if ($category != 'all') {
+				$this->db->where('category', $category);
+			}
+
+		$this->db->order_by($order_by, $order);
 		$this->db->limit($limit, $page);
 		$sql = $this->db->get('books');
 		return $sql->result_array();
@@ -21,9 +27,17 @@ class Book_model extends CI_Model {
 		//die();
 	}
 
-	public function get_total_books(){
+	public function get_total_books($category){
+		if ($category != 'all') {
+			$this->db->where('category', $category);
+		}
 		$sql = $this->db->get('books');
 		return $sql->num_rows();
+	}
+
+	public function get_categories(){
+		$sql = $this->db->get('category');
+		return $sql->result_array();
 	}
 
 }

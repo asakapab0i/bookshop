@@ -1,30 +1,39 @@
+ 		
+        
+
+
 
 <div class="row">
 	
    <?php
-   				$categories = array(
-   					'all' => 'All Categories',
-   					'ecommerce' => 'E Commerce',
-   					'antiquesandcollectible' => 'Antiques &amp; Collectibles'
-   					);
+   				
    				$limit = array(
    					10, 20, 50, 100
    					);
    				$order = array(
-   					'asc' => 'Ascending',
-   					'desc' => 'Descending',
-   					'price' => 'Price',
-   					'name' => 'Name'
-   				);
+   					'title' => 'Title',
+   					'price' => 'Price'
+   					);
 
+   				
             	$link_segments =  array(
-              				 'page' => $this->uri->segment(7),
-              				 'limit' => $this->uri->segment(6),
-              				 'order' => $this->uri->segment(5),
+              				 'page' => $this->uri->segment(8),
+              				 'limit' => $this->uri->segment(7),
+              				 'order' => $this->uri->segment(6), //asc, desc
               				 'mode' => $this->uri->segment(4),
+              				 'order_by' => $this->uri->segment(5), 
               				 'category' => $this->uri->segment(3)
               				 );
+            	
+
+
+            	if ($link_segments['mode'] == '') {
+            		$link_segments['mode'] = 'grid';
+            	}
             ?>
+
+
+
 
 <div class="row col-md-9">
 	
@@ -33,17 +42,34 @@
 
             <select class="category">
 
-            <?php
-            	foreach ($categories as $key => $value) {
-            		
-            		if ($key == $link_segments['category']) {
-            			echo '<option selected value='.$key.'>'.$value.'</option>';
-            		}else{
-            			echo '<option value='.$key.'>'.$value.'</option>';
+			 <?php
+            	foreach ($category as $key => $value) {
+            		foreach ($value as $key2 => $value2) {
+            			
+            			if ($key2 == 'name') {
+
+            				
+            				if (strtolower($value[$key2]) == $link_segments['category']) {
+            					//echo $link_segments['category'];
+            					//echo $value[$key2];
+            					
+            					echo '<option selected value="'.strtolower($value[$key2]).'">'.$value[$key2].'</option>';
+            				}else{
+            					
+            					echo '<option value="'.strtolower($value[$key2]).'">'.$value[$key2].'</option>';;
+            				}
+
+            			}
             		}
+            		
             	}
             ?>
 
+
+
+	
+            				
+            		
             	<!-- <option value="all">All Books</option>
             	<option value="ecommerce">eCommerce Books</option>
             	<option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
@@ -69,7 +95,7 @@
               " href="<?php 
 
               $default = 'grid';
-              $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
+              $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order_by'], $link_segments['order'],$link_segments['limit'],$link_segments['page']);
               echo site_url($attrib); ?>">Grid</a> <a class="
 
 
@@ -89,7 +115,7 @@
              <?php 
 
               $default = 'list';
-		      $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
+		      $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order_by'], $link_segments['order'],$link_segments['limit'],$link_segments['page']);
               echo site_url($attrib); ?>
 
               ">List</a> 
@@ -115,7 +141,7 @@
 
             	foreach ($order as $key => $value) {
             		
-            		if ($key == $link_segments['order']) {
+            		if ($key == $link_segments['order_by']) {
             			echo '<option selected value='.$key.'>'.$value.'</option>';
             		}else{
             			echo '<option value='.$key.'>'.$value.'</option>';
@@ -124,6 +150,36 @@
 
             	?>
             </select> 
+           
+
+
+
+            <?php
+            if ($link_segments['order'] == 'asc') {
+
+
+              $default = 'desc';
+              if ($link_segments['order_by'] == '') {
+              	$link_segments['order_by'] = 'title';
+              }
+
+              $attrib = array('book/browse',$link_segments['category'], $link_segments['mode'], $link_segments['order_by'], $default, $link_segments['limit'],$link_segments['page']);
+              $data = site_url($attrib); 
+
+            	echo '<a title="Descending" href="'.$data.'"><span class="glyphicon glyphicon-arrow-down"></span></a>';
+            }else{
+
+            	if ($link_segments['order_by'] == '') {
+              	$link_segments['order_by'] = 'title';
+              }
+
+			  $default = 'asc';
+              $attrib = array('book/browse',$link_segments['category'], $link_segments['mode'], $link_segments['order_by'], $default, $link_segments['limit'],$link_segments['page']);
+              $data = site_url($attrib); 
+
+            	echo '<a title="Ascending" href="'.$data.'"><span class="glyphicon glyphicon-arrow-up"></span></a>';
+            }
+            ?>
 
              	</div>
 
@@ -226,26 +282,32 @@
             	$(document).on('change', '.order_by', function(){
 
             		var cat = $('.category').val();
-            		var order = $('.order_by').val();
-            		var base = '<?php echo site_url().'book/browse/'?>'
-            		var limit = '<?php echo $link_segments['limit']?>'
-					var mode = '<?php echo $link_segments['mode']?>'
-            		var page = '<?php echo $link_segments['page']?>'
+            		var order_by = $('.order_by').val();
+            		var limit = $('.limit').val();
+            		var base = '<?php echo site_url().'book/browse/'?>';
+            		var mode = '<?php echo $link_segments['mode']?>';
+            		var page = '<?php echo $link_segments['page']?>';
+            		var order = '<?php echo $link_segments['order']?>';
             		
-            		
-
             			if (mode == '') {
             				mode = 'grid';
             			}
             			if(order == ''){
             				order = 'asc'; 
             			}
-            			if (limit =='') {
+            			if (limit == '') {
             				limit == 10;
+            			}
+            			if (order_by == '') {
+            				order_by = 'name';
+            			}
+            			if (page == '') {
+            				page = 0;
             			}
             			
             			
-            		var link = base+''+cat+'/'+mode+'/'+order+'/'+limit+'/'+page;
+            		var link = base+''+cat+'/'+mode+'/'+order_by+'/'+order+'/'+limit+'/'+page;
+            
             		window.location.replace(link);
 
             	})
@@ -259,7 +321,7 @@
 					var mode = '<?php echo $link_segments['mode']?>'
             		var order = '<?php echo $link_segments['order']?>'
             		var page = '<?php echo $link_segments['page']?>'
-            		
+            		var order_by = '<?php echo $link_segments['order_by']?>';
             		
 
             			if (mode == '') {
@@ -268,12 +330,15 @@
             			if(order == ''){
             				order = 'asc'; 
             			}
+            			if (order_by == '') {
+            				order_by = 'name';
+            			}
             			if (limit =='') {
             				limit == 10;
             			}
             			
             			
-            		var link = base+''+cat+'/'+mode+'/'+order+'/'+limit+'/'+page;
+            		var link = base+''+cat+'/'+mode+'/'+order_by+'/'+order+'/'+limit+'/'+page;
             		window.location.replace(link);
 
             	})
