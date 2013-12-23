@@ -12,7 +12,8 @@
    					);
    				$order = array(
    					'title' => 'Title',
-   					'price' => 'Price'
+   					'price' => 'Price',
+   					'dateadd' => 'Date',
    					);
 
    				
@@ -74,7 +75,13 @@
             	<option value="ecommerce">eCommerce Books</option>
             	<option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
             	<option>16</option> -->
-            </select></h4>
+            </select> <button class="pull-right btn btn-sm btn-inverse">Search books</button><input type="text" placeholder="Lord of the rings" class="pull-right search">
+
+
+            </h4>
+
+
+
             </div>
          
 
