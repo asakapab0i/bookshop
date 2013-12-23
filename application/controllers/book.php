@@ -44,7 +44,16 @@ class Book extends CI_Controller {
 
 	}
 
-	public function browse($category = 'all'){
+	public function browse($page = '5', $category = 'all', $mode = 'grid', $order = 'asc', $per_page = 10){
+
+
+		$config['base_url'] = site_url('book/browse');
+		$config['total_rows'] = $this->book_model->get_total_books();
+		$config['per_page'] = 5; 
+		$this->pagination->initialize($config); 
+
+
+
 		//Prepare Header Data
 		$header['page_title'] = 'Book | Browse All';
 		
@@ -52,6 +61,7 @@ class Book extends CI_Controller {
 		$navigation['page_cur_nav'] = 'Book';
 
 		//Main Content
+		$book['pagination'] = $this->pagination->create_links();
 		$book['subtotal'] = $this->cart->total();
 		$book['items'] = $this->cart->total_items();
 		$q1 = $this->cart->contents();
@@ -78,7 +88,7 @@ class Book extends CI_Controller {
 		 				if ($key2 == 'author') {
 		 					$end = $result[$key][$key2];
 		 					array_push($result[$key], $end);
-		 					
+
 		 					$result[$key][$key2] = character_limiter($result[$key][$key2], 20);
 		 				}
 		 				

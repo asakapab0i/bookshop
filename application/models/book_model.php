@@ -11,8 +11,7 @@ class Book_model extends CI_Model {
 	}
 
 	public function get_books($limit = 8){
-		$this->load->helper('text');
-
+		
 		$sql = $this->db->get('books');
 		return $sql->result_array();
 
@@ -20,6 +19,11 @@ class Book_model extends CI_Model {
 
 		//var_dump($sql);
 		//die();
+	}
+
+	public function get_total_books(){
+		$sql = $this->db->get('books');
+		return $sql->num_rows();
 	}
 
 }

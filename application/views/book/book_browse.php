@@ -1,32 +1,20 @@
+
 <div class="row">
 	
 <div class="row col-md-9">
 	
 	<div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Books | Category All</h4>
+            <div class="panel-heading"><h4>Books | Category <select class="">
+            	<option>All Books</option>
+            	<option>eCommerce Books</option>
+            	<option>Antiques &amp; Collectibles</option>
+            	<option>16</option>
+            </select></h4>
             </div>
-            <center>
+            
             <div class="panel-body">
-            	<ul class="pagination pagination-sm col-centered">
-              <li>
-                <a href="#">Prev</a>
-              </li>
-              <li>
-                <a href="#">1</a>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">4</a>
-              </li>
-              <li>
-                <a href="#">Next</a>
-              </li>
-            </ul>
+            <center>
+         {pagination}
 
             </center>
               <div class="col-md-12"> <small> View as: <a href="#">Grid</a> <a href="#">List</a> 
@@ -72,9 +60,34 @@
 
 
             </div>
+            <hr/>
+                <center>
+         {pagination}
 
+            </center>
+              <div class="col-md-12"> <small> View as: <a href="#">Grid</a> <a href="#">List</a> 
+             
+             	<div class="pull-right">
+             		Show per page: <select class="">
+            	<option>16</option>
+            	<option>16</option>
+            	<option>16</option>
+            	<option>16</option>
+            </select>
+            Order by: <select class="">
+            	<option>Ascending</option>
+            	<option>Decending</option>
+            	<option>Price</option>
+            	<option>Name</option>
+            </select> 
+
+             	</div>
+
+</small>
+              </div>
             </div>
           </div>
+</div>
 </div>
 
 	<div class="row pull-right col-md-3">
