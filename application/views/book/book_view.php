@@ -13,10 +13,14 @@
             <div class="panel-body">
             
 		            <div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							
-								<img style="float: left; margin-right: 20px; height: 250;" width="150" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
-								<h6><strong>{title}</strong></h6>
+								<img style="float: left; margin-right: 20px; width: 100%;" width="" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
+								
+
+						</div>
+						<div class="col-md-3">
+							<h6><strong>{title}</strong></h6>
 							<small> 
 							   Author: {author} <br/>
 							   Publisher: {publisher} <br/>
@@ -29,9 +33,6 @@
 							    Availability: In Stock <br/> 
 							  	This product will ship in 2 to 3 days.<br/>
 							   </small><br/>
-							   <div class="col-md-12">
-							   	Recommend | Tweet here
-							   </div>
 						</div>
 						<div class="col-md-6">
 							<h4>Description</h4>

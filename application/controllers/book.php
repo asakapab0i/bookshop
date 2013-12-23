@@ -11,7 +11,7 @@ class Book extends CI_Controller {
 	public function view($product_id){
 
 		$book['bookview'] = $this->book_model->get_book_by_id($product_id);
-		$book['subtotal'] = $this->cart->total();
+		$book['subtotal'] = $this->cart->format_number($this->cart->total());
 		$book['items'] = $this->cart->total_items();
 		
 
@@ -44,12 +44,15 @@ class Book extends CI_Controller {
 
 	}
 
-	public function browse($page = '5', $category = 'all', $mode = 'grid', $order = 'asc', $per_page = 10){
+	public function browse($category = 'all', $mode = 'grid', $order = 'asc', $limit = 10, $page = 0){
 
 
-		$config['base_url'] = site_url('book/browse');
+		$url = site_url("book/browse/$category/$mode/$order/$limit/");
+
+		$config['base_url'] = $url;
 		$config['total_rows'] = $this->book_model->get_total_books();
-		$config['per_page'] = 5; 
+		$config['per_page'] = $limit;
+		$config['uri_segment'] = 7;
 		$this->pagination->initialize($config); 
 
 
@@ -62,12 +65,13 @@ class Book extends CI_Controller {
 
 		//Main Content
 		$book['pagination'] = $this->pagination->create_links();
-		$book['subtotal'] = $this->cart->total();
+		$book['subtotal'] = $this->cart->format_number($this->cart->total());
 		$book['items'] = $this->cart->total_items();
 		$q1 = $this->cart->contents();
 		shuffle($q1);
 		$book['recent_cart'] = $q1;
-		$result = $this->book_model->get_books();
+		$book['url'] = $url;
+		$result = $this->book_model->get_books($page, $limit);
 
 		 foreach ($result as $key => $value) {		 	
 		 	
