@@ -13,24 +13,107 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="#primary-shipping">
           Primary Address
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse in">
+    <div id="primary-shipping" class="panel-collapse in">
       <div class="panel-body">
       	<div class="col-md-9">
       	Select a primary address from your address book or enter a new address.
       		<select class="form-control">
       			<option>Address</option>
       		</select>
+          <a href="#" id="ship-address" title="">Ship to Primary Address</a> <br>
+      		<a href="#" id="new-address" title="">Ship to Other Address</a>
+          
 
-      		Ship to this address: <input name="address" type="radio"> <br/>
-      		Create new address: <input name="address" type="radio">
+          
 
-      		<br/>
-      		<button class="pull-right btn btn-lg btn-primary">Continue</button>
+<div id="show-add-address" style="display: none" class="row">
+<h4>Address Information</h4>
+<div class="col-md-7">
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="company">Company</label>
+  <div class="controls">
+    <input size="30" id="company" name="company" type="text" placeholder="" class="input-xlarge" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="city">City</label>
+  <div class="controls">
+    <input size="30" id="city" name="city" type="text" placeholder="" class="input-xlarge" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="zip">Zip/Postal Code</label>
+  <div class="controls">
+    <input size="30" id="zip" name="zip" type="text" placeholder="" class="input-xlarge" required>
+    
+  </div>
+</div>
+
+</div>
+
+<div class="col-md-4">
+  <!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="telephone">Telephone</label>
+  <div class="controls">
+    <input id="telephone" name="telephone" type="text" placeholder="" class="input-xlarge" required>
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="state">State/Province</label>
+  <div class="controls">
+    <select id="state" name="state" class="input-xlarge" required>
+      <option>Cebu City</option>
+      <option>Tacloban</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="country">Country</label>
+  <div class="controls">
+    <select id="country" name="country" class="input-xlarge" required>
+    <option value=""> </option><option value="AU">Australia</option><option value="AT">Austria</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BT">Bhutan</option><option value="BR">Brazil</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CA">Canada</option><option value="CN">China</option><option value="CY">Cyprus</option><option value="DK">Denmark</option><option value="EG">Egypt</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="DE">Germany</option><option value="GR">Greece</option><option value="HK">Hong Kong SAR China</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KW">Kuwait</option><option value="LA">Laos</option><option value="LU">Luxembourg</option><option value="MO">Macau SAR China</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="MN">Mongolia</option><option value="MM">Myanmar [Burma]</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PG">Papua New Guinea</option><option value="PH" selected="selected">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="SA">Saudi Arabia</option><option value="SG">Singapore</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="ZA">South Africa</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TH">Thailand</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="VN">Vietnam</option><option value="YE">Yemen</option>
+    </select>
+  </div>
+</div>
+
+</div>
+
+<div class="col-md-11">
+  <!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="street">Street Address</label>
+  <div class="controls">
+    <input size="80" id="street" name="street" type="text" placeholder="" class="input-xlarge" required>
+    
+  </div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
       	</div>
       </div>
     </div>
@@ -58,29 +141,29 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+        <a data-toggle="collapse" data-parent="#accordion" href="#shipping-method">
          Shipping Method
         </a>
       </h4>
     </div>
-    <div id="collapseThree" class="panel-collapse collapse">
+    <div id="shipping-method" class="panel-collapse collapse">
       <div class="panel-body">
       	
 
       	<div class="col-md-3">
-      	<input type="radio" name="shipping">
+      	<input  id="shipping-type" value="standard" type="radio" name="shipping-type">
       		<h4>Standard Shipping <br/>
-		Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
+		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
       	</div>
       
       	<div class="col-md-3">
-      		<input type="radio" name="shipping">
+      	<input  id="shipping-type" value="byair" type="radio" name="shipping-type">
       		<h4>Air Freight Shipping <br/>
-		Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
+		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
       	</div>
 
 		<br/>
-      		<button class=" btn btn-lg btn-primary">Continue</button>
+      		<button id="shipping-type-submit" class="btn btn-lg btn-primary">Continue</button>
       </h4>
       </div>
     </div>
@@ -88,12 +171,12 @@
    <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+        <a data-toggle="collapse" data-parent="#accordion" href="#payment-type">
          Payment Information
         </a>
       </h4>
     </div>
-    <div id="collapseFour" class="panel-collapse collapse">
+    <div id="payment-type" class="panel-collapse collapse">
       <div class="panel-body">
 
       <div class="col-md-3">
@@ -105,124 +188,24 @@
       </div>
 
       <div class="col-md-3">
-      	Paypal Checkout: <input name="payment_method" type="radio" value="Credit">
+      	Paypal Checkout: <input name="payment_method" type="radio" value="Paypal Checkout">
       </div>
 
-     <button class="btn btn-lg btn-primary">Continue</button>
+     <button id="payment-type-submit" class="btn btn-lg btn-primary">Continue</button>
       </div>
     </div>
   </div>
     <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+        <a data-toggle="collapse" data-parent="#accordion" href="#order-review">
          Order Review
         </a>
       </h4>
     </div>
-    <div id="collapseFive" class="panel-collapse collapse">
+    <div id="order-review" class="panel-collapse collapse">
       <div class="panel-body">
-      
-      	<table class="table" id="checkout-review-table">
-                <colgroup><col>
-        <col width="1">
-        <col width="1">
-        <col width="1">
-                </colgroup><thead>
-            <tr class="first last">
-                <th rowspan="1">Product Name</th>
-                <th colspan="1" class="a-center">Price</th>
-                <th rowspan="1" class="a-center">Qty</th>
-                <th colspan="1" class="a-center">Subtotal</th>
-            </tr>
-                    </thead>
-        <tfoot>
-        <tr class="first">
-    <td style="" class="a-right" colspan="3">
-        Subtotal    </td>
-    <td style="" class="a-right last">
-        <span class="price">PHP 1,410.00</span>    </td>
-</tr>
-<tr>
-    <td style="" class="a-right" colspan="3">
-        Shipping &amp; Handling (Standard Shipping - Weight-based (0.98kg))    </td>
-    <td style="" class="a-right last">
-        <span class="price">PHP 982.00</span>    </td>
-</tr>
-    <tr class="last">
-    <td style="" class="a-right" colspan="3">
-        <strong>Grand Total</strong>
-    </td>
-    <td style="" class="a-right last">
-        <strong><span class="price">PHP 2,392.00</span></strong>
-    </td>
-</tr>
-    </tfoot>
-        <tbody>
-                    <tr class="first odd">
-    <td><h3 class="product-name">1984</h3>
-                    </td>
-        <td class="a-right">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 285.00</span>            
-        </span>
-
-
-            </td>
-            <td class="a-center">2</td>
-        <td class="a-right last">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 570.00</span>            
-        </span>
-            </td>
-        </tr>
-                    <tr class="even">
-    <td><h3 class="product-name">1984</h3>
-                <dl class="item-options">
-                                    <dt>Gift Wrap</dt>
-            <dd>Gift Wrap                            </dd>
-                    </dl>
-                    </td>
-        <td class="a-right">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 335.00</span>            
-        </span>
-
-
-            </td>
-            <td class="a-center">1</td>
-        <td class="a-right last">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 335.00</span>            
-        </span>
-            </td>
-        </tr>
-                    <tr class="last odd">
-    <td><h3 class="product-name">10,000 Ways To Say I Love You: 10th Anniversary Edition</h3>
-                    </td>
-        <td class="a-right">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 505.00</span>            
-        </span>
-
-
-            </td>
-            <td class="a-center">1</td>
-        <td class="a-right last">
-                    <span class="cart-price">
-        
-                            <span class="price">PHP 505.00</span>            
-        </span>
-            </td>
-        </tr>
-                </tbody>
-    </table>
-
+    
 
     <div class="col-md-8">
     	Forgot an item? <a href="#">Edit your cart.</a>
@@ -284,3 +267,62 @@
 	</div>
 
 </div>
+
+
+<script  type="text/javascript" charset="utf-8">
+  
+  $(function(){
+
+    $(document).on('click', '#ship-address', function(e) {
+      event.preventDefault();
+      /* Act on the event */
+      $('#primary-shipping').addClass('collapse').removeClass('in');
+      $('#shipping-method').addClass('in');
+    });
+
+    $(document).on('click', '#new-address', function(event) {
+      event.preventDefault();
+      /* Act on the event */
+
+      if ($('#show-add-address').css('display') == 'none'){
+        $('#show-add-address').show('slow/400/fast');
+      }else{
+        $('#show-add-address').hide('slow/400/fast');
+      }
+      
+    });
+
+    $(document).on('click', '#shipping-type-submit', function(event) {
+      event.preventDefault();
+      /* Act on the event */
+      
+       $('#shipping-method').addClass('collapse').removeClass('in');
+       $('#payment-type').addClass('in');
+
+
+    });
+
+    $(document).on('click', '#payment-type-submit', function(event) {
+      event.preventDefault();
+      /* Act on the event */
+
+       $('#payment-type').addClass('collapse').removeClass('in');
+       $('#order-review').addClass('in');
+
+    });
+
+  });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
