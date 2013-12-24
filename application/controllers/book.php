@@ -62,7 +62,7 @@ class Book extends CI_Controller {
 
 
 		//Prepare Header Data
-		$header['page_title'] = 'Book | Browse All';
+		$header['page_title'] = 'Book | Browse '.ucfirst($category).' ';
 		
 		//Navigation
 		$navigation['page_cur_nav'] = 'Book';
@@ -99,6 +99,22 @@ class Book extends CI_Controller {
 		 					array_push($result[$key], $end);
 
 		 					$result[$key][$key2] = character_limiter($result[$key][$key2], 20);
+		 				}
+
+		 				if ($key2 == 'product_qty') {
+		 					
+
+		 					
+		 					if ($result[$key][$key2] > 0) {
+		 						$link = site_url('cart/add/'.$result[$key]['product_id'].'/');
+		 						$result[$key] = array_merge($result[$key], array('available' => '<span class=""><a class="label label-success" href="'.$link.'">Add to Cart</a></span>'));
+
+		 					}else{
+		 						$link = site_url('book/view/'.$result[$key]['product_id'].'/'.$result[$key]['product_url'].'/');
+		 						$result[$key] = array_merge($result[$key], array('available' => '<span class=""><a class="label label-danger" href="'.$link.'">Special</a></span>'));	
+		 					}
+
+		 					
 		 				}
 		 				
 		 			}

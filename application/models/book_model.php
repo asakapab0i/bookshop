@@ -36,7 +36,9 @@ class Book_model extends CI_Model {
 	}
 
 	public function get_categories(){
+		$this->db->order_by('name', 'ASC');
 		$sql = $this->db->get('category');
+
 		return $sql->result_array();
 	}
 

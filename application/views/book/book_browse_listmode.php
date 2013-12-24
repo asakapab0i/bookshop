@@ -203,10 +203,11 @@
                     <br/>
                     <br/>
                     <a href="#">Learn more</a><br/>
-                    <a href="#">Add to Wishlist</a>
+                    <a class="" href="#">Add to Wishlist</a>
                     <br/><br/>
-                    <button class="btn btn-danger">Price: PHP {price}</button> <br>  
-                    <a style="margin-bottom: 10px;" class="btn btn-success" href="<?php echo base_url() . 'cart/add/' . '{product_id}/' ?>">Add to cart</a>
+                    <button class="btn btn-danger btn-xs">Price: PHP {price}</button> <br>
+
+                    {available}
                 
                 </div>
   </div>
@@ -215,25 +216,8 @@
 
 
             </div>
-            <hr/>
-               
-              <div class="col-md-12"> <small> View as: 
-
-               <a class="grid" value="grid" href="<?php 
-
-              $default = 'grid';
-              $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>">Grid</a>
-               <a class="list" href="<?php 
-
-              $default = 'list';
-          $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>">List</a> 
-             
-             
-
-</small>
-              </div>
+         
+            
                <center>
          {pagination}
 

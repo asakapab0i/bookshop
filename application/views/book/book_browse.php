@@ -199,16 +199,15 @@
 
             <div  class="row text-center" >
             {books}
-            <div class="col-md-3">
+            <div style="margin-bottom: 10px;" class="col-md-3">
             <a href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>" title="{0} by {1}">
             <img class="image-size thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">	
             <small><strong><span class="text-center">{title}</span></strong> <br/> by {author}</small>
             </a>
             <hr>
             <div><button class="btn btn-xs btn-danger">Price: PHP {price}</button> <br> 
-	            
-	            <a style="margin-bottom: 10px;" class="btn btn-xs btn-success" href="<?php echo base_url() . 'cart/add/' . '{product_id}/' ?>">Add to cart</a>
-	            
+	            {available}
+	            <a style="margin-bottom: 2px;" href="#" class="label label-info">Add to Wishlist</a>
             </div>
             </div>
             {/books}
@@ -216,24 +215,7 @@
 
             </div>
             <hr/>
-               
-              <div class="col-md-12"> <small> View as: 
-
-               <a class="grid" value="grid" href="<?php 
-
-              $default = 'grid';
-              $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>">Grid</a>
-               <a class="list" href="<?php 
-
-              $default = 'list';
-		      $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>">List</a> 
              
-             
-
-</small>
-              </div>
                <center>
          {pagination}
 
