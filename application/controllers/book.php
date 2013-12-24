@@ -76,7 +76,31 @@ class Book extends CI_Controller {
 		$book['recent_cart'] = $q1;
 		$book['url'] = $url;
 		$book['category'] = $this->book_model->get_categories();
+		
 		$result = $this->book_model->get_books($page, $limit, $order_by, $order, $category);
+		$book['books'] = $this->modify_array_data($result);
+		
+		
+		
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		if ($mode == 'grid') {
+			$this->parser->parse('book/book_browse', $book);
+		}else{
+			$this->parser->parse('book/book_browse_listmode', $book);
+		}
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+
+	private function modify_array_data($result){
+
 
 		 foreach ($result as $key => $value) {		 	
 		 	
@@ -123,23 +147,8 @@ class Book extends CI_Controller {
 		 		
 		 	
 		 }
-		
-		$book['books'] = $result;
-		
 
-
-		//Page Header
-		$this->parser->parse('template/header', $header);
-		//Page Nav
-		$this->load->view('template/navigation', $navigation);
-		//Page Main Content
-		if ($mode == 'grid') {
-			$this->parser->parse('book/book_browse', $book);
-		}else{
-			$this->parser->parse('book/book_browse_listmode', $book);
-		}
-		//Page Footer
-		$this->load->view('template/footer');
+		 return $result;
 	}
 
 }

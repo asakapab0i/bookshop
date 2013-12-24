@@ -18,28 +18,11 @@ class Cart extends CI_Controller {
 		$navigation['page_cur_nav'] = 'cart';
 
 		//Main Content
-		$cart['cart_contents'] = $this->cart->contents();
 		$cart['total_price'] = $this->cart->format_number($this->cart->total());
 		$cart['total_items'] = $this->cart->total_items();
+		$cart['updated_cart'] = $this->cart_model->check_product_qty($this->cart->contents());
 
-	
-
-
-		$cart['available'] = $this->cart_model->check_product_qty($this->cart->contents());
-
-		// echo "<pre>";
-		// 	var_dump($cart['available']);
-
-		// 	$var = array_merge();
-
-
-		// 	var_dump($this->cart->contents());
-
-
-		// 	$test = array_merge($cart['available'][0], $this->cart->contents());
-		// 	var_dump($test);
-		// die();
-
+		$cart['ready_checkout'] = $this->cart_model->check_checkout($this->cart->contents());
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
@@ -57,14 +40,6 @@ class Cart extends CI_Controller {
 
 	public function add($id, $qty=1){
 
-
-		//Store the referring link to the sessions
-		// $ref = $this->uri->uri_to_assoc(5);
-		// echo '<pre>';
-		// var_dump($ref);
-		// echo '</pre>';
-		// die();
-		//Retrivie later when in cart.
 		
 		//Check if the book already exist in the cart.
 		$this->check_cart($id);
@@ -73,21 +48,13 @@ class Cart extends CI_Controller {
 
 		$product_info = $this->cart_model->get_product_info($id);
 
-		if ($product_info[0]['product_qty'] >= $qty) {
-			$available = '';
-		}else{
-			$available = 'This book(s) that you ordered is either on limited stock or not available.';
-		}
-
-
 		$product = array(
                'id'      => $product_info[0]['product_id'],
                'qty'     => $qty,
                'price'   => $product_info[0]['price'],
                'name'    => $product_info[0]['title'],
                'image' => $product_info[0]['image'],
-               'link' => url_title($product_info[0]['title']),
-               'available' => $available
+               'link' => url_title($product_info[0]['title'])
             );
 
 		if($this->cart->insert($product)){
@@ -129,7 +96,7 @@ class Cart extends CI_Controller {
 		redirect('cart');
 	}
 
-	public function check_cart($id, $qty = 1){
+	private function check_cart($id, $qty = 1){
 		$data = array();
 		foreach ($this->cart->contents() as $key => $inner) {
 				foreach ($inner as $key => $value) {
@@ -150,6 +117,13 @@ class Cart extends CI_Controller {
 			}else{
 				return FALSE;
 			}
+	}
+
+	private function check_cart_available($result){
+
+
+
+
 	}
 
 
