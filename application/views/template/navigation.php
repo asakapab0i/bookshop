@@ -44,11 +44,9 @@
                                 </li>
 
                                 <li>
-<<<<<<< HEAD
-                                    <a href="<?php echo site_url('browse');?>">Books</a>
-=======
+
                                     <a href="<?php echo site_url('book/browse/all');?>">Books</a>
->>>>>>> 2e9a73064d29a21b18a3bbe2f1e23aa70f95bae6
+
                                 </li>
 
                                 <li class="dropdown">
