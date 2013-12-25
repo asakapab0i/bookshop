@@ -18,11 +18,11 @@ class Cart extends CI_Controller {
 		$navigation['page_cur_nav'] = 'cart';
 
 		//Main Content
-		$cart['cart_contents'] = $this->cart->contents();
-		$cart['total_price'] = number_format($this->cart->total(), 2, '.', '');
+		$cart['total_price'] = $this->cart->format_number($this->cart->total());
 		$cart['total_items'] = $this->cart->total_items();
+		$cart['updated_cart'] = $this->cart_model->check_product_qty($this->cart->contents());
 
-
+		$cart['ready_checkout'] = $this->cart_model->check_checkout($this->cart->contents());
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
@@ -40,14 +40,6 @@ class Cart extends CI_Controller {
 
 	public function add($id, $qty=1){
 
-
-		//Store the referring link to the sessions
-		// $ref = $this->uri->uri_to_assoc(5);
-		// echo '<pre>';
-		// var_dump($ref);
-		// echo '</pre>';
-		// die();
-		//Retrivie later when in cart.
 		
 		//Check if the book already exist in the cart.
 		$this->check_cart($id);
@@ -55,6 +47,7 @@ class Cart extends CI_Controller {
 		
 
 		$product_info = $this->cart_model->get_product_info($id);
+
 		$product = array(
                'id'      => $product_info[0]['product_id'],
                'qty'     => $qty,
@@ -81,7 +74,7 @@ class Cart extends CI_Controller {
 
 		foreach ($update as $key => $value) {
 
-			$data[] = array_merge(array('rowid' => $key, 'qty' => $value ));
+			$data[] = array_merge(array('rowid' => $key, 'qty' => $value));
 		}
 
 		if ($this->cart->update($data)) {
@@ -103,7 +96,7 @@ class Cart extends CI_Controller {
 		redirect('cart');
 	}
 
-	public function check_cart($id, $qty = 1){
+	private function check_cart($id, $qty = 1){
 		$data = array();
 		foreach ($this->cart->contents() as $key => $inner) {
 				foreach ($inner as $key => $value) {
@@ -124,6 +117,13 @@ class Cart extends CI_Controller {
 			}else{
 				return FALSE;
 			}
+	}
+
+	private function check_cart_available($result){
+
+
+
+
 	}
 
 

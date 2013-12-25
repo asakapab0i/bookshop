@@ -44,11 +44,15 @@
                                 </li>
 
                                 <li>
+<<<<<<< HEAD
                                     <a href="<?php echo site_url('browse');?>">Books</a>
+=======
+                                    <a href="<?php echo site_url('book/browse/all');?>">Books</a>
+>>>>>>> 2e9a73064d29a21b18a3bbe2f1e23aa70f95bae6
                                 </li>
 
                                 <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                                  <a href="<?php echo site_url('book/browse');  ?>" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                     <li><a href="#dropdowns">Dropdowns</a></li>
                                     <li><a href="#input-groups">Input Groups</a></li>
@@ -77,7 +81,7 @@
                                 </li>    
 
                                 <li class="pull-right">
-                                    <a href="<?echo site_url('cart'); ?>">My Cart  <span class="badge badge-info"><?php echo $this->cart->total_items(); ?></span></a>
+                                    <a href="<?php echo site_url('cart'); ?>">My Cart  <span class="badge badge-info"><?php echo $this->cart->total_items(); ?></span></a>
                                 </li>
 
 
