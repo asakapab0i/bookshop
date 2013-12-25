@@ -27,7 +27,7 @@
       <div class="panel-body">
       	<div class="col-md-9">
       	Select a shipping address from your address book or enter a new address.
-      		<select name="shipping-address" class="form-control">
+      		<select name="shipping_address" class="form-control">
       			
             {address}
             <option value="{address_id}">{fname} {lname}, {street} {state} {country}</option>
@@ -56,13 +56,13 @@
       	
 
       	<div class="col-md-3">
-      	<input  id="shipping-type" value="standard" type="radio" name="shipping-type">
+      	<input  id="shipping-type" checked value="standard" type="radio" name="shipping_type">
       		<h4>Standard Shipping <br/>
 		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
       	</div>
       
       	<div class="col-md-3">
-      	<input  id="shipping-type" value="byair" type="radio" name="shipping-type">
+      	<input  id="shipping-type" value="byair" type="radio" name="shipping_type">
       		<h4>Air Freight Shipping <br/>
 		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
       	</div>
@@ -85,15 +85,15 @@
       <div class="panel-body">
 
       <div class="col-md-3">
-      	Bank: <input name="payment_method" type="radio" value="Bank">
+      	Bank: <input name="payment_method" type="radio" value="bank">
       </div>
 
 	  <div class="col-md-3">
-      	 Credit Card: <input name="payment_method" type="radio" value="Credit">
+      	 Credit Card: <input name="payment_method" type="radio" value="credit_card">
       </div>
 
       <div class="col-md-3">
-      	Paypal Checkout: <input name="payment_method" type="radio" value="Paypal Checkout">
+      	Paypal Checkout: <input checked name="payment_method" type="radio" value="paypal_checkout">
       </div>
 
      <button id="payment-type-submit" class="btn btn-lg btn-primary">Continue</button>
@@ -179,7 +179,7 @@
 </div>
 
     <div class="col-md-8">
-    	Forgot an item? <a href="#">Edit your cart.</a>
+    	Forgot an item? <a href="<?php echo site_url('cart'); ?>">Edit your cart.</a>
     </div>
 
 
@@ -215,7 +215,7 @@
             
             <div class="panel-body text-center">
             	<p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>
-            	<span class="btn btn-xs btn-info">Subtotal: PHP {subtotal}</span>
+            	<span class="btn btn-xs btn-info">Subtotal: PHP {total_price}</span>
             	
             	<p class="btn btn-sm btn-danger">Checkout</p>
             </div>
@@ -251,32 +251,26 @@
   
   $(function(){
 
-    $(document).on('click', '#shipping-address-submit', function(e) {
-      event.preventDefault();
-      /* Act on the event */
-      $('#shipping-address').addClass('collapse').removeClass('in');
-      $('#shipping-method').addClass('in');
-    });
-
-    $(document).on('click', '#new-address', function(event) {
+    $(document).on('click', '#shipping-address-submit', function(event) {
       event.preventDefault();
       /* Act on the event */
 
-      if ($('#show-add-address').css('display') == 'none'){
-        $('#show-add-address').show('slow/400/fast');
-      }else{
-        $('#show-add-address').hide('slow/400/fast');
-      }
-      
+      $('#shipping-address').collapse('hide');
+      $('#shipping-method').collapse('show');
+
+
+      // $('#shipping-address').addClass('collapse').removeClass('in');
+      // $('#shipping-method').addClass('in');
     });
+
 
     $(document).on('click', '#shipping-type-submit', function(event) {
       event.preventDefault();
       /* Act on the event */
       
-       $('#shipping-method').addClass('collapse').removeClass('in');
-       $('#payment-type').addClass('in');
 
+      $('#shipping-method').collapse('hide');
+      $('#payment-type').collapse('show');
 
     });
 
@@ -284,8 +278,8 @@
       event.preventDefault();
       /* Act on the event */
 
-       $('#payment-type').addClass('collapse').removeClass('in');
-       $('#order-review').addClass('in');
+      $('#payment-type').collapse('hide');
+      $('#order-review').collapse('show');
 
     });
 

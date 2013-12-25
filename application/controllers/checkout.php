@@ -23,8 +23,6 @@ class Checkout extends CI_Controller {
 
 
 
-
-
 	
 		$q1 = $this->cart->contents();
 		shuffle($q1);
@@ -50,5 +48,42 @@ class Checkout extends CI_Controller {
 		
 		
 	}
+
+
+	public function place_order(){
+
+		$payment_info = array('shipping_address' => $this->input->post('shipping_address'),
+							'shipping_type' => $this->input->post('shipping_type'),
+							'payment_method' => $this->input->post('payment_method')
+							);
+
+
+		if ($payment_info['payment_method'] == 'paypal_checkout') {
+			$this->pay_with_paypal($payment_info['shipping_address'], $payment_info['shipping_type']);
+		}else if ($payment_info['payment_method'] == 'bank') {
+			$this->pay_with_bank($payment_info['shipping_address'], $payment_info['shipping_type']);
+		}else if ($payment_info['payment_method'] == 'credit_card') {
+			$this->pay_with_credit_card($payment_info['shipping_address'], $payment_info['shipping_type']);
+		}
+
+
+	}
+	
+	private function pay_with_paypal($address_id, $shipping_type){
+
+	}
+
+	private function pay_with_bank($address_id, $shipping_type){
+		
+	}
+
+	private function pay_with_credit_card($address_id, $shipping_type){
+		
+	}
+
+	/*
+	Email Template
+	*/
+
 
 }
