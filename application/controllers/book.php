@@ -74,6 +74,8 @@ class Book extends CI_Controller {
 		$q1 = $this->cart->contents();
 		shuffle($q1);
 		$book['recent_cart'] = $q1;
+
+
 		$book['url'] = $url;
 		$book['category'] = $this->book_model->get_categories();
 		

@@ -56,4 +56,14 @@ class Customer_model extends CI_model {
 		// WHERE id = $id
 	}
 
+	public function get_order_history($delivery_id){
+
+		$this->db->select('*')->from('users')->join('address', 'users.id = address.user_id')->join('orders', 'orders.address_id = address.address_id');
+		$sql = $this->db->get();
+		$sql = $sql->result_array();
+		
+		//var_dump($sql);
+		return $sql;
+	}
+
 }

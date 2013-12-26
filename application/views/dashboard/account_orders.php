@@ -32,44 +32,25 @@
          		</thead>
          		<tbody>
          			<tbody>
-                            <tr class="first odd">
-                    <td>100007273</td>
-                    <td><span class="">12/24/13</span></td>
-                    <td>demo demo</td>
-                    <td><span class="">PHP 2,392.00</span></td>
-                    <td><em>Pending</em></td>
+         			{order_history}
+
+         			        <tr class="first odd">
+                    <td>{order_id}</td>
+                    <td><span class="">{dateadd}</span></td>
+                    <td>{fname} {lname}</td>
+                    <td><span class="">{order_total}</span></td>
+                    <td><em>{order_status}</em></td>
                     <td class="a-center last">
                         <span class="">
                         <a href="https://www.nationalbookstore.com.ph/sales/order/view/order_id/7150/">View Order</a>
                                                     <span class="separator">|</span> <a href="https://www.nationalbookstore.com.ph/sales/order/reorder/order_id/7150/" class="link-reorder">Reorder</a>
                                                 </span>
                     </td>
-                </tr>
-                            <tr class="even">
-                    <td>100007204</td>
-                    <td><span class="">12/20/13</span></td>
-                    <td>demo demo</td>
-                    <td><span class="">PHP 1,104.00</span></td>
-                    <td><em>Pending</em></td>
-                    <td class="a-center last">
-                        <span class="">
-                        <a href="https://www.nationalbookstore.com.ph/sales/order/view/order_id/7089/">View Order</a>
-                                                </span>
-                    </td>
-                </tr>
-                            <tr class="last odd">
-                    <td>100007195</td>
-                    <td><span class="">12/20/13</span></td>
-                    <td>demo demo</td>
-                    <td><span class="">PHP 1,772.00</span></td>
-                    <td><em>Canceled</em></td>
-                    <td class="a-center last">
-                        <span class="">
-                        <a href="https://www.nationalbookstore.com.ph/sales/order/view/order_id/7080/">View Order</a>
-                                                    <span class="separator">|</span> <a href="https://www.nationalbookstore.com.ph/sales/order/reorder/order_id/7080/" class="link-reorder">Reorder</a>
-                                                </span>
-                    </td>
-                </tr>
+                	</tr>
+
+         			{/order_history}
+
+                    
                     </tbody>
          		</tbody>
          	</table>

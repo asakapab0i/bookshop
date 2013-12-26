@@ -116,5 +116,25 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function orders(){
+		//Prepare Header Data
+		$header['page_title'] = 'My Orders';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$orders['order_history'] = $this->customer_model->get_order_history($id = 40);
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('dashboard/account_orders', $orders);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
 
 }
