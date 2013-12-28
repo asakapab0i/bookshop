@@ -38,8 +38,6 @@ class Administrator extends CI_Controller {
 		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Main Content
-		$this->datatables->select('*')->from('orders');
-		$datatables = $this->datatables->generate();
 
 
 
@@ -54,7 +52,7 @@ class Administrator extends CI_Controller {
 	}
 
 	public function datatables_orders(){
-		$this->datatables->select('*')->from('orders');
+		$this->datatables->select('order_id,order_total, dateadd, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}

@@ -3,7 +3,7 @@
 class Administrator_model extends CI_Model {
 
 	public function get_orders(){
-		$this->db->select('*')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->db->select('order_id')->from('*')->join('users', 'users.id = orders.user_id');
 		$sql = $this->db->get();
 
 		return $sql->result_array();

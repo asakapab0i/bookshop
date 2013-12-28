@@ -23,59 +23,44 @@
     <thead>
         <tr>
             <th>Order Id</th>
+            <th>Total Price</th>
+             <th>Ordered On</th>
+              <th>Ordered By</th>
+               <th>Order Status</th>
+               <th>Action</th>
         </tr>
     </thead>
     <tbody>
         
     </tbody>
     <tfoot>
-		<tr>
-			<th>Order Id</th>
-		</tr>
+
 	</tfoot>
 </table>
 
             	<script>
-            	$('#example').dataTable({
-"bProcessing": true,
-"bServerSide": true,
-"iDisplayLength": 20,
-//"bPaginate": true,
-"bAutoWidth": false,
-"iDisplayStart": 0,
-"bLengthChange": false,//for sorting 10,20,30,50 ....
-"sAjaxSource": "<?echo site_url('administrator/datatables_orders'); ?>",
-"aaSorting": [[ 1, "desc" ]],
-"sPaginationType": "full_numbers",
-"aoColumns":[
-    {"bSearchable": false,"bSortable": false,"bVisible": false},
-    {"bSearchable": true,"bSortable": true},
-    {"bSearchable": false,"bSortable": false},
-    {"bSearchable": true,"bSortable": true},
-    {"bSearchable": false,"bSortable": true},
-    {"bSearchable": false,"bSortable": false}
-],
-"fnServerData": function(sSource, aoData, fnCallback){
-    $.ajax(
-          {
-            'dataType': 'json',
-            'type'  : 'POST',
-            'url'    : sSource,
-            'data'  : aoData,
-            'success' : fnCallback
-          }
-      );//end ajx
-    // console.log(fnCallback);
-}    
-});
 
 
-            	
+            	$(document).ready(function() {
+    $('#example').dataTable( {
+        "bProcessing": true,
+        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders'); ?>",
+        "aoColumnDefs": [
+            {
+                "fnRender": function ( oObj ) {
+                    return '<a href="order/'+oObj.aData[0]+'" class="btn btn-primary">View</a>';
+                },
+                "aTargets": [ 5 ],
+                "sDefaultContent": ""
+            }
+        ]
+    } );
+} );
             	</script>
 
             </div>
             <div class="panel-footer">
-            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+            <p class="footer">
             </div>
           </div>
 	</div>
