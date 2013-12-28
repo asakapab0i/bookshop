@@ -6,11 +6,12 @@ class Administrator extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('administrator_model');
+		$this->load->library('datatables');
 	}
 
 	public function index()
 	{
-				//Prepare Header Data
+		//Prepare Header Data
 		$header['page_title'] = 'Administrator';
 		
 		//Navigation
@@ -27,6 +28,35 @@ class Administrator extends CI_Controller {
 		$this->load->view('administrator/administrator_dashboad_view');
 		//Page Footer
 		$this->load->view('template/footer');
+	}
+
+	public function orders(){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Orders';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$this->datatables->select('*')->from('orders');
+		$datatables = $this->datatables->generate();
+
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_order_view');
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function datatables_orders(){
+		$this->datatables->select('*')->from('orders');
+		$datatables = $this->datatables->generate();
+		echo $datatables;
 	}
 
 }

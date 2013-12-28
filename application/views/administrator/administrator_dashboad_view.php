@@ -5,8 +5,8 @@
 	
 		<div class="list-group">
 	
-            <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item active">Dashboard</a>
-            <a id="sales" href="#" class="list-group-item">Sales</a>
+            <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
+            <a id="sales" href="#" class="list-group-item active">Sales</a>
             <a id="catalog" href="#" class="list-group-item">Catalog</a>
             <a id="customer" href="#" class="list-group-item">Customers</a>
             <a href="#" class="list-group-item">Settings</a>
@@ -39,7 +39,7 @@
 			trigger: 'click',
 			html: true,
 			placement: 'right',
-			content: '<a href="#" class="list-group-item">Orders</a><a href="#" class="list-group-item">Invoices</a><a href="#" class="list-group-item">Shipments</a><a href="#" class="list-group-item">Transactions</a><a href="#" class="list-group-item">Tax</a>'
+			content: '<a href="<?php echo site_url("administrator/orders")?>" class="list-group-item">Orders</a><a href="#" class="list-group-item">Invoices</a><a href="#" class="list-group-item">Shipments</a><a href="#" class="list-group-item">Transactions</a><a href="#" class="list-group-item">Tax</a>'
 		})
 
 		$('#catalog').popover({
