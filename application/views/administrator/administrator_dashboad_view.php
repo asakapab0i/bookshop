@@ -3,12 +3,13 @@
 <div class="row">
 	<div class="col-md-3">
 	
+	
 		<div class="list-group">
 	
-            <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
-            <a id="sales" href="#" class="list-group-item active">Sales</a>
-            <a id="catalog" href="#" class="list-group-item">Catalog</a>
-            <a id="customer" href="#" class="list-group-item">Customers</a>
+            <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item active">Dashboard</a>
+            <a id="sales" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item ">Orders</a>
+            <a id="catalog" href="#" class="list-group-item">Shipments</a>
+            <a id="customer" href="#" class="list-group-item">Reports</a>
             <a href="#" class="list-group-item">Settings</a>
           </div>
 	</div>
@@ -29,27 +30,3 @@
           </div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	$(function(){
-
-
-
-		$('#sales').popover({
-			trigger: 'click',
-			html: true,
-			placement: 'right',
-			content: '<a href="<?php echo site_url("administrator/orders")?>" class="list-group-item">Orders</a><a href="#" class="list-group-item">Invoices</a><a href="#" class="list-group-item">Shipments</a><a href="#" class="list-group-item">Transactions</a><a href="#" class="list-group-item">Tax</a>'
-		})
-
-		$('#catalog').popover({
-			trigger: 'click',
-			html: true,
-			placement: 'right',
-			content: '<a href="#" class="list-group-item">Manage Products</a><a href="#" class="list-group-item">Manage Categories</a><a href="#" class="list-group-item">Search Terms</a><a href="#" class="list-group-item">Ratings & Reviews</a>'
-		});
-
-
-
-	});
-</script>

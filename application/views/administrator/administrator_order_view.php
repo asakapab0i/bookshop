@@ -1,4 +1,4 @@
-
+{order_data}
 
 <div class="row">
 	<div class="col-md-3">
@@ -6,58 +6,146 @@
 		<div class="list-group">
 	
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
-            <a id="sales" href="#" class="list-group-item active">Sales</a>
-            <a id="catalog" href="#" class="list-group-item">Catalog</a>
-            <a id="customer" href="#" class="list-group-item">Customers</a>
+            <a id="sales" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
+            <a id="catalog" href="#" class="list-group-item">Shipments</a>
+            <a id="customer" href="#" class="list-group-item">Reports</a>
             <a href="#" class="list-group-item">Settings</a>
           </div>
 	</div>
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-            Sales/Orders
+            Sales/Order No {id} (the order confirmation email was sent)
             </div>
             <div class="panel-body">
+
+            <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Order # {id}</div>
+            <div class="panel-body">
+                 <p>Order Date: {dateorder}</p>
+                 <p>Order Status: {order_status}</p>
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Account Information
+            </div>
+            <div class="panel-body">
+                 <p>Customer Name: {fname} {lname}</p>
+                 <p>Email: {email}</p>
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Billing Address
+            </div>
+            <div class="panel-body">
+                               
+                                <strong>{fname} {lname}</strong>
+                                <br>{company}<br>{street}
+                                <br>{country}<br>
+                                <abbr title="Telephone">Phone:</abbr> {telephone}            
+                                
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Shipping Address
+            </div>
+            <div class="panel-body">
+                               
+                                <strong>{fname} {lname}</strong>
+                                <br>{company}<br>{street}
+                                <br>{country}<br>
+                                <abbr title="Telephone">Phone:</abbr> {telephone}            
+                                
+            </div>  
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Payment Information
+            </div>
+            <div class="panel-body">
+            Payment Method: {payment_method}
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Shipping and Handling Information
+            </div>
+            <div class="panel-body">
+            Standard Fixed: PHP 900.00
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+
+             <div class="col-md-11">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Items Ordered
+            </div>
+            <div class="panel-body">
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                <p>{cart_data}</p>
+                
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+
+ <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Comments History
+            </div>
+            <p class="panel-body">This is a panel</p>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+             <div class="col-md-6">
+                <div class="panel panel-default" id="panels">
+            <div class="panel-heading">Order Totals
+            </div>
+            <div class="panel-body">TOTALS HERE!</div>
+            <div class="panel-footer">
+            </div>
+          </div>
+            </div>
+
+
+
 	 
-<table id="example" class="table">
-    <thead>
-        <tr>
-            <th>Order Id</th>
-            <th>Total Price</th>
-             <th>Ordered On</th>
-              <th>Ordered By</th>
-               <th>Order Status</th>
-               <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-    <tfoot>
-
-	</tfoot>
-</table>
-
-            	<script>
-
-
-            	$(document).ready(function() {
-    $('#example').dataTable( {
-        "bProcessing": true,
-        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders'); ?>",
-        "aoColumnDefs": [
-            {
-                "fnRender": function ( oObj ) {
-                    return '<a href="order/'+oObj.aData[0]+'" class="btn btn-primary">View</a>';
-                },
-                "aTargets": [ 5 ],
-                "sDefaultContent": ""
-            }
-        ]
-    } );
-} );
-            	</script>
-
             </div>
             <div class="panel-footer">
             <p class="footer">
@@ -66,26 +154,5 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	$(function(){
 
-
-
-		$('#sales').popover({
-			trigger: 'click',
-			html: true,
-			placement: 'right',
-			content: '<a href="sdss<?php echo site_url("administrator/orders")?>" class="list-group-item">Orders</a><a href="#" class="list-group-item">Invoices</a><a href="#" class="list-group-item">Shipments</a><a href="#" class="list-group-item">Transactions</a><a href="#" class="list-group-item">Tax</a>'
-		})
-
-		$('#catalog').popover({
-			trigger: 'click',
-			html: true,
-			placement: 'right',
-			content: '<a href="#" class="list-group-item">Manage Products</a><a href="#" class="list-group-item">Manage Categories</a><a href="#" class="list-group-item">Search Terms</a><a href="#" class="list-group-item">Ratings & Reviews</a>'
-		});
-
-
-
-	});
-</script>
+{/order_data}

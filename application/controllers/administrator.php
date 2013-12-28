@@ -46,7 +46,30 @@ class Administrator extends CI_Controller {
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->load->view('administrator/administrator_order_view');
+		$this->load->view('administrator/administrator_orders_view');
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function order($id){
+
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Order No: ' . $id;
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$order['id'] = $id;
+		$order['order_data'] = $this->administrator_model->get_order($id);
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('administrator/administrator_order_view', $order);
 		//Page Footer
 		$this->load->view('template/footer');
 	}

@@ -9,6 +9,17 @@ class Administrator_model extends CI_Model {
 		return $sql->result_array();
 
 	}
+
+	public function get_order($id){
+		$this->db->select('*')->from('orders')->join('users', 'users.id = orders.user_id')->where('order_id', $id)->join('address', 'address.user_id = users.id')->where('address.type', 'primary');
+		$sql = $this->db->get();
+
+		return $sql->result_array();
+
+	}
+
+
+
 }
 
 /* End of file administrator_model.php */
