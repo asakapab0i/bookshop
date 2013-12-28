@@ -15,7 +15,7 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-            Sales/Order No {id} (the order confirmation email was sent)
+            Order No {id} (the order confirmation email was sent)
             </div>
             <div class="panel-body">
 
@@ -115,7 +115,7 @@
                 <p>{cart_data}</p>
                 <p>{cart_data}</p>
                 <p>{cart_data}</p>
-                
+
             </div>
             <div class="panel-footer">
             </div>
