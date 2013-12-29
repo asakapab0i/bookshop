@@ -4,15 +4,16 @@
 	<div class="col-md-3">
 	
 	
-		<div class="list-group">
+		      <div class="list-group">
     
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item active">Dashboard</a>
-            <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item">Orders</a>
-            <a id="shipments" href="<?php echo site_url('administrator/shipments'); ?>" class="list-group-item ">Shipments</a>
-            <a id="reports" href="<?php echo site_url('administrator/reports'); ?>" class="list-group-item">Reports</a>
+            <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item ">Orders</a>
+            <a id="shipments" href="<?php echo site_url('administrator/shipments'); ?>" class="list-group-item">Shipments</a>
+            <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           
         </div>
+
 	</div>
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">

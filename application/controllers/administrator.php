@@ -96,6 +96,126 @@ class Administrator extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function shipment($shipment_id){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Shipments No '.$shipment_id.' ';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$shipment['shipment_data'] = $this->administrator_model->get_shipment($shipment_id);
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('administrator/administrator_shipment_view', $shipment);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function books(){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Books';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_books_view');
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function book($id){
+
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Book No '.$id.' ';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_book_view');
+		//Page Footer
+		$this->load->view('template/footer');
+
+	}
+
+	public function book_add(){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Book No ';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_book_add_view');
+		//Page Footer
+		$this->load->view('template/footer');
+
+	}
+
+	public function  book_add_validate(){
+
+		$form_data = array('title' => $this->input->post('title'),
+							'author' => $this->input->post('author'),
+							'description' => $this->input->post('desc'),
+							'publisher' => $this->input->post('publisher'),
+							'format' => $this->input->post('format'),
+							'isbn' => $this->input->post('isbn'),
+							'category' => $this->input->post('category'),
+							'price' => $this->input->post('price'),
+							'product_qty' => $this->input->post('product_qty'),
+							'image' => $this->input->post('image')
+							);
+
+
+
+		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
+		$this->form_validation->set_rules('author', 'Author', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');
+		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
+		$this->form_validation->set_rules('format', 'Format', 'trim|required');
+		$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
+		$this->form_validation->set_rules('category', 'Category', 'trim|required');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required');
+		$this->form_validation->set_rules('product_qty', 'Quantity', 'trim|required');
+		$this->form_validation->set_rules('image', 'Image', 'trim|required');
+
+
+
+		if ($this->form_validation->run() == false) {
+			
+			$this->load->view('administrator/administrator_book_add_view_validation');
+		}else{
+
+			$this->administrator_model->insert_add_book($form_data);
+
+			redirect('administrator/book/'.$product_id.' ');
+		}
+
+
+
+	}
+
 	public function datatables_orders(){
 		$this->datatables->select('order_id,order_total, dateadd, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
@@ -106,6 +226,17 @@ class Administrator extends CI_Controller {
 		$this->datatables->select('shipment_id, shipment_date,order_total, dateadd, lname,order_status')->from('shipments')->join('orders', 'shipments.order_id = orders.order_id')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
+	}
+
+	public function datatables_books(){
+		$this
+		->datatables
+		->select('product_id, title, author, category, product_qty, price, dateadd')
+		->from('books');
+
+		$datatables = $this->datatables->generate('JSON');
+		echo $datatables;
+
 	}
 
 }

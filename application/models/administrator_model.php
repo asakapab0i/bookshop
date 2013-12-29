@@ -18,6 +18,22 @@ class Administrator_model extends CI_Model {
 
 	}
 
+	public function get_shipment($shipment_id){
+		$this->db->select('*')
+		->from('shipments')
+		->join('orders', 'orders.order_id = shipments.order_id')
+		->join('users', 'users.id = orders.user_id')
+		->join('address', 'address.user_id = users.id')
+		->where('shipment_id', $shipment_id)
+		->where('type', 'primary');
+
+		$sql = $this->db->get();
+		return $sql->result_array();
+
+	}
+
+	
+
 
 
 }
