@@ -39,12 +39,7 @@
 	</tfoot>
 </table>
 
-            	<script>
-
-
-            	$(document).ready(function() {
-    $('#example').dataTable();
-            	</script>
+            
 
             </div>
             <div class="panel-footer">
@@ -53,3 +48,24 @@
           </div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+    
+                $(document).ready(function() {
+    $('#example').dataTable( {
+        "bProcessing": true,
+        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders'); ?>",
+        "aoColumnDefs": [
+            {
+                "fnRender": function ( oObj ) {
+                    return '<a href="order/'+oObj.aData[0]+'" class="btn btn-primary">View</a>';
+                },
+                "aTargets": [ 5 ],
+                "sDefaultContent": ""
+            }
+        ]
+    } );
+} );
+
+</script>
