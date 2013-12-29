@@ -4,13 +4,14 @@
 	<div class="col-md-3">
 	
 		<div class="list-group">
-	
+    
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
-            <a id="sales" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
-            <a id="catalog" href="#" class="list-group-item">Shipments</a>
-            <a id="customer" href="#" class="list-group-item">Reports</a>
-            <a href="#" class="list-group-item">Settings</a>
-          </div>
+            <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
+            <a id="shipments" href="<?php echo site_url('administrator/shipments'); ?>" class="list-group-item">Shipments</a>
+            <a id="reports" href="<?php echo site_url('administrator/reports'); ?>" class="list-group-item">Reports</a>
+            <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
+          
+        </div>
 	</div>
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
@@ -42,20 +43,7 @@
 
 
             	$(document).ready(function() {
-    $('#example').dataTable( {
-        "bProcessing": true,
-        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders'); ?>",
-        "aoColumnDefs": [
-            {
-                "fnRender": function ( oObj ) {
-                    return '<a href="order/'+oObj.aData[0]+'" class="btn btn-primary">View</a>';
-                },
-                "aTargets": [ 5 ],
-                "sDefaultContent": ""
-            }
-        ]
-    } );
-} );
+    $('#example').dataTable();
             	</script>
 
             </div>
