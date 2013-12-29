@@ -96,6 +96,26 @@ class Administrator extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function shipment($shipment_id){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Shipments No '.$shipment_id.' ';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$shipment['shipment_data'] = $this->administrator_model->get_shipment($shipment_id);
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('administrator/administrator_shipment_view', $shipment);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
 	public function datatables_orders(){
 		$this->datatables->select('order_id,order_total, dateadd, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
