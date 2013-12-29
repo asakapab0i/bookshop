@@ -100,6 +100,19 @@ class Book extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function ratings(){
+
+		$rate_data = array('product_id' => $this->input->post('product_id'),
+							'user_id' => $this->input->post('user_id'),
+							'rate' => $this->input->post('rate')
+							);
+
+		$this->book_model->insert_rate($rate_data);
+
+		
+
+	}
+
 
 	private function modify_array_data($result){
 

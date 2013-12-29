@@ -170,3 +170,24 @@
 </div>
 
 
+<script type="text/javascript">
+    
+
+$(function(){
+
+
+
+    $(document).on('hover', '.glyphicon', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        $(this).addClass('glyphicon-star');
+        alert('sdaasd');
+
+    });
+
+
+
+});
+
+</script>

@@ -42,4 +42,19 @@ class Book_model extends CI_Model {
 		return $sql->result_array();
 	}
 
+	public function insert_rate($form_data){
+		$this->db->select('*')->from('ratings');
+		$this->db->where('user_id', $form_data['user_id']);
+		$result = $this->db->get();
+
+		if (!$result->num_rows() > 0) {
+			$sql = $this->db->insert('ratings', $form_data);	
+		}else{
+			echo 'User already exist';
+		}
+
+		
+
+	}
+
 }

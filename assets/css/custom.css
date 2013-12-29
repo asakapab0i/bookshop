@@ -21,3 +21,11 @@ hr{
 .image-size{
 	height: 200px; width: 100%; overflow: hidden;
 }
+
+.glyphicon-star{
+	font-size: 14px;
+}
+
+.glyphicon-star-empty{
+	font-size: 16px;
+}

@@ -16,11 +16,25 @@
 						<div class="col-md-3">
 							
 								<img style="float: left; margin-right: 20px; width: 100%;" width="" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
-								
+								Your rating: 
+								<span class="ratings">
+									<span data="1" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="2" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="3" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="4" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="5" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									
+								</span>
 
+								
+									<h4>Overall Ratings: <strong><span id="rates">4.5</span></strong></h4>
+									<h5>Out of 10,000 people rated.</h5>
+								
+		
+ 
 						</div>
 						<div class="col-md-3">
-							<h6><strong>{title}</strong></h6>
+							<h6 id="title" data="{product_id}"><strong>{title}</strong></h6>
 							<small> 
 							   Author: {author} <br/>
 							   Publisher: {publisher} <br/>
@@ -116,3 +130,74 @@
 
 
 </div>
+
+<script type="text/javascript">
+    
+
+$(function(){
+
+
+
+	$(document).on('click', '.glyphicon', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        var data = $(this).attr('data');
+       	var product_id = $('#title').attr('data');
+
+
+       $.ajax({
+       	url: '<?php echo site_url("book/ratings"); ?>',
+       	type: 'POST',
+       	data: {rate: data, product_id: product_id, user_id: 40},
+       })
+       .done(function() {
+       	console.log("success");
+
+       	// location.reload();
+
+       })
+       .fail(function() {
+       	console.log("error");
+       })
+       .always(function() {
+       	console.log("complete");
+       });
+       
+
+
+    });
+
+
+
+    $(document).on('mouseenter', '.glyphicon', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        
+        $(this).addClass('glyphicon-star');
+		$(this).removeClass('glyphicon-star-empty');       
+        //alert('sdaasd');
+
+    });
+
+
+    $(document).on('mouseout', '.glyphicon', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        
+      	$('.ratings span').each(function(index, val) {
+      		 /* iterate through array or object */
+      		 $(this).removeClass('glyphicon-star');
+      		$(this).addClass('glyphicon-star-empty');  
+
+      	});
+
+    });
+
+
+
+});
+
+</script>
