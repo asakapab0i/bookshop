@@ -5,6 +5,7 @@ class Account extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('account_model');
+		
 	}
 
 	public function index(){
