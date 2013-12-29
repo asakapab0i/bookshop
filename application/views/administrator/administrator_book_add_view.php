@@ -18,7 +18,7 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-           Shipments <a href="#" class="pull-right btn btn-default">Add Book</a> <a href="#" class="pull-right btn btn-default">Add Book</a>  <a href="#" class="btn btn-default">Back</a>
+           Shipments <a href="#" class="pull-right btn btn-default">Add Book</a> <a href="#" class="pull-right btn btn-default">Add Book</a>
             </div>
             <div class="panel-body">
 

@@ -209,7 +209,7 @@ class Administrator extends CI_Controller {
 
 			$this->administrator_model->insert_add_book($form_data);
 
-			redirect('administrator/book/'$product_id'');
+			redirect('administrator/book/'.$product_id.' ');
 		}
 
 
