@@ -19,7 +19,7 @@
 
          <div class="panel-body"> 
 
-         	<table class="table table-striped table-bordered table-condensed">
+         	<table id="account-orders-view" class="table">
          		<thead>
          			<tr>
          				<th>Order No.</th>
@@ -32,25 +32,7 @@
          		</thead>
          		<tbody>
          			<tbody>
-         			{order_history}
-
-         			        <tr class="first odd">
-                    <td>{order_id}</td>
-                    <td><span class="">{dateadd}</span></td>
-                    <td>{fname} {lname}</td>
-                    <td><span class="">{order_total}</span></td>
-                    <td><em>{order_status}</em></td>
-                    <td class="a-center last">
-                        <span class="">
-                        <a href="https://www.nationalbookstore.com.ph/sales/order/view/order_id/7150/">View Order</a>
-                                                    <span class="separator">|</span> <a href="https://www.nationalbookstore.com.ph/sales/order/reorder/order_id/7150/" class="link-reorder">Reorder</a>
-                                                </span>
-                    </td>
-                	</tr>
-
-         			{/order_history}
-
-                    
+         			
                     </tbody>
          		</tbody>
          	</table>
@@ -65,3 +47,22 @@
 </div>
 </div>
 
+<script type="text/javascript">
+    
+                $(document).ready(function() {
+    $('#account-orders-view').dataTable( {
+        "bProcessing": true,
+        "sAjaxSource": "<?php echo site_url('customer/datatables_order'); ?>",
+        "aoColumnDefs": [
+            {
+                "fnRender": function ( oObj ) {
+                    return '<a href="order/'+oObj.aData[0]+'" class="btn btn-primary">View</a>';
+                },
+                "aTargets": [ 5 ],
+                "sDefaultContent": ""
+            }
+        ]
+    } );
+} );
+
+</script>

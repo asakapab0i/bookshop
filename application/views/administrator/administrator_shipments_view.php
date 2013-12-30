@@ -58,7 +58,7 @@
 <script type="text/javascript">
     
                 $(document).ready(function() {
-    $('#shipments-view').dataTable( {
+    $('#orders-view').dataTable( {
         "bProcessing": true,
         "sAjaxSource": "<?php echo site_url('administrator/datatables_shipments'); ?>",
         "aoColumnDefs": [

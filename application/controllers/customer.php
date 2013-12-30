@@ -5,6 +5,7 @@ class Customer extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('customer_model');
+		$this->load->library('datatables');
 	}
 
 	public function index(){
@@ -124,16 +125,34 @@ class Customer extends CI_Controller {
 		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Main Content
-		$orders['order_history'] = $this->customer_model->get_order_history($id = 40);
+		//$orders['order_history'] = $this->customer_model->get_order_history($id = 40);
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->parser->parse('dashboard/account_orders', $orders);
+		$this->load->view('dashboard/account_orders');
 		//Page Footer
 		$this->load->view('template/footer');
+	}
+
+
+	public function datatables_order(){
+		$user_id = 40;
+		$this
+		->datatables
+		->select('order_id, dateorder, lname, order_total, order_status')
+		->from('users')
+		->join('address', 'users.id = address.user_id')
+		->join('orders','orders.address_id = address.address_id')
+		->where('users.id', $user_id);
+
+
+		$datatables = $this->datatables->generate('JSON');
+		echo $datatables;
+
+
 	}
 
 
