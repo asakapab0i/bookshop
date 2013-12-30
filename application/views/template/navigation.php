@@ -47,25 +47,7 @@
 
                                     <a href="<?php echo site_url('book/browse/all');?>">Books</a>
 
-                                </li>
-
-                                <li class="dropdown">
-                                  <a href="<?php echo site_url('book/browse');  ?>" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#dropdowns">Dropdowns</a></li>
-                                    <li><a href="#input-groups">Input Groups</a></li>
-                                    <li><a href="#navs">Navs</a></li>
-                                    <li><a href="#navbar">Navbar</a></li>
-                                    <li><a href="#pagination">Pagination</a></li>
-                                    <li><a href="#alerts">Alerts</a></li>
-                                    <li><a href="#labels">Labels</a></li>
-                                    <li><a href="#progress">Progress</a></li>
-                                    <li><a href="#media-object">Media Object</a></li>
-                                    <li><a href="#list-groups">List Groups</a></li>
-                                    <li><a href="#panels">Panels</a></li>
-                                    <li><a href="#wells">Wells</a></li>
-                                  </ul>
-                                </li>                               
+                                </li>                           
 
                                 
                                <li class="dropdown pull-right">

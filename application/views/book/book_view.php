@@ -19,10 +19,10 @@
 								Your rating: 
 								<span class="ratings">
 									<span data="1" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="2" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="3" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="4" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="5" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="2" title="Rate 2 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="3" title="Rate 3 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="4" title="Rate 4 out of 5" class="glyphicon glyphicon-star-empty"> </span>
+									<span data="5" title="Rate 5 out of 5" class="glyphicon glyphicon-star-empty"> </span>
 									
 								</span>
 

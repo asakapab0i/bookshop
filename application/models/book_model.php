@@ -57,4 +57,10 @@ class Book_model extends CI_Model {
 
 	}
 
+	public function add_wishlist($data){
+
+		$this->db->insert('wishlist', $data);
+	
+	}
+
 }

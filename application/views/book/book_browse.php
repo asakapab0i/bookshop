@@ -207,7 +207,7 @@
             <hr>
             <div><button class="btn btn-xs btn-danger">Price: PHP {price}</button> <br> 
 	            {available}
-	            <a style="margin-bottom: 2px;" href="#" class="label label-info">Add to Wishlist</a>
+	            <a style="margin-bottom: 2px;" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>" class="label label-info">Add to Wishlist</a>
             </div>
             </div>
             {/books}

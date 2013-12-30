@@ -114,6 +114,20 @@ class Book extends CI_Controller {
 	}
 
 
+	public function add_wishlist($product_id){
+		$user_id = 40;
+
+		$wishlish_data = array('product_id'=> $product_id,
+								'user_id' => $user_id);
+
+
+		$this->book_model->add_wishlist($wishlish_data);
+
+		redirect('customer/wishlist');
+
+	}
+
+
 	private function modify_array_data($result){
 
 
