@@ -27,7 +27,7 @@
                       
  
     <div class="input-group">
-      <input type="text" class="form-control">
+      <input placeholder="What will you find today?" type="text" class="form-control">
       <span class="input-group-btn">
         <button class="btn btn-success" type="button">Go!</button>
       </span>
