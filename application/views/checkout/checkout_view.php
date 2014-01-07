@@ -5,7 +5,7 @@
                   echo form_open('checkout/place_order', $attributes);
     ?>
 
-<div class="row col-md-9">
+<div class="col-md-9">
 	
 <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Checkout Express</h4>
@@ -209,7 +209,7 @@
 
 </div>
 
-	<div class="row pull-right col-md-3">
+	<div class="col-md-3">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>My Cart</h4></div>
             

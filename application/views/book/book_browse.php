@@ -36,7 +36,7 @@
 
 
 
-<div class="row col-md-9">
+<div class="col-md-9">
 	
 	<div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Books | Category 
@@ -75,7 +75,7 @@
             	<option value="ecommerce">eCommerce Books</option>
             	<option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
             	<option>16</option> -->
-            </select> <button class="pull-right btn btn-sm btn-inverse">Search books</button><input type="text" placeholder="Lord of the rings" class="pull-right search">
+            </select> 
 
 
             </h4>
@@ -207,7 +207,7 @@
             <hr>
             <div><button class="btn btn-xs btn-danger">Price: PHP {price}</button> <br> 
 	            {available}
-	            <a style="margin-bottom: 2px;" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>" class="label label-info">Add to Wishlist</a>
+	            <a style="margin-bottom: 2px;" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>" class="label label-info">Add  Wishlist</a>
             </div>
             </div>
             {/books}
@@ -225,7 +225,7 @@
 </div>
 </div>
 
-	<div class="row pull-right col-md-3">
+	<div class="col-md-3">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>My Cart</h4></div>
             

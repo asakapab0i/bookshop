@@ -35,7 +35,7 @@
 
 
 
-<div class="row col-md-9">
+<div class="col-md-9">
   
   <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Books | Category 
@@ -227,7 +227,7 @@
 </div>
 </div>
 
-  <div class="row pull-right col-md-3">
+  <div class="col-md-3">
     <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>My Cart</h4></div>
             

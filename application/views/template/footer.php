@@ -38,9 +38,6 @@ Phone:(032) 316 4415 <br>
 	<input type="text" name="newsletter"> <button class="btn btn-success">Go</button> 
 	<span class="glyphicon glyphicon-facebook"></span><br/>
   <small>Follow us on:</small>
-  <img class="social-icons" src="http://icons.iconarchive.com/icons/yootheme/social-bookmark/128/social-facebook-box-white-icon.png">
-  <img class="social-icons" src="http://icons.iconarchive.com/icons/yootheme/social-bookmark/128/social-twitter-box-white-icon.png">
-  <img class="social-icons" src="http://icons.iconarchive.com/icons/designbolts/free-instagram/128/Hover-Instagram-3-icon.png">
 
 </div>
 

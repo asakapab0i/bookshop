@@ -1,7 +1,7 @@
        <!-- Start Index Body -->
       
 
-              <div class="row panel panel-primary" id="panels">
+              <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Create an account</h4>
             </div>
             <div class="panel-body">
@@ -240,8 +240,8 @@
 
 
             </div>
-            <div class="panel-footer">
-            </div>
+            <!-- <div class="panel-footer">
+            </div> -->
           </div>
 
 

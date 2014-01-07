@@ -1,6 +1,16 @@
        <!-- Start Index Body -->
-      <div class="row">
-       
+          <?php 
+
+      if ($this->session->flashdata('checkout')) {
+        echo '<div class="alert alert-warning">';
+        echo $this->session->flashdata('checkout');
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+        echo '</div>';
+  
+      }
+        
+
+       ?>
 
       <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Create/Register Account</h4>
@@ -63,13 +73,12 @@
             </div>
 
             </div>
-            <div class="panel-footer">
-            </div>
+            <!-- <div class="panel-footer">
+            </div> -->
           </div>
 
 
 
 
-            </div>
 
         <!-- End Index Body -->

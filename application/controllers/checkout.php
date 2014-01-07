@@ -11,7 +11,7 @@ class Checkout extends CI_Controller {
 		//If not then redirect to homepage
 		if (!$this->_is_logged_in()) {
 			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
-			redirect("home");
+			redirect("account/login");
 		}
 
 	}

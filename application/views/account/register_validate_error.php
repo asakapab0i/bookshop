@@ -1,6 +1,5 @@
        <!-- Start Index Body -->
 
-      <div class="row">
        
           <div class="panel panel-primary" id="panels">
             <div class="panel-heading"><h4>Create/Register Account</h4></div>
@@ -246,7 +245,6 @@
 
 
 
-  
-      </div>
+
 
         <!-- End Index Body -->

@@ -34,9 +34,13 @@
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                            </button><a href="#" class="navbar-brand">LabelleAurore</a>
+                            </button><a href="#" class="navbar-brand"></a>
                         </div>
                         <div class="collapse navbar-collapse">
+                        <center>
+                        <img class="mainlogo" src="<?php echo base_url() . 'assets/img/logo.jpg' ?>" alt="">    
+                        </center>
+                        
                             <ul class="nav nav-tabs">
 
                                 <li class="active">
@@ -72,3 +76,34 @@
                 </div>
             </div>
     <!-- End Navigation -->
+
+
+<div class="row">
+                    <div class="col-md-4">
+
+                    <?php 
+                    
+                    if ($this->session->userdata('login')) {
+                        $var = $this->session->userdata('login');
+                        echo '<h4>Welcome! '.$var["name"].'</h4>';
+                    }else{
+                        echo '<h4>Welcome Guest!</h4>';
+                    }
+
+                    ?>
+
+                   
+                    </div>
+
+                    <div class="col-md-8">
+ 
+    <div class="input-group">
+      <input placeholder="What will you find today?" type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-success" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+
+</div>
+
+</div>

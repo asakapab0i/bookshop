@@ -1,4 +1,4 @@
-<div class="row">
+
   
 
 
@@ -15,9 +15,7 @@
             </div>
 
 
-            <div class="panel-footer">
-                      
-            </div>
+
            
 
            

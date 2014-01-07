@@ -14,32 +14,7 @@
 
 			<div class="row">
 
-                
-
-                    <div class="col-md-4">
-
-                    <h4>Welcome Guest!</h4>
-
-                    </div>
-
-                    <div class="col-md-8">
-
-                      
- 
-    <div class="input-group">
-      <input placeholder="What will you find today?" type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-success" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-
-
-
-<hr>
-                    
-                </div>
-                <hr>
-
+              
 			<div class="col-md-8">
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

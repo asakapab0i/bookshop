@@ -123,9 +123,9 @@
             	
 
             </div>
-            <div class="panel-footer">
+            <!-- <div class="panel-footer">
             <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-            </div>
+            </div> -->
           </div>
 	</div>
 </div>

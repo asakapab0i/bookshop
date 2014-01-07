@@ -1,5 +1,4 @@
        <!-- Start Index Body -->
-      <div class="row">
        
 
       <div class="panel panel-primary" id="panels">
@@ -71,6 +70,5 @@
 
 
 
-            </div>
 
         <!-- End Index Body -->
