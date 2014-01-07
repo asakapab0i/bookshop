@@ -38,7 +38,7 @@
 <div class="col-md-9">
   
   <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Books | Category 
+            <div class="panel-heading">Books | Category 
 
             <select class="category">
 
@@ -74,7 +74,7 @@
               <option value="ecommerce">eCommerce Books</option>
               <option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
               <option>16</option> -->
-            </select></h4>
+            </select>
             </div>
          
 
@@ -229,7 +229,7 @@
 
   <div class="col-md-3">
     <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>My Cart</h4></div>
+            <div class="panel-heading">My Cart</div>
             
             <div class="panel-body text-center">
               <p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>

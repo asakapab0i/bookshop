@@ -6,6 +6,7 @@
 		<div class="list-group">
             <a href="<?php echo site_url('customer/dashboard'); ?>" class="list-group-item">Account Dashboard</a>
             <a href="<?php echo site_url('customer/account'); ?>" class="list-group-item active">Account Information</a>
+            <a href="<?php echo site_url('customer/address'); ?>" class="list-group-item">Account Address</a>
             <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item">My Orders</a>
             <a href="<?php echo site_url('customer/reviews'); ?>" class="list-group-item">My Product Reviews</a>
             <a href="<?php echo site_url('customer/wishlist'); ?>" class="list-group-item">My Wishlist</a>

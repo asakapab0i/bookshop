@@ -161,6 +161,94 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function address(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+
+		//Prepare Header Data
+		$header['page_title'] = 'My Address';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$address['address_primary'] = $this->customer_model->get_address_primary($user_id);
+		$address['address_shipping'] = $this->customer_model->get_address_shipping($user_id);
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('dashboard/account_address', $address);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function address_add(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+
+		//Prepare Header Data
+		$header['page_title'] = 'My Address';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$address['address_primary'] = $this->customer_model->get_address_primary($user_id);
+		$address['address_shipping'] = $this->customer_model->get_address_shipping($user_id);
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('dashboard/account_address_add', $address);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function address_add_validation(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+	$this->form_validation->set_rules('company', 'Company', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('zip', 'Zip/Postal Code', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('street', 'Street Address', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('telephone', 'State/Province', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('country', 'country', 'trim|required|xss_clean');
+
+
+	if ($this->form_validation->run() == FALSE) {
+		redirect('address_add');
+	}else{
+
+
+		$formdata = array(
+			"company" => $this->input->post('company'),
+			"city" => $this->input->post('city'),
+			"zip" => $this->input->post('zip'),
+			"street" => $this->input->post('street'),
+			"telephone" => $this->input->post('telephone'),
+			"country" => $this->input->post('country'),
+			"user_id" => $user_id,
+			"type" => 'shipping'
+
+			);
+
+		$this->customer_model->insert_shipping_address($formdata);
+		$this->session->set_flashdata('add_address', 'Address successfully added!');
+		redirect('customer/address');
+	}
+
+
+
+	}
+
 
 	public function datatables_order(){
 		$login_session = $this->session->userdata('login');

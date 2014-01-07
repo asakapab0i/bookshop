@@ -106,7 +106,7 @@
 <div class="control-group">
   <label class="control-label" for="Category">Category</label>
   <div class="controls">
-    <input required id="Category" name="Category" type="text" placeholder="" class="input-xlarge">
+    <input required id="Category" name="category" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -115,7 +115,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Price</label>
   <div class="controls">
-    <input required id="Price" name="Price" type="text" placeholder="" class="input-xlarge">
+    <input required id="Price" name="price" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -124,7 +124,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Quantity</label>
   <div class="controls">
-    <input required id="Quantity" name="Quantity" type="text" placeholder="" class="input-xlarge">
+    <input required id="Quantity" name="quantity" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -133,17 +133,14 @@
 <div class="control-group">
   <label class="control-label" for="author">Image</label>
   <div class="controls">
-    <input required id="Image" name="Image" type="File" placeholder="" class="input-xlarge">
+    <input required id="Image" name="image" type="File" placeholder="" class="input-xlarge">
     
   </div>
 </div>
 
 <br/>
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 <button type="submit" class="btn btn-lg btn-primary">Submit</button>
 </fieldset>
 

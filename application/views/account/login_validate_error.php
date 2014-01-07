@@ -2,7 +2,7 @@
        
 
       <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Create/Register Account</h4>
+            <div class="panel-heading">Create/Register Account
             </div>
             <div class="panel-body">
               

@@ -8,7 +8,7 @@
 <div class="col-md-9">
 
 <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Book Details</h4></div>
+            <div class="panel-heading">Book Details</div>
             
             <div class="panel-body">
             
@@ -94,7 +94,7 @@
 	</div>
 	<div class="col-md-3">
 		<div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>My Cart</h4></div>
+            <div class="panel-heading">My Cart</div>
             
             <div class="panel-body text-center">
             	<p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>

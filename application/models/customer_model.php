@@ -2,6 +2,21 @@
 
 class Customer_model extends CI_model {
 
+	public function insert_shipping_address($formdata){
+		$this->db->insert('address', $formdata);
+	}
+
+	public function get_address_primary($user_id){
+		$this->db->select('*')->from('address')->where('user_id', $user_id)->join('users', 'users.id = address.user_id')->where('type', 'primary');
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
+
+	public function get_address_shipping($user_id){
+		$this->db->select('*')->from('address')->where('user_id', $user_id)->join('users', 'users.id = address.user_id')->where('type', 'shipping');
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
 
 	public function customer_info($user_id){
 
@@ -26,6 +41,7 @@ class Customer_model extends CI_model {
 	$this->db->join('users', 'address.user_id = users.id');
 	$this->db->where('type', 'shipping');
 	$this->db->where('user_id', $user_id);
+	$this->db->limit(1);
 	
 	$query = $this->db->get();
 

@@ -4,7 +4,7 @@
 
 
 <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Shopping Cart</h4>
+            <div class="panel-heading">Shopping Cart
             </div>
             <div class="panel-body">
               

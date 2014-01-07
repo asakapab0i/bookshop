@@ -3,7 +3,7 @@
 
        
           <div class="panel panel-primary" id="panels">
-            <div class="panel-heading"><h4>Create an account</h4></div>
+            <div class="panel-heading">Create an account</div>
             <div class="panel-body">
                <span class="alert alert-success">Account Registration Successful</span><a href="<?php echo site_url('account/login')?>" class="btn btn-success">Account Login</a>
       

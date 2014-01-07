@@ -6,6 +6,7 @@
 		<div class="list-group">
             <a href="<?php echo site_url('customer/dashboard'); ?>" class="list-group-item active">Account Dashboard</a>
             <a href="<?php echo site_url('customer/account'); ?>" class="list-group-item">Account Information</a>
+            <a href="<?php echo site_url('customer/address'); ?>" class="list-group-item">Account Address</a>
             <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item">My Orders</a>
             <a href="<?php echo site_url('customer/reviews'); ?>" class="list-group-item">My Product Reviews</a>
             <a href="<?php echo site_url('customer/wishlist'); ?>" class="list-group-item">My Wishlist</a>
@@ -26,7 +27,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 					<h4>Account Information</h4>
             		<div class="col-md-6">
 
-	            		<div class="panel panel-info">
+	            		<div class="panel panel-default">
 			            <div class="panel-heading">Contact Information <span class="pull-right"><a href="#">Edit</a></span></div>
 			            <div class="panel-body">
 			            	<address>                
@@ -43,7 +44,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 	            	
 	            	<div class="col-md-6">
 
-	            		<div class="panel panel-info">
+	            		<div class="panel panel-default">
 			            <div class="panel-heading">Newsletters <span class="pull-right"><a href="#">Edit</a></span></div>
 			            <div class="panel-body">
 			            	<address>                
@@ -55,7 +56,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 <h4>Address Information</h4>
 	            	<div class="col-md-6">
 
-	            		<div class="panel panel-info">
+	            		<div class="panel panel-default">
 				            <div class="panel-heading">Primary Address 
 				            <span class="pull-right"><a href="#">Edit</a></span>
 				            </div>
@@ -74,7 +75,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 
 {user_shipping_info}
 	            	<div class="col-md-6">
-	            		<div class="panel panel-info">
+	            		<div class="panel panel-default">
 				            <div class="panel-heading">Default Shipping Address 
 				            <span class="pull-right"><a href="#">Edit</a></span>
 				            </div>
@@ -95,8 +96,9 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 
             </div>
             <div class="panel-footer">
-            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-            </div>
+            <!-- <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+             -->
+             </div>
           </div>
 	</div>
 </div>
