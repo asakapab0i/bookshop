@@ -8,7 +8,6 @@
             <a href="<?php echo site_url('customer/account'); ?>" class="list-group-item">Account Information</a>
             <a href="<?php echo site_url('customer/address'); ?>" class="list-group-item">Account Address</a>
             <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item">My Orders</a>
-            <a href="<?php echo site_url('customer/reviews'); ?>" class="list-group-item">My Product Reviews</a>
             <a href="<?php echo site_url('customer/wishlist'); ?>" class="list-group-item">My Wishlist</a>
           </div>
 	</div>
@@ -28,7 +27,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
             		<div class="col-md-6">
 
 	            		<div class="panel panel-default">
-			            <div class="panel-heading">Contact Information <span class="pull-right"><a href="#">Edit</a></span></div>
+			            <div class="panel-heading">Contact Information <span class="pull-right"><a href="<?php echo site_url('customer/account')?>">Edit</a></span></div>
 			            <div class="panel-body">
 			            	<address>                
 			            	<strong>{fname} {lname}</strong>
@@ -45,7 +44,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 	            	<div class="col-md-6">
 
 	            		<div class="panel panel-default">
-			            <div class="panel-heading">Newsletters <span class="pull-right"><a href="#">Edit</a></span></div>
+			            <div class="panel-heading">Newsletters <span class="pull-right"><a href="#"></a></span></div>
 			            <div class="panel-body">
 			            	<address>                
 		            	<strong>No Newsletter</strong>
@@ -58,7 +57,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 
 	            		<div class="panel panel-default">
 				            <div class="panel-heading">Primary Address 
-				            <span class="pull-right"><a href="#">Edit</a></span>
+				            <span class="pull-right"><a href="<?php echo site_url('customer/address')?>">Add</a></span>
 				            </div>
 				            <div class="panel-body">
 				            	<address>                
@@ -77,7 +76,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 	            	<div class="col-md-6">
 	            		<div class="panel panel-default">
 				            <div class="panel-heading">Default Shipping Address 
-				            <span class="pull-right"><a href="#">Edit</a></span>
+				            <span class="pull-right"><a href="#"></a></span>
 				            </div>
 				            <div class="panel-body">
 				            	<address>                
