@@ -3,7 +3,7 @@
 class Home_model extends CI_Model {
 
 	public function home_featured(){
-		$sql = $this->db->get('books', 6);
+		$sql = $this->db->get('books', 3);
 		return $sql->result_array();
 	}
 

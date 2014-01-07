@@ -9,7 +9,7 @@ class Customer_model extends CI_model {
 	$this->db->from('address');
 	$this->db->join('users', 'address.user_id = users.id');
 	$this->db->where('type', 'primary');
-
+	$this->db->where('user_id', $user_id);
 	$query = $this->db->get();
 
 	return $query->result_array();
@@ -20,20 +20,22 @@ class Customer_model extends CI_model {
 
 	}
 
-	public function customer_shipping_info(){
+	public function customer_shipping_info($user_id){
 	$this->db->select('*');
 	$this->db->from('address');
 	$this->db->join('users', 'address.user_id = users.id');
 	$this->db->where('type', 'shipping');
-
+	$this->db->where('user_id', $user_id);
+	
 	$query = $this->db->get();
 
 	return $query->result_array();
 	}
 
-	public function customer_personal_info(){
+	public function customer_personal_info($user_id){
 	$this->db->select('*');
 	$this->db->from('users');
+	$this->db->where('id', $user_id);
 
 	$query = $this->db->get();
 

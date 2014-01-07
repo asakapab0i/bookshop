@@ -56,7 +56,7 @@
                                     <li><a href="<?php echo site_url('account/login');?>">Login Account</a></li>
                                     <li><a href="<?php echo site_url('account/register');?>">Register Account</a></li>
                                     <li class="divider"></li>
-                                     <li><a href="#input-groups">Browse History</a></li>
+                                     <li><a href="<?php echo site_url('account/logout')?>">Logout Account</a></li>
                                   </ul>
                                 </li>    
 

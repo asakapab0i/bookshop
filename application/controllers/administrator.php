@@ -7,6 +7,18 @@ class Administrator extends CI_Controller {
 		parent::__construct();
 		$this->load->model('administrator_model');
 		$this->load->library('datatables');
+
+
+		//Everytime this class is called it automatically checks the the function is_logged_in
+		//If not then redirect to homepage
+		if (!$this->_is_logged_in()) {
+			redirect("home");
+		}
+	}
+
+	private function _is_logged_in(){
+		$login_session = $this->session->userdata('login');
+		return $login_session["logged_in"];
 	}
 
 	public function index()

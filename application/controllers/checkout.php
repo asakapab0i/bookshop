@@ -6,13 +6,30 @@ class Checkout extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('checkout_model');
+
+		//Everytime this class is called it automatically checks the the function is_logged_in
+		//If not then redirect to homepage
+		if (!$this->_is_logged_in()) {
+			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
+			redirect("home");
+		}
+
+	}
+
+	private function _is_logged_in(){
+		$login_session = $this->session->userdata('login');
+		return $login_session["logged_in"];
 	}
 
 	public function index(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+
 		$SHIPPING_COST = 900.31;
 
 		$checkout['items'] = $this->cart->total_items();
-		$checkout['address'] = $this->checkout_model->get_address($id = 40);
+		$checkout['address'] = $this->checkout_model->get_address($user_id);
 
 		$checkout['total_price'] = $this->cart->format_number($this->cart->total());
 		$checkout['total_items'] = $this->cart->total_items();

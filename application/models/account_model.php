@@ -2,6 +2,15 @@
 
 class Account_model extends CI_Model {
 
+	public function get_login_by_email($email){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('email', $email);
+		$result = $this->db->get();
+
+		return $result->result_array();
+	}
+
 	public function login_validate($email, $password){
 		
 		$this->db->where('email', $email);
@@ -22,10 +31,15 @@ class Account_model extends CI_Model {
 		$sql1 = $this->db->insert('users', $personal);
 
 
+		//address1
 		$var = array('user_id' => $this->db->insert_id());
-		$address = array_merge($address, $var);
+		$address1 = array_merge($address, $var);
 
-		$sql2 = $this->db->insert('address', $address);
+		//address2
+		$address2 = array_replace($address1, array('type' => 'shipping'));
+
+		$sql2 = $this->db->insert('address', $address1);
+		$sql3 = $this->db->insert('address', $address2);
 
 		if ($sql1 == TRUE && $sql2 == TRUE) {
 			return TRUE;

@@ -8,13 +8,33 @@ class Account extends CI_Controller {
 		
 	}
 
+	public function is_logged_in(){
+		$login_session = $this->session->userdata('login');
+
+		return $login_session["logged_in"];
+
+	}
+
 	public function index(){
 
 		$this->login();
 	}
 
+	public function logout(){
+		$this->session->unset_userdata('login');
+		redirect('home');
+	}
+
 	public function login(){
+
+		//Check the session
+		if ($this->is_logged_in()) {
+			redirect('customer/dashboard');
+		}
 		
+
+	
+
 		//Prepare Header Data
 		$header['page_title'] = 'Login';
 		
@@ -40,6 +60,11 @@ class Account extends CI_Controller {
 	}
 
 	public function register(){
+
+		//Check the session
+		if ($this->is_logged_in()) {
+			redirect('customer/dashboard');
+		}
 
 		//Prepare Header Data
 		$header['page_title'] = 'Register';
@@ -75,8 +100,20 @@ class Account extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE){
 			$this->login_validate_error();
+
 		}
 		else{
+
+			$userinfo = $this->account_model->get_login_by_email($email);
+
+			$login_session = array(
+                   'email'     => $userinfo[0]["email"],
+                   'id'			=>$userinfo[0]["id"],
+                   'name'		=>$userinfo[0]["fname"] .' '.$userinfo[0]["lname"],
+                   'logged_in' => TRUE
+               );
+
+			$this->session->set_userdata('login',$login_session);
 			redirect('customer/dashboard');
 		}
 

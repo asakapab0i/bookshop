@@ -6,16 +6,33 @@ class Customer extends CI_Controller {
 		parent::__construct();
 		$this->load->model('customer_model');
 		$this->load->library('datatables');
+
+		
+		//Everytime this class is called it automatically checks the the function is_logged_in
+		//If not then redirect to homepage
+		if (!$this->is_logged_in()) {
+			redirect("home");
+		}
+
+	}
+
+	public function is_logged_in(){
+		$login_session = $this->session->userdata('login');
+		return $login_session["logged_in"];
 	}
 
 	public function index(){
 		$this->dashboard();
 	}
 
-	public function dashboard($user_id = 40){
+	public function dashboard(){
 		/*
-		@task : remember to get the session user id
+		DONE: @task - : remember to get the session user id
 		*/
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+
 
 		//Prepare Header Data
 		$header['page_title'] = 'Customer Dashboard';
@@ -39,6 +56,9 @@ class Customer extends CI_Controller {
 
 	public function account(){
 
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
 		//Prepare Header Data
 		$header['page_title'] = 'Account Information';
 		
@@ -46,7 +66,7 @@ class Customer extends CI_Controller {
 		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Main Content
-		$information['account_information'] = $this->customer_model->customer_personal_info($user_id = 40);
+		$information['account_information'] = $this->customer_model->customer_personal_info($user_id);
 
 
 
@@ -60,10 +80,14 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function account_validate($user_id = 40){
+	public function account_validate(){
 		/*
 		@task : remember to get the session user id
 		*/
+
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
 
 		$personal = array('fname' => $this->input->post('fname'),
 						  'lname' => $this->input->post('lname'),
@@ -112,7 +136,7 @@ class Customer extends CI_Controller {
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->parser->parse('dashboard/account_information_validate');
+		$this->load->view('dashboard/account_information_validate');
 		//Page Footer
 		$this->load->view('template/footer');
 	}
@@ -139,7 +163,9 @@ class Customer extends CI_Controller {
 
 
 	public function datatables_order(){
-		$user_id = 40;
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
 		$this
 		->datatables
 		->select('order_id, dateorder, lname, order_total, order_status')
