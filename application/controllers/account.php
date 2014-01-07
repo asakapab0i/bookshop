@@ -161,7 +161,7 @@ class Account extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span>');
 		$this->form_validation->set_rules('fname','First Name','required');
 		$this->form_validation->set_rules('lname','Last Name','required');
-		$this->form_validation->set_rules('email','Email Address','required|valid_email');
+		$this->form_validation->set_rules('email','Email Address','is_unique[users.email]|required|valid_email');
 		$this->form_validation->set_message('valid_email', 'Must contain valid email.');
 		$this->form_validation->set_rules('mobile','Mobile Number','required');
 		$this->form_validation->set_rules('dob','Date of birth','required');
