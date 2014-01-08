@@ -32,6 +32,10 @@ class Administrator_model extends CI_Model {
 
 	}
 
+	public function insert_add_book($formdata){
+
+		$this->db->insert('books', $formdata);
+	}
 	
 
 

@@ -22,9 +22,28 @@
             </div>
             <div class="panel-body">
 
+            <?php
+
+            if ($this->session->flashdata('add_success')) {
+              $success = $this->session->flashdata('add_success');
+
+              echo '<div class="alert alert-success">';
+              echo $success;
+              echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+              echo '</div>';
+            }
+
+
+            ?>
+
+
+            <?php
+            echo validation_errors();
+            ?>
+
   <?php
-                  $attributes = array('class' => 'form-horizontal', 'id' => 'login');
-                  echo form_open('administrator/book_add_validate', $attributes);
+                  $attributes = array('class' => 'form-horizontal', 'id' => 'add_book');
+                  echo form_open_multipart('administrator/book_add_validate', $attributes);
                   ?>
 
 
@@ -133,7 +152,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Image</label>
   <div class="controls">
-    <input required id="Image" name="image" type="File" placeholder="" class="input-xlarge">
+    <input required id="image" name="userfile" type="File" placeholder="" class="input-xlarge">
     
   </div>
 </div>
