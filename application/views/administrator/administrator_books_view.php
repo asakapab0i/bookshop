@@ -7,7 +7,6 @@
     
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
             <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item ">Orders</a>
-            <a id="shipments" href="<?php echo site_url('administrator/shipments'); ?>" class="list-group-item ">Shipments</a>
             <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item active">Books</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           
@@ -18,7 +17,7 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-             Shipments <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="#" class="pull-right btn btn-default">Add Category</a>
+             Books <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="<?php echo site_url('administrator/category_add'); ?>" class="pull-right btn btn-default">Add Category</a>
           </div>
             <div class="panel-body">
 

@@ -156,13 +156,16 @@ class Administrator extends CI_Controller {
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
+		$book['book_info'] = $this->administrator_model->get_book_by_id($id);
+		$book['categories'] = $this->administrator_model->get_category();
+
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->load->view('administrator/administrator_book_view');
+		$this->parser->parse('administrator/administrator_book_edit_view', $book);
 		//Page Footer
 		$this->load->view('template/footer');
 
@@ -175,13 +178,14 @@ class Administrator extends CI_Controller {
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
+		$book_add['category'] = $this->administrator_model->get_category();
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->load->view('administrator/administrator_book_add_view');
+		$this->parser->parse('administrator/administrator_book_add_view', $book_add);
 		//Page Footer
 		$this->load->view('template/footer');
 
@@ -189,9 +193,7 @@ class Administrator extends CI_Controller {
 
 	public function  book_add_validate(){
 
-		
-
-
+	
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
 		$this->form_validation->set_rules('author', 'Author', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
@@ -266,6 +268,124 @@ $form_data = array('title' => $this->input->post('title'),
 		}
 
 
+
+	}
+
+
+	public function book_edit($id){
+
+		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
+		$this->form_validation->set_rules('author', 'Author', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');
+		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
+		$this->form_validation->set_rules('format', 'Format', 'trim|required');
+		$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
+		$this->form_validation->set_rules('category', 'Category', 'trim|required');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required');
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+
+		if (empty($_FILES['userfile']['name']))
+		{
+		    $this->form_validation->set_rules('userfile', 'Image', 'required');
+		}
+
+
+
+		
+			$config['file_name'] = $this->input->post('title');
+			$config['upload_path'] = './assets/img/books_image/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '1000';
+
+			
+			$this->load->library('upload', $config);
+
+		
+
+
+
+		if (!$this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());	
+			var_dump($error);
+			die();	
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+		}
+
+
+		$form_data = array('title' => $this->input->post('title'),
+							'author' => $this->input->post('author'),
+							'description' => $this->input->post('description'),
+							'publisher' => $this->input->post('publisher'),
+							'format' => $this->input->post('format'),
+							'isbn' => $this->input->post('isbn'),
+							'dateadd' => date('Y-m-d'),
+							'category' => $this->input->post('category'),
+							'price' => $this->input->post('price'),
+							'product_qty' => $this->input->post('quantity'),
+							'image' => $data['upload_data']['file_name'],
+							'product_url' => url_title($this->input->post('title'))
+							);
+
+
+
+
+
+
+
+		if ($this->form_validation->run() == False) {
+			 var_dump(validation_errors());
+			 die();
+			redirect('administrator/book/'.$id.'');
+		}else{
+			$this->session->set_flashdata('edit_success', 'Book Successfully Edited!');
+			$this->administrator_model->update_book($form_data,$id);
+			redirect('administrator/book/'.$id.'');
+		}
+
+
+
+	}
+
+	public function category_add(){
+
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Add Category';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_category_add_view');
+		//Page Footer
+		$this->load->view('template/footer');
+
+	}
+
+
+
+
+	public function category_add_validate(){
+
+		$this->form_validation->set_rules('category', 'Category Name', 'trim|required|is_unique[category.name]');
+		$form_data = array('name' => $this->input->post('category'));
+
+		if ($this->form_validation->run() == FALSE) {
+			redirect('administrator/category_add');
+		}else{
+			$this->session->set_flashdata('category_success', 'Category Successfully Added!');
+			$this->administrator_model->insert_add_category($form_data);
+			redirect('administrator/category_add');
+		}
 
 	}
 

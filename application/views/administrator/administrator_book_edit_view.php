@@ -17,50 +17,31 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-           Add Book <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="<?php echo site_url('administrator/category_add'); ?>" class="pull-right btn btn-default">Add Category</a>
+           Book <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="#" class="pull-right btn btn-default">Add Category</a>
             </div>
             <div class="panel-body">
-
-            <?php
-
-            if ($this->session->flashdata('add_success')) {
-              $success = $this->session->flashdata('add_success');
-
-              echo '<div class="alert alert-success">';
-              echo $success;
-              echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-              echo '</div>';
-            }
-
-
-            ?>
-
-
-            <?php
-            echo validation_errors();
-            ?>
-
-  <?php
-                  $attributes = array('class' => 'form-horizontal', 'id' => 'add_book');
-                  echo form_open_multipart('administrator/book_add_validate', $attributes);
+{book_info}
+                  <?php
+                  $attributes = array('class' => 'form-horizontal', 'id' => 'edit_book');
+                  echo form_open_multipart('administrator/book_edit/{product_id}', $attributes);
                   ?>
 
 
 
-{book_info}
+
 
 <div class="col-md-6">
     
     <fieldset>
 
 <!-- Form Name -->
-<legend>Add Book Information</legend>
+<legend>Edit Book</legend>
 
 <!-- Text input-->
 <div class="control-group">
   <label class="control-label" for="title">Title</label>
   <div class="controls">
-    <input value="{title}" required id="title" name="title" type="text" placeholder="" class="input-xlarge">
+    <input required value="{title}" id="title" name="title" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -69,7 +50,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Author</label>
   <div class="controls">
-    <input required id="author" name="author" type="text" placeholder="" class="input-xlarge">
+    <input required value="{author}" id="author" name="author" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -78,7 +59,7 @@
 <div class="control-group">
   <label class="control-label" for="description">Description</label>
   <div class="controls">                     
-    <textarea required style="margin: 0px; width: 366px; height: 109px;" id="description" name="description"></textarea>
+    <textarea style="margin: 0px; width: 366px; height: 109px;" id="description" name="description">{description}</textarea>
   </div>
 </div>
 
@@ -86,7 +67,7 @@
 <div class="control-group">
   <label class="control-label" for="publisher">Publisher</label>
   <div class="controls">
-    <input required id="publisher" name="publisher" type="text" placeholder="" class="input-xlarge">
+    <input required value="{publisher}" id="publisher" name="publisher" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -95,7 +76,7 @@
 <div class="control-group">
   <label class="control-label" for="format">Format</label>
   <div class="controls">
-    <input required id="format" name="format" type="text" placeholder="" class="input-xlarge">
+    <input required value="{format}" id="format" name="format" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -104,7 +85,7 @@
 <div class="control-group">
   <label class="control-label" for="isbn">ISBN</label>
   <div class="controls">
-    <input required id="isbn" name="isbn" type="text" placeholder="" class="input-xlarge">
+    <input required value="{isbn}" id="isbn" name="isbn" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -118,20 +99,18 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Add Book Sales Information</legend>
+<legend>Book Sales Information</legend>
 
 <!-- Text input-->
 <div class="control-group">
-  <label class="control-label" for="Category">Category</label>
+  <label class="control-label" for="title">Category</label>
   <div class="controls">
-
-    <select id="category" name="category">
-      <option value=""></option>
-      {category}
-      <option value="{name}">{name}</option>
-      {/category}
+     <select required id="category" name="category">
+      <option  value=""></option>
+        {categories}
+        <option value="{name}">{name}</option>
+        {/categories}
     </select>
-    
   </div>
 </div>
 
@@ -139,7 +118,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Price</label>
   <div class="controls">
-    <input required id="Price" name="price" type="text" placeholder="" class="input-xlarge">
+    <input required value="{price}" id="price" name="price" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -148,7 +127,7 @@
 <div class="control-group">
   <label class="control-label" for="author">Quantity</label>
   <div class="controls">
-    <input required id="Quantity" name="quantity" type="text" placeholder="" class="input-xlarge">
+    <input required value="{product_qty}" id="quantity" name="quantity" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -157,14 +136,14 @@
 <div class="control-group">
   <label class="control-label" for="author">Image</label>
   <div class="controls">
-    <input required id="image" name="userfile" type="File" placeholder="" class="input-xlarge">
+    <input required id="userfile" name="userfile" type="File" placeholder="" class="input-xlarge">
     
   </div>
 </div>
 
 <br/>
 <br/>
-
+<br/>
 <button type="submit" class="btn btn-lg btn-primary">Submit</button>
 </fieldset>
 
@@ -172,13 +151,10 @@
 </div>
 
 
+
+
 {/book_info}
-
-
 </form>
-
-
-
 
 
 	 
@@ -191,3 +167,24 @@
 </div>
 
 
+<script type="text/javascript">
+    
+
+$(function(){
+
+
+
+    $(document).on('hover', '.glyphicon', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+
+        $(this).addClass('glyphicon-star');
+        alert('sdaasd');
+
+    });
+
+
+
+});
+
+</script>

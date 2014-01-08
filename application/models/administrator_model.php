@@ -36,7 +36,29 @@ class Administrator_model extends CI_Model {
 
 		$this->db->insert('books', $formdata);
 	}
+
+	public function insert_add_category($formdata){
+		$this->db->insert('category', $formdata);
+	}
 	
+
+	public function get_category(){
+
+		$sql = $this->db->get('category');
+		return $sql->result_array();
+	}
+
+	public function get_book_by_id($id){
+
+		$this->db->select('*')->from('books')->where('product_id', $id);
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
+
+	public function update_book($formdata, $id){
+		$this->db->where('product_id', $id);
+		$this->db->update('books', $formdata); 
+	}
 
 
 
