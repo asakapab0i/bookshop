@@ -5,8 +5,9 @@ Future Fix:
 DONE - link edit account(edit add, add address)
 DONE - Add Books
 DONE - Add Categories
+DONE - CRUD Books
 
-CRUD Books
+
 Search Home
 Wishlist System
 Rating System
