@@ -29,11 +29,11 @@
                   <td><a href="<?php echo base_url() . 'book/view/' . '{id}/{link}' ?>">{name}</a>
                   <br><span  class="label label-danger">{availability}</span>
                   </td>
-                  <td class="text-center"><a class="btn btn-xs btn-warning" href="#">Move</a></td>
+                  <td class="text-center"><a class="btn btn-xs btn-warning" href="<?php echo site_url('book/add_wishlist/{id}') ?>">Move</a></td>
                   <td>PHP {price}</td>
                   <td><input size=5 class="qty" name="cart[{rowid}]" type="text" value="{qty}"></td>
                   <td>PHP {subtotal}.00</td>
-                  <td><a class="btn btn-xs btn-warning" href="#">Edit</a>/<a class="btn btn-xs btn-danger" href="#">Delete</a></td>
+                  <td><a class="btn btn-xs btn-danger" href="<?php echo site_url('cart/remove_item/{rowid}') ?>">Delete</a></td>
                 </tr>
 
               {/updated_cart}
@@ -50,7 +50,7 @@
 
 
             <div class="panel-footer">
-            <a href="<?php echo site_url() ?>" class="btn btn-info">Continue Shopping</a>
+            <a href="<?php echo site_url('book/browse') ?>" class="btn btn-info">Continue Shopping</a>
             <button type="submit" href="#" class="pull-right btn btn-primary">Update Shopping Cart</button>
             <a href="<?php echo site_url('cart/destroy') ?>" class="pull-right btn btn-danger">Clear Shopping Cart</a>
             
@@ -71,7 +71,6 @@
                   <input type="hidden" id="validated_cart" name="validated_cart" value="{ready_checkout}">
 
                 <h4>Total Items: {total_items}</h4>
-              	<h2>Subtotal : PHP {total_price}</h2>
               	<h1><strong>Grand Total : PHP {total_price}</strong></h1>
               	<button id="checkout_submit" type="submit" class="btn btn-lg btn-success">Proceed to Checkout</button>
                 <?php

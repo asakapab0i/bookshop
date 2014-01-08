@@ -212,8 +212,8 @@ class Customer extends CI_Controller {
 	}
 
 	public function address_add_validation(){
-		$login_session = $this->session->userdata('login');
-		$user_id = $login_session["id"];
+	$login_session = $this->session->userdata('login');
+	$user_id = $login_session["id"];
 
 	$this->form_validation->set_rules('company', 'Company', 'trim|required|xss_clean');
 	$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
@@ -245,6 +245,35 @@ class Customer extends CI_Controller {
 		redirect('customer/address');
 	}
 
+
+
+	}
+
+
+
+	public function wishlist(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+
+		//Prepare Header Data
+		$header['page_title'] = 'Account Wishlist';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+
+		$wishlist['wishlist'] = $this->customer_model->get_wishlist($user_id);
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('dashboard/account_wishlist', $wishlist);
+		//Page Footer
+		$this->load->view('template/footer');
 
 
 	}

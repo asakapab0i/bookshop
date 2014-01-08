@@ -38,7 +38,7 @@
                         </div>
                         <div class="collapse navbar-collapse">
                         <center>
-                        <img class="mainlogo" src="<?php echo base_url() . 'assets/img/logo.jpg' ?>" alt="">    
+                        <img class="mainlogo" src="<?php echo base_url() . 'assets/img/logo.jpg' ?>" alt=""> 
                         </center>
                         
                             <ul class="nav nav-tabs">

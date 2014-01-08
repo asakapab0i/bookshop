@@ -47,7 +47,7 @@
 
 
 
-{book_info}
+
 
 <div class="col-md-6">
     
@@ -60,7 +60,7 @@
 <div class="control-group">
   <label class="control-label" for="title">Title</label>
   <div class="controls">
-    <input value="{title}" required id="title" name="title" type="text" placeholder="" class="input-xlarge">
+    <input required id="title" name="title" type="text" placeholder="" class="input-xlarge">
     
   </div>
 </div>
@@ -171,8 +171,6 @@
 
 </div>
 
-
-{/book_info}
 
 
 </form>

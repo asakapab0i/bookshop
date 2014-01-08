@@ -119,13 +119,19 @@ class Cart extends CI_Controller {
 			}
 	}
 
-	private function check_cart_available($result){
+	
+	function remove_item($cartid){
 
+		$data = array(
+		    'rowid'   => $cartid,
+		    'qty'     => 0
+			);
 
+		$this->cart->update($data); 
 
+		redirect('cart');
 
 	}
-
 
 
 }

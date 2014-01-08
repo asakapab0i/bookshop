@@ -55,7 +55,7 @@ class Cart_model extends CI_Model {
 
 							$product_qty = $sql[0]['product_qty'];
 
-							if ($inner['qty'] >= $product_qty ) {
+							if ($inner['qty'] > $product_qty ) {
 								
 								 $inner = array_merge($inner, array('availability' => 'This book that you ordered is either out of stock or in limited stock only.'));
 								 $data[] = $inner;

@@ -84,4 +84,13 @@ class Customer_model extends CI_model {
 		return $sql;
 	}
 
+	public function get_wishlist($user_id){
+
+		$this->db->select('*')->from('books')->join('wishlist', 'books.product_id = wishlist.product_id');
+		$sql = $this->db->get();
+
+		return $sql->result_array();
+
+	}
+
 }

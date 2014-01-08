@@ -42,7 +42,7 @@
             <div class="panel-heading">Books | Category 
 
             <select class="category">
-
+              <option value="all">All</option>
 			 <?php
             	foreach ($category as $key => $value) {
             		foreach ($value as $key2 => $value2) {
@@ -247,8 +247,8 @@
 	            	<div class="col-md-6">
 	            		<small><strong>{name}</strong></small><br/>
 	            		<small><strong>{qty}</strong> x PHP {price}</small>
-	            		<a href="#" class="label label-info">Edit</a>
-	            		<a href="#" class="label label-danger">Delete</a>
+	            		<a href="<?php echo site_url('book/view/{id}') ?>" class="label label-info">Edit</a>
+	            		<a href="<?php echo site_url('cart/remove_item/{rowid}') ?>" class="label label-danger">Delete</a>
 	            	</div>
 	            	
 	            </div>

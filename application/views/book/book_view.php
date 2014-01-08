@@ -61,7 +61,7 @@
 							   				
 							   				
 
-							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-info">Add to cart</a href="<?php echo site_url('cart/update/{product_id}/') ?>"><button class="btn btn-danger">Add to Wishlist</button>
+							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-info">Add to cart<a href="<?php echo site_url('cart/update/{product_id}/') ?>"><button class="btn btn-danger">Add to Wishlist</button>
 							   		
 							   			<script type="text/javascript">
 							   				$(document).on('keyup', '#qty', function(){
@@ -114,8 +114,8 @@
 	            	<div class="col-md-6">
 	            		<small><strong>{name}</strong></small><br/>
 	            		<small><strong>{qty}</strong> x PHP {price}</small>
-	            		<a href="#" class="label label-info">Edit</a>
-	            		<a href="#" class="label label-danger">Delete</a>
+	            		<a href="<?php echo site_url('book/view/{id}') ?>" class="label label-info">Edit</a>
+	            		<a href="<?php echo site_url('cart/remove_item/{rowid}') ?>" class="label label-danger">Delete</a>
 	            	</div>
 	            	
 	            </div>

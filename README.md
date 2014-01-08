@@ -9,6 +9,6 @@ DONE - CRUD Books
 
 
 Search Home
-Wishlist System
+DONE - Wishlist System
 Rating System
 Paypal

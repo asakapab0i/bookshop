@@ -115,8 +115,9 @@ class Book extends CI_Controller {
 
 
 	public function add_wishlist($product_id){
-		$user_id = 40;
-
+		$login = $this->session->userdata('login');
+		$user_id = $login['id'];
+		
 		$wishlish_data = array('product_id'=> $product_id,
 								'user_id' => $user_id);
 
