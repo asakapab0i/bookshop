@@ -7,6 +7,10 @@ class Book extends CI_Controller {
 		$this->load->model('book_model');
 	}
 
+	public function index(){
+		$this->browse();
+	}
+
 
 	public function view($product_id){
 
@@ -115,6 +119,13 @@ class Book extends CI_Controller {
 
 
 	public function add_wishlist($product_id){
+
+		if (!$this->session->userdata('login')) {
+			$this->session->set_flashdata('wishlist', 'You need to be logged in to able to add this book to your wishlist.');
+			redirect('book');
+		}
+
+
 		$login = $this->session->userdata('login');
 		$user_id = $login['id'];
 		
@@ -127,6 +138,7 @@ class Book extends CI_Controller {
 		redirect('customer/wishlist');
 
 	}
+
 
 
 	private function modify_array_data($result){

@@ -37,7 +37,10 @@
                   <br>
                   </td>
                   <td>PHP {price}</td>
-                  <td class="text-center">Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-success">Add to cart<a href="<?php echo site_url('cart/update/{product_id}/') ?>"></td>
+                  <td class="text-center">Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> 
+
+                  <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-success">Add to cart </a>
+                  <a class="btn btn-danger" href="<?php echo site_url('customer/remove_wishlist/{product_id}/') ?>">Remove</a></td>
                 </tr>
               {/wishlist}
 

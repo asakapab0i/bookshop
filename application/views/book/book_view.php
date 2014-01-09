@@ -44,7 +44,6 @@
 							   <small><a href="#">Email to a friend</a><br/></small>
 							   <small><a href="#">Be the first to write a review</a></small><br/>
 							   <span class="label label-success">PHP {price}</span><small><br/>
-							    Availability: In Stock <br/> 
 							  	This product will ship in 2 to 3 days.<br/>
 							   </small><br/>
 						</div>

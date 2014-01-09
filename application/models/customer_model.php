@@ -93,4 +93,9 @@ class Customer_model extends CI_model {
 
 	}
 
+	public function remove_wishlist($product_id){
+		$this->db->where('product_id', $product_id);
+		$this->db->delete('wishlist');
+	}
+
 }

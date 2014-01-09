@@ -87,6 +87,22 @@
 
             <div class="panel-body">
             <center>
+
+            <?php
+
+            if ($this->session->flashdata('wishlist')) {
+              $notice = $this->session->flashdata('wishlist');
+
+              echo '<div class="alert alert-warning">';
+              echo $notice;
+              echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+              echo '</div>';
+
+            }
+
+            ?>
+
+
          {pagination}
 
             </center>

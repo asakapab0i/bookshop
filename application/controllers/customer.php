@@ -278,6 +278,13 @@ class Customer extends CI_Controller {
 
 	}
 
+	public function remove_wishlist($product_id){
+
+		$this->customer_model->remove_wishlist($product_id);
+		redirect('customer/wishlist');
+
+	}
+
 
 	public function datatables_order(){
 		$login_session = $this->session->userdata('login');
