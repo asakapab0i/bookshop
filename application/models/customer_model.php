@@ -98,4 +98,34 @@ class Customer_model extends CI_model {
 		$this->db->delete('wishlist');
 	}
 
+	public function get_order_by_order_no($order_no){
+
+		$this->db->select('*')->from('orders')
+		->join('users', 'orders.user_id = users.id')
+		->join('address', 'orders.user_id = address.user_id')
+		->where('order_id', $order_no)
+		->limit(1);
+		$sql = $this->db->get();
+
+		return $sql->result_array();
+
+	}
+
+	public function get_order_cart_contents($order_no){
+		$this->db->select('cart_data')->from('orders')->where('order_id', $order_no);
+		$sql  = $this->db->get();
+
+		$sql1 =  $sql->result_array();
+		$result = unserialize($sql1[0]['cart_data']);
+
+		return $result;		
+	}
+
+	public function get_order_cart_total($order_no){
+		$this->db->select('order_total')->from('orders')->where('order_id', $order_no);
+		$sql  = $this->db->get();
+		return  $sql->result_array();
+				
+	}
+
 }

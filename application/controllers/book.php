@@ -13,11 +13,16 @@ class Book extends CI_Controller {
 
 
 	public function view($product_id){
+		$login = $this->session->userdata('login');
+		$login = $login["id"];
 
 		$book['bookview'] = $this->book_model->get_book_by_id($product_id);
 		$book['subtotal'] = $this->cart->format_number($this->cart->total());
 		$book['items'] = $this->cart->total_items();
+
+		$sum_rating = $this->book_model->get_ratings($product_id);
 		
+
 
 		$q1 = $this->cart->contents();
 		shuffle($q1);

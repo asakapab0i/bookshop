@@ -26,7 +26,7 @@ class Cart_model extends CI_Model {
 
 							$product_qty = $sql[0]['product_qty'];
 
-							if ($inner['qty'] >= $product_qty ) {
+							if ($inner['qty'] > $product_qty ) {
 								
 								 $data = 0;
 

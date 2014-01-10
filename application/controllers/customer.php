@@ -161,6 +161,32 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function order($order_no){
+		//Prepare Header Data
+		$header['page_title'] = 'My Order | '.$order_no.' ';
+		
+
+
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$order['order_data'] = $this->customer_model->get_order_by_order_no($order_no);
+		$order['order_cart_contents'] = $this->customer_model->get_order_cart_contents($order_no);
+		$order['total'] = $this->customer_model->get_order_cart_total($order_no);
+
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('dashboard/account_order', $order);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
 	public function address(){
 		$login_session = $this->session->userdata('login');
 		$user_id = $login_session["id"];

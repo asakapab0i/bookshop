@@ -63,6 +63,15 @@ class Book_model extends CI_Model {
 	
 	}
 
+	public function get_ratings($id){
+
+		$this->db->select_avg('rate', 'rate');
+		$this->db->from('ratings');
+		$this->db->where('product_id', $id);
+		$query = $this->db->get();
+
+	}
+
 	
 
 }
