@@ -19,6 +19,19 @@
 
          <div class="panel-body"> 
 
+          <?php
+
+          if ($this->session->flashdata('wishlist')) {
+            $wishlist = $this->session->flashdata('wishlist');
+
+            echo '<div class="text-center alert alert-warning">';
+            echo $wishlist;
+            echo '<button type="button" class="close" aria-hidden="true">&times;</button>'; 
+            echo '</div>';
+          }
+
+          ?>
+
        <table class="table table-striped table-bordered table-condensed">
               <thead>
                 <tr>

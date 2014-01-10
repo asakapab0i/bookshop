@@ -59,7 +59,18 @@ class Book_model extends CI_Model {
 
 	public function add_wishlist($data){
 
-		$this->db->insert('wishlist', $data);
+		$product_id = $data["product_id"];
+
+		$this->db->select('*')->from('wishlist')->where('product_id', $product_id);
+		$sql = $this->db->get();
+
+		if (!$sql->num_rows() > 1) {
+			$this->db->insert('wishlist', $data);
+		}else{
+			$this->session->set_flashdata('wishlist', 'The book is already exist in the wishlist.');
+		}
+
+		
 	
 	}
 

@@ -300,8 +300,6 @@ class Customer extends CI_Controller {
 		$this->parser->parse('dashboard/account_wishlist', $wishlist);
 		//Page Footer
 		$this->load->view('template/footer');
-
-
 	}
 
 	public function remove_wishlist($product_id){
