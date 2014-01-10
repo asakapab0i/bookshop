@@ -60,7 +60,7 @@
 							   				
 							   				
 
-							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-info">Add to cart<a href="<?php echo site_url('cart/update/{product_id}/') ?>"><button class="btn btn-danger">Add to Wishlist</button>
+							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/') . $_SERVER['REQUEST_URI']; ?>" class="btn btn-info">Add to cart</a><a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
 							   		
 							   			<script type="text/javascript">
 							   				$(document).on('keyup', '#qty', function(){
