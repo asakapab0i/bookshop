@@ -9,11 +9,6 @@
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/font-awesome.min.css'?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/custom.css'?>">
 
-        <style type="text/css" title="currentStyle">
-            @import "<?php echo base_url() ?>assets/media/css/demo_page.css";
-            @import "<?php echo base_url() ?>assets/media/css/demo_table.css";
-        </style>
-
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/custom.js'?> "></script>
