@@ -17,7 +17,7 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-           Book <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="#" class="pull-right btn btn-default">Add Category</a>
+           Book <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="<?php echo site_url('administrator/category_add'); ?>" class="pull-right btn btn-default">Add Category</a>
             </div>
             <div class="panel-body">
 

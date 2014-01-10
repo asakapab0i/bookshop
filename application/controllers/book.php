@@ -34,7 +34,7 @@ class Book extends CI_Controller {
 		$header['page_title'] = 'Book | ' .$book['bookview'][0]['title'];
 		
 		//Navigation
-		$navigation['page_cur_nav'] = 'Book';
+		$navigation['page_cur_nav'] = 'book';
 
 		//Main Content
 
@@ -74,7 +74,7 @@ class Book extends CI_Controller {
 		$header['page_title'] = 'Book | Browse '.ucfirst($category).' ';
 		
 		//Navigation
-		$navigation['page_cur_nav'] = 'Book';
+		$navigation['page_cur_nav'] = 'book';
 
 		//Main Content
 		$book['pagination'] = $this->pagination->create_links();

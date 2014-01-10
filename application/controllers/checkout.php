@@ -119,7 +119,7 @@ class Checkout extends CI_Controller {
 				
 
 				//Perform the payment
-                $config['business']                         = 'bojorquebryan-facilitator@gmail.com';
+                $config['business']                         = 'rrongie-facilitator@gmail.com';
                 $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
                 $config['return']                                 = base_url() . 'checkout/notify_payment';
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';

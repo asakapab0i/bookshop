@@ -37,24 +37,193 @@
                             </button><a href="#" class="navbar-brand"></a>
                         </div>
                         <div class="collapse navbar-collapse">
-                        <center>
+                       
+                       <center>
                         <img class="mainlogo" src="<?php echo base_url() . 'assets/img/logo.jpg' ?>" alt=""> 
                         </center>
-                        
+
+
                             <ul class="nav nav-tabs">
 
-                                <li class="active">
-                                    <a href="<?php echo site_url('home');?>">Home</a>
+                               <?php
+                               //START NAVIGATION
+                               $home = site_url('home');
+                               $book_browse = site_url('book/browse/all');
+                               $cart = site_url('cart');
+
+
+                               if ($page_cur_nav == 'home') {
+                                    echo ' <li class="active">
+                                    <a href="'.$home.'">Home</a>
                                 </li>
 
                                 <li>
 
-                                    <a href="<?php echo site_url('book/browse/all');?>">Books</a>
+                                    <a href="'.$book_browse.'">Books</a>
 
-                                </li>                           
+                                </li>
+
+
+                                <li class="">
+
+                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+
+                                </li>
+
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                    ';
+
+
+                                  if ($this->session->userdata('login')) {
+                                      $login = $this->session->userdata('login');
+
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      
+                                  }else{
+
+                                    echo '<li><a href="'.site_url('account/login').'">Login Account</a></li>';
+                                    echo '<li><a href="'.site_url('account/register').'">Register Account</a></li>';
+
+                                  }
+
+                                  echo '</ul>
+                                </li>   
+
+                                ';
+                               }else if($page_cur_nav == 'book'){
+                                 echo ' <li class="">
+                                    <a href="'.$home.'">Home</a>
+                                </li>
+
+                                <li class="active">
+
+                                    <a href="'.$book_browse.'">Books</a>
+
+                                </li>
+                                <li class="">
+
+                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+
+                                </li>
+
+                                 <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                   ';
+
+
+                                  if ($this->session->userdata('login')) {
+                                      $login = $this->session->userdata('login');
+
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      
+                                  }else{
+
+                                    echo '<li><a href="'.site_url('account/login').'">Login Account</a></li>';
+                                    echo '<li><a href="'.site_url('account/register').'">Register Account</a></li>';
+
+                                  }
+
+                                  echo '</ul>
+                                </li>   ';
+
+                               }else if($page_cur_nav == 'cart'){
+                                 echo ' <li class="">
+                                    <a href="'.$home.'">Home</a>
+                                </li>
+
+                                <li class="">
+
+                                    <a href="'.$book_browse.'">Books</a>
+
+                                </li>
+
+                                 <li class="active">
+
+                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+
+                                </li>
+
+                                 <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">';
+
+                                  if ($this->session->userdata('login')) {
+                                      $login = $this->session->userdata('login');
+
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+
+                                  }else{
+
+                                    echo '<li><a href="'.site_url('account/login').'">Login Account</a></li>';
+                                    echo '<li><a href="'.site_url('account/register').'">Register Account</a></li>';
+
+                                  }
+
+                                    // <li><a href="'.site_url('account/login').'">Login Account</a></li>
+                                    // <li><a href="'.site_url('account/register').'">Register Account</a></li>
+                                    // <li class="divider"></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                  echo '</ul>
+                                </li>';
+
+                               }else if ($page_cur_nav == 'dashboard' || $page_cur_nav == 'account') {
+                                   
+                                 echo ' <li class="">
+                                    <a href="'.$home.'">Home</a>
+                                </li>
+
+                                <li class="">
+
+                                    <a href="'.$book_browse.'">Books</a>
+
+                                </li>
+
+                                 <li class="">
+
+                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+
+                                </li>
+
+                                 <li class="dropdown active">
+                                  <a href="#" class=" dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">';
+
+                                  if ($this->session->userdata('login')) {
+                                      $login = $this->session->userdata('login');
+
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+
+                                  }else{
+
+                                    echo '<li><a href="'.site_url('account/login').'">Login Account</a></li>';
+                                    echo '<li><a href="'.site_url('account/register').'">Register Account</a></li>';
+
+                                  }
+
+                                    // <li><a href="'.site_url('account/login').'">Login Account</a></li>
+                                    // <li><a href="'.site_url('account/register').'">Register Account</a></li>
+                                    // <li class="divider"></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                  echo '</ul>
+                                </li>';
+
+                               }
+
+                              
+
+
+                               ?>
+
 
                                 
-                               <li class="dropdown pull-right">
+                          <!--      <li class="dropdown pull-right">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                     <li><a href="<?php echo site_url('account/login');?>">Login Account</a></li>
@@ -66,7 +235,7 @@
 
                                 <li class="pull-right">
                                     <a href="<?php echo site_url('cart'); ?>">My Cart  <span class="badge badge-info"><?php echo $this->cart->total_items(); ?></span></a>
-                                </li>
+                                </li> -->
 
 
                                 

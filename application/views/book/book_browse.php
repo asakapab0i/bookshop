@@ -249,7 +249,7 @@
             	<p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>
             	<span class="btn btn-xs btn-info">Subtotal: PHP {subtotal}</span>
             	
-            	<p class="btn btn-sm btn-danger">Checkout</p>
+            	<a href="<?php echo site_url('cart') ?>" class="btn btn-sm btn-danger">Checkout</a>
             </div>
              
             <div class="panel-footer">
