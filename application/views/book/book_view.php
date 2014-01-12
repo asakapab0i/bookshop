@@ -16,7 +16,7 @@
 						<div class="col-md-3">
 							
 								<img style="float: left; margin-right: 20px; width: 100%;" width="" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
-								Your rating: 
+								<!-- Your rating: 
 								<span class="ratings">
 									<span data="1" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
 									<span data="2" title="Rate 2 out of 5" class="glyphicon glyphicon-star-empty"> </span>
@@ -28,7 +28,7 @@
 
 								
 									<h4>Overall Ratings: <strong><span id="rates">4.5</span></strong></h4>
-									<h5>Out of 10,000 people rated.</h5>
+									<h5>Out of 10,000 people rated.</h5> -->
 								
 		
  
@@ -41,8 +41,7 @@
 							   Format: {format} <br/>
 							   ISBN: {isbn} <br/>
 							   </small>
-							   <small><a href="#">Email to a friend</a><br/></small>
-							   <small><a href="#">Be the first to write a review</a></small><br/>
+							 
 							   <span class="label label-success">PHP {price}</span><small><br/>
 							  	This product will ship in 2 to 3 days.<br/>
 							   </small><br/>
