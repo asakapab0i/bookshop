@@ -19,7 +19,7 @@
 
          <div class="panel-body"> 
 
-         	<table id="account-orders-view" class="table">
+         	<table id="account-orders-view" class="table table-striped table-condensed">
          		<thead>
          			<tr>
          				<th>Order No.</th>

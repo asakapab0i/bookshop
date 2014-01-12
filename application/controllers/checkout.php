@@ -10,10 +10,10 @@ class Checkout extends CI_Controller {
 
 		//Everytime this class is called it automatically checks the the function is_logged_in
 		//If not then redirect to homepage
-		if (!$this->_is_logged_in()) {
-			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
-			redirect("account/login");
-		}
+		// if (!$this->_is_logged_in()) {
+		// 	$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
+		// 	redirect("account/login");
+		// }
 
 	}
 
@@ -23,6 +23,12 @@ class Checkout extends CI_Controller {
 	}
 
 	public function index(){
+
+		if (!$this->_is_logged_in()) {
+			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
+			redirect("account/login");
+		}
+
 		$login_session = $this->session->userdata('login');
 		$user_id = $login_session["id"];
 
@@ -70,6 +76,11 @@ class Checkout extends CI_Controller {
 
 	public function place_order(){
 
+		if (!$this->_is_logged_in()) {
+			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
+			redirect("account/login");
+		}
+
 		$payment_info = array('shipping_address' => $this->input->post('shipping_address'),
 							'shipping_type' => $this->input->post('shipping_type'),
 							'payment_method' => $this->input->post('payment_method')
@@ -89,12 +100,10 @@ class Checkout extends CI_Controller {
 	
 	public function pay_with_paypal($address_id, $shipping_type){
 
-				if ($this->input->post()) {
-				//save paypal_log
-				$paypal_log = $this->input->post();
-				$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log)));
+				if (!$this->_is_logged_in()) {
+					$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
+					redirect("account/login");
 				}
-
 
 				 $login = $this->session->userdata('login');
 				 $user_id = $login['id'];
@@ -113,20 +122,23 @@ class Checkout extends CI_Controller {
 									); 
 				$this->checkout_model->insert_order_data($order_data);
 
-				//destory the cart
+				
+
+				//destroy the cart
 				$this->cart->destroy();
 
-				
 
 				//Perform the payment
                 $config['business']                         = 'rrongie-facilitator@gmail.com';
                 $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
                 $config['return']                                 = base_url() . 'checkout/notify_payment';
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
-                $config['notify_url']                         = base_url() . 'checkout/pay_with_paypal'; //IPN Post
+                $config['notify_url']                         = base_url() . 'checkout/paypal_notify'; //IPN Post
                 $config['production']                         = FALSE; //Its false by default and will use sandbox
                 $config["invoice"]                                = random_string('alnum', 8); //The invoice id
-                
+                $config["custom"] = $order_data['order_id']; 
+
+
                 $this->load->library('paypal',$config);
                 
                 #$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
@@ -157,28 +169,29 @@ class Checkout extends CI_Controller {
 
 	public function notify_payment(){
 		
+		if ($this->input->post()) {
+			
+			$data['paypal'] = $this->input->post();
 
-		// echo '<h1>Success!</h1>';
-		// echo '<pre>';
-		// var_dump($return_info);
+			//Prepare Header Data
+			$header['page_title'] = 'My Orders';
+			
+			//Navigation
+			$navigation['page_cur_nav'] = 'checkout';
 
-		//Prepare Header Data
-		$header['page_title'] = 'My Orders';
+			//Main Content
+			
+
+			//Page Header
+			$this->parser->parse('template/header', $header);
+			//Page Nav
+			$this->load->view('template/navigation', $navigation);
+			//Page Main Content
+			$this->load->view('checkout/checkout_success_view',$data);
+			//Page Footer
+			$this->load->view('template/footer');
 		
-		//Navigation
-		$navigation['page_cur_nav'] = 'dashboard';
-
-		//Main Content
-		
-
-		//Page Header
-		$this->parser->parse('template/header', $header);
-		//Page Nav
-		$this->load->view('template/navigation', $navigation);
-		//Page Main Content
-		$this->load->view('checkout/checkout_success_view');
-		//Page Footer
-		$this->load->view('template/footer');
+		}
 
 	}
 
@@ -187,6 +200,57 @@ class Checkout extends CI_Controller {
 
 		echo 'Cancelled!';
 	}
+
+	public function paypal_notify(){
+	
+				//save paypal_log
+				// 
+				
+				if ($this->input->post()) {
+					$paypal_log = $this->input->post();
+				 	$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log),
+				 													'order_id' => $paypal_log['custom']));
+				 	$this->checkout_model->update_approve_order($paypal_log['custom']);
+
+
+
+
+
+
+
+				// $cart = $this->cart->contents();
+				// $data = array();
+
+				//  	foreach ($cart as $key => $cart2) {
+				// 	foreach ($cart2 as $key2 => $value) {
+				// 	}
+				// 	$data[] = array('product_id' => $cart2['name'],
+				// 					'product_qty' => 'product_qty-'.$cart2['qty']);
+				// 	}
+
+
+				// 	$this->checkout_model->product_deduction($data);
+
+				// 	//destroy the cart
+				// $this->cart->destroy();
+
+
+
+
+
+
+
+
+
+
+
+
+
+				}
+			
+				
+	}
+	
 
 	/*
 	Email Template

@@ -14,13 +14,29 @@ class Checkout_model extends CI_Model {
 
 	}
 
+	
+	public function insert_order_data($data){
+		$this->db->insert('orders', $data);
+	}
+	
+
 	public function insert_paypal_log($data){
 		$this->db->insert('paypal_log', $data);
 	}
 
-	public function insert_order_data($data){
-		$this->db->insert('orders', $data);
+
+	public function update_approve_order($order_id){
+
+		$this->db->where('order_id', $order_id);
+		$this->db->update('orders', array('order_status' => 'Approved'));
+
 	}
 
+	public function product_deduction($data){
+
+
+		$this->db->update_batch('books', $data, 'product_id'); 
+
+	}
 
 }

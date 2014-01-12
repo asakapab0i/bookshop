@@ -187,6 +187,31 @@ class Customer extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function invoice_log($order_no){
+		//Prepare Header Data
+		$header['page_title'] = 'Paypal Invoice Log | '.$order_no.' ';
+		
+
+
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Main Content
+		$invoice['paypal_log'] = $this->customer_model->get_paypal_log($order_no);
+		$invoice['order_no'] = $order_no;
+
+
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('dashboard/account_invoice',$invoice);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
 	public function address(){
 		$login_session = $this->session->userdata('login');
 		$user_id = $login_session["id"];

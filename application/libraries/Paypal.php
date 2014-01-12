@@ -121,7 +121,7 @@ class Paypal {
                 #Payment Page Information -->
                 $config["return"]                         = ''; //The URL to which PayPal redirects buyersÃ¢â‚¬â„¢ browser after they complete their payments.
                 $config["cancel_return"]        = ''; //Specify a URL on your website that displays a Ã¢â‚¬Å“Payment CanceledÃ¢â‚¬Â page.
-                $config["notify_url"]                 = '';  //The URL to which PayPal posts information about the payment (IPN)
+                $config["notify_url"]                 = base_url() . 'checkout/paypal_notify';  //The URL to which PayPal posts information about the payment (IPN)
                 $config["rm"] = '2'; //Leave this to get payment information 
                 $config["lc"] = 'EN'; //Languaje [EN,ES]
 

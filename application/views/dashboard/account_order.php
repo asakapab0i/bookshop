@@ -91,10 +91,10 @@
 
             <div class="col-md-6">
                 <div class="panel panel-default" id="panels">
-            <div class="panel-heading">Invoice Information
+            <div class="panel-heading">Paypal Invoice Information
             </div>
             <div class="panel-body text-center">
-            <button class="btn btn-success btn-lg" type="#">View Invoice</button>
+            <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">View Invoice Log</a>
             </div>
             <div class="panel-footer">
             </div>
@@ -110,12 +110,12 @@
                
 
 
-                 <table class="table table-striped table-bordered table-condensed">
+                 <table class="table table-striped table-condensed">
               <thead>
                 <tr>
                   <th>Product Name</th>
                   <th>Unit Price</th>
-                  <th>Qty</th>
+                  <th>Quantity</th>
                   <th>Subtotal</th>
                 </tr>
               </thead>

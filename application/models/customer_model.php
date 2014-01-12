@@ -128,4 +128,18 @@ class Customer_model extends CI_model {
 				
 	}
 
+	public function get_paypal_log($order_id){
+
+		$this->db->select('*')->from('paypal_log')->where('order_id', $order_id);
+		$sql = $this->db->get();
+
+		if ($sql->num_rows() > 0) {
+			
+			$result = $sql->result_array();
+			return unserialize($result['0']['data']);
+		}
+
+
+	}
+
 }

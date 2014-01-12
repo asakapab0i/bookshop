@@ -70,7 +70,8 @@
 
                                 </li>
 
-                                <li class="dropdown">
+
+                                <li class="dropdown pull-right">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                     ';
@@ -109,7 +110,7 @@
 
                                 </li>
 
-                                 <li class="dropdown">
+                                 <li class="pull-right dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                    ';
@@ -148,7 +149,7 @@
 
                                 </li>
 
-                                 <li class="dropdown">
+                                 <li class="dropdown pull-right">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">';
 
@@ -190,7 +191,49 @@
 
                                 </li>
 
-                                 <li class="dropdown active">
+                                 <li class="pull-right dropdown active">
+                                  <a href="#" class=" dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+                                  <ul class="dropdown-menu">';
+
+                                  if ($this->session->userdata('login')) {
+                                      $login = $this->session->userdata('login');
+
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+
+                                  }else{
+
+                                    echo '<li><a href="'.site_url('account/login').'">Login Account</a></li>';
+                                    echo '<li><a href="'.site_url('account/register').'">Register Account</a></li>';
+
+                                  }
+
+                                    // <li><a href="'.site_url('account/login').'">Login Account</a></li>
+                                    // <li><a href="'.site_url('account/register').'">Register Account</a></li>
+                                    // <li class="divider"></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                  echo '</ul>
+                                </li>';
+
+                               }else if ($page_cur_nav == 'checkout') {
+                                   
+                                 echo ' <li class="">
+                                    <a href="'.$home.'">Home</a>
+                                </li>
+
+                                <li class="">
+
+                                    <a href="'.$book_browse.'">Books</a>
+
+                                </li>
+
+                                 <li class="active">
+
+                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+
+                                </li>
+
+                                 <li class="pull-right dropdown">
                                   <a href="#" class=" dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">';
 
@@ -215,6 +258,7 @@
                                 </li>';
 
                                }
+
 
                               
 
