@@ -51,6 +51,7 @@
     
                 $(document).ready(function() {
     $('#account-orders-view').dataTable( {
+        "aaSorting": [[ 1, "desc" ]],
         "bProcessing": true,
         "sAjaxSource": "<?php echo site_url('customer/datatables_order'); ?>",
         "aoColumnDefs": [

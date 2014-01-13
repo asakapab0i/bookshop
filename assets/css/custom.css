@@ -19,7 +19,7 @@ hr{
 }
 
 .image-size{
-	height: 200px; width: 100%; overflow: hidden;
+	margin: 0 auto; height: 200px; /*width: 100%;*/ overflow: hidden;
 }
 
 .glyphicon-star{
@@ -50,4 +50,16 @@ hr{
 	background-color: #c4cdc1;
 }
 
+
+*{
+	font-size: 98%;
+}
+
+.container{
+	width: 1050px !important;
+}
+
+.badge{
+	font-size: 9px;
+}
 

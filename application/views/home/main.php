@@ -12,6 +12,17 @@
        ?>
        <!-- Start Index Body -->
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=201652109992980";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 			<div class="row">
 
               
@@ -157,8 +168,8 @@
           <div class="panel panel-default" id="content-formatting">
             <div class="panel-heading">Like us on Facebook
             </div>
-            <div class="panel-body">
-            <p>This is an <b>ordinary paragraph</b> that is <i>long enough</i> to wrap to <u>multiple lines</u> so that you can see how the line spacing looks.</p>
+            <div class="panel-body text-center">
+            <div class="fb-like-box" data-href="https://www.facebook.com/labelleaurore" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
             </div>
           </div>
 

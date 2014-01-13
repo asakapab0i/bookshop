@@ -29,6 +29,7 @@
             <?php
             echo "<code>";
            if (count($paypal_log) != 0) {
+           
            	 foreach ($paypal_log as $key => $value) {
             	echo $key.': '.$value;
             	echo '<br/>';

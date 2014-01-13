@@ -19,60 +19,40 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#shipping-address">
-          Shipping Information
+          Select Address Information
         </a>
       </h4>
     </div>
     <div id="shipping-address" class="panel-collapse collapse in">
       <div class="panel-body">
-      	<div class="col-md-9">
-      	Select a shipping address from your address book or enter a new address.
-      		<select name="shipping_address" class="form-control">
-      			
+      	
+      
+      <div class="row">
+        
+        <div class="col-md-10">
+            Select a shipping address from your address book or add a <a href="<?php echo site_url('customer/address_add'); ?>" class="" title="">+ new address</a>.
+
+          <select name="shipping_address" class="form-control">  
+            
             {address}
             <option value="{address_id}">{fname} {lname}, {street} {state} {country}</option>
-      		  {/address}
+            {/address}
           </select>
+        </div>
 
-          
+        <div class="col-md-2">
+          <button id="shipping-address-submit" class="btn btn-lg btn-success">Continue</button>
+        </div>
 
-
-          <br/>
-      		<button id="shipping-address-submit" class="pull-right btn btn-lg btn-primary">Continue</button>
-      	</div>
       </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#shipping-method">
-         Shipping Method
-        </a>
-      </h4>
-    </div>
-    <div id="shipping-method" class="panel-collapse collapse">
-      <div class="panel-body">
+
+        
       	
-
-      	<div class="col-md-3">
-      	<input  id="shipping-type" checked value="standard" type="radio" name="shipping_type">
-      		<h4>Standard Shipping <br/>
-		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
-      	</div>
-      
-      	<div class="col-md-3">
-      	<input  id="shipping-type" value="byair" type="radio" name="shipping_type">
-      		<h4>Air Freight Shipping <br/>
-		      Weight-based (0.98kg) <br/> <br/> PHP 982.00 <br/>
-      	</div>
-
-		<br/>
-      		<button id="shipping-type-submit" class="btn btn-lg btn-primary">Continue</button>
-      </h4>
       </div>
     </div>
   </div>
+
+
    <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -81,22 +61,27 @@
         </a>
       </h4>
     </div>
+
+
     <div id="payment-type" class="panel-collapse collapse">
       <div class="panel-body">
 
-      <div class="col-md-3">
-      	Bank: <input name="payment_method" type="radio" value="bank">
-      </div>
+        
+        <div class="row">
+          
+          <div class="col-md-offset-5 col-md-5">
+            
+        <button class="btn btn-warning btn-lg">Paypal Checkout</button> <input checked name="payment_method" type="radio" value="paypal_checkout">
+     
+          </div>
 
-	  <div class="col-md-3">
-      	 Credit Card: <input name="payment_method" type="radio" value="credit_card">
-      </div>
+          <div class="col-md-2">
+            <button id="payment-type-submit" class="btn btn-lg btn-success">Continue</button>
+          </div>
 
-      <div class="col-md-3">
-      	Paypal Checkout: <input checked name="payment_method" type="radio" value="paypal_checkout">
-      </div>
+        </div>
 
-     <button id="payment-type-submit" class="btn btn-lg btn-primary">Continue</button>
+
       </div>
     </div>
   </div>
@@ -111,7 +96,9 @@
     <div id="order-review" class="panel-collapse collapse">
       <div class="panel-body">
         
-       <table class="table table-striped table-bordered table-condensed">
+        <div class="col-md-12">
+          
+           <table class="table table-striped table-condensed">
               <thead>
                 <tr>
                   <th>Product Name</th>
@@ -142,21 +129,7 @@
 
             
 
-              <tr>
-                
-              <td colspan="1"></td>
-              <td colspan="2"><strong>Subtotal</strong></td>
-              <td colspan="2">
-              PHP <span id="" >{total_price}</span></td>
-
-              </tr> 
-               <tr>
-                
-              <td colspan="1"></td>
-              <td colspan="2"><strong>Shipping & handling <br/>(Air Frieght: PHP{shipping_cost})</strong></td>
-              <td colspan="2">PHP {shipping_cost}</td>
-
-              </tr>
+             
                <tr>
                 
               <td colspan="1"></td>
@@ -173,19 +146,24 @@
 
               </tbody>
 </table>
-
 <div class="col-md-12">
-  
-</div>
-
-    <div class="col-md-8">
-    	Forgot an item? <a href="<?php echo site_url('cart'); ?>">Edit your cart.</a>
+  <div class="col-md-10">
+      Forgot an item? <a href="<?php echo site_url('cart'); ?>">Edit your cart.</a>
     </div>
 
 
     <div class="col-md-2">
-    	<button type="submit" class="btn btn-lg btn-primary">Place Order</button>
+      <button type="submit" class="pull-right btn btn-lg btn-danger">Place Order</button>
     </div>
+
+</div>
+
+        </div>
+      
+
+  
+    
+
 
 
 <?php
@@ -256,7 +234,7 @@
       /* Act on the event */
 
       $('#shipping-address').collapse('hide');
-      $('#shipping-method').collapse('show');
+      $('#payment-type').collapse('show');
 
 
       // $('#shipping-address').addClass('collapse').removeClass('in');

@@ -59,6 +59,7 @@
     
                 $(document).ready(function() {
     $('#books-view').dataTable( {
+        "aaSorting": [[ 6, "desc" ]],
         "bProcessing": true,
         "sAjaxSource": "<?php echo site_url('administrator/datatables_books'); ?>",
         "aoColumnDefs": [

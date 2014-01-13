@@ -138,7 +138,7 @@ class Book extends CI_Controller {
 								'user_id' => $user_id);
 
 
-		$this->book_model->add_wishlist($wishlish_data);
+		$this->book_model->add_wishlist($wishlish_data, $user_id);
 
 		redirect('customer/wishlist');
 

@@ -1,4 +1,3 @@
-
 <div class="panel panel-primary" id="panels">
             <div class="panel-heading">Shopping Cart
             </div>

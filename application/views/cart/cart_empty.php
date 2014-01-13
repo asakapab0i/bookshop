@@ -1,3 +1,15 @@
+<?php
+
+
+      if ($this->session->flashdata('checkout')) {
+        echo '<div class="alert alert-warning">';
+        echo $this->session->flashdata('checkout');
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+        echo '</div>';
+  
+      }
+
+?>
 
   
 

@@ -26,13 +26,13 @@
 
             echo '<div class="text-center alert alert-warning">';
             echo $wishlist;
-            echo '<button type="button" class="close" aria-hidden="true">&times;</button>'; 
+            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'; 
             echo '</div>';
           }
 
           ?>
 
-       <table class="table table-striped table-bordered table-condensed">
+       <table class="table table-striped table-condensed">
               <thead>
                 <tr>
                   <th></th>

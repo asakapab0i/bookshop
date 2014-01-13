@@ -50,6 +50,7 @@
                                $home = site_url('home');
                                $book_browse = site_url('book/browse/all');
                                $cart = site_url('cart');
+                               $checkout = site_url('checkout');
 
 
                                if ($page_cur_nav == 'home') {
@@ -66,9 +67,12 @@
 
                                 <li class="">
 
-                                    <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
+                                    <a href="'.$cart.'">Cart <i class="badge badge-info">'.$this->cart->total_items().'</i></a>
 
                                 </li>
+
+
+                              
 
 
                                 <li class="dropdown pull-right">
@@ -80,8 +84,8 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
-                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
-                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
                                       
                                   }else{
 
@@ -91,6 +95,12 @@
                                   }
 
                                   echo '</ul>
+                                </li>
+
+                                  <li class="pull-right">
+
+                                    <a href="'.$checkout.'">Checkout</a>
+
                                 </li>   
 
                                 ';
@@ -119,8 +129,8 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
-                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
-                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
                                       
                                   }else{
 
@@ -130,7 +140,15 @@
                                   }
 
                                   echo '</ul>
-                                </li>   ';
+                                </li>   
+
+                                <li class="pull-right">
+
+                                    <a href="'.$checkout.'">Checkout</a>
+
+                                </li> 
+
+                                ';
 
                                }else if($page_cur_nav == 'cart'){
                                  echo ' <li class="">
@@ -156,8 +174,8 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
-                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
-                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
 
                                   }else{
 
@@ -169,9 +187,16 @@
                                     // <li><a href="'.site_url('account/login').'">Login Account</a></li>
                                     // <li><a href="'.site_url('account/register').'">Register Account</a></li>
                                     // <li class="divider"></li>
-                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Account Logout</a></li>
                                   echo '</ul>
-                                </li>';
+                                </li>
+
+                                <li class="pull-right">
+
+                                    <a href="'.$checkout.'">Checkout</a>
+
+                                </li>
+                                ';
 
                                }else if ($page_cur_nav == 'dashboard' || $page_cur_nav == 'account') {
                                    
@@ -198,8 +223,8 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
-                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
-                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
 
                                   }else{
 
@@ -211,9 +236,17 @@
                                     // <li><a href="'.site_url('account/login').'">Login Account</a></li>
                                     // <li><a href="'.site_url('account/register').'">Register Account</a></li>
                                     // <li class="divider"></li>
-                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Account Logout</a></li>
                                   echo '</ul>
-                                </li>';
+                                </li>
+
+                                <li class="pull-right">
+
+                                    <a href="'.$checkout.'">Checkout</a>
+
+                                </li> 
+
+                                ';
 
                                }else if ($page_cur_nav == 'checkout') {
                                    
@@ -227,7 +260,7 @@
 
                                 </li>
 
-                                 <li class="active">
+                                 <li class="">
 
                                     <a href="'.$cart.'">Cart <span class="badge badge-info">'.$this->cart->total_items().'</span></a>
 
@@ -240,8 +273,8 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
-                                      echo '<li><a href="'.site_url('customer/dashboard').'">Go to dashboard</a></li>';
-                                      echo ' <li><a href="'.site_url('account/logout').'">Logout Account</a></li>';
+                                      echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
+                                      echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
 
                                   }else{
 
@@ -253,9 +286,17 @@
                                     // <li><a href="'.site_url('account/login').'">Login Account</a></li>
                                     // <li><a href="'.site_url('account/register').'">Register Account</a></li>
                                     // <li class="divider"></li>
-                                    //  <li><a href="'.site_url('account/logout').'">Logout Account</a></li>
+                                    //  <li><a href="'.site_url('account/logout').'">Account Logout</a></li>
                                   echo '</ul>
-                                </li>';
+                                </li>
+
+                                <li class="pull-right active">
+
+                                    <a href="'.$checkout.'">Checkout</a>
+
+                                </li> 
+
+                                ';
 
                                }
 
@@ -273,7 +314,7 @@
                                     <li><a href="<?php echo site_url('account/login');?>">Login Account</a></li>
                                     <li><a href="<?php echo site_url('account/register');?>">Register Account</a></li>
                                     <li class="divider"></li>
-                                     <li><a href="<?php echo site_url('account/logout')?>">Logout Account</a></li>
+                                     <li><a href="<?php echo site_url('account/logout')?>">Account Logout</a></li>
                                   </ul>
                                 </li>    
 

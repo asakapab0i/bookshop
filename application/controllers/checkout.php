@@ -29,11 +29,15 @@ class Checkout extends CI_Controller {
 			redirect("account/login");
 		}
 
+
+		if (!count($this->cart->contents()) > 0) {
+			$this->session->set_flashdata('checkout', 'You cannot checkout because your cart is empty!');
+			redirect("cart");
+		}
+
 		$login_session = $this->session->userdata('login');
 		$user_id = $login_session["id"];
 
-
-		$SHIPPING_COST = 900.31;
 
 		$checkout['items'] = $this->cart->total_items();
 		$checkout['address'] = $this->checkout_model->get_address($user_id);
@@ -42,8 +46,7 @@ class Checkout extends CI_Controller {
 		$checkout['total_items'] = $this->cart->total_items();
 		$checkout['cart_contents'] = $this->cart->contents();
 
-		$checkout['shipping_cost'] = (float)$SHIPPING_COST;
-		$checkout['grand_total'] = (float)$this->cart->total() + $SHIPPING_COST;
+		$checkout['grand_total'] = $this->cart->format_number($this->cart->total());
 
 
 
@@ -129,7 +132,7 @@ class Checkout extends CI_Controller {
 
 
 				//Perform the payment
-                $config['business']                         = 'rrongie-facilitator@gmail.com';
+                $config['business']                         = 'bojorquebryan-facilitator@gmail.com';
                 $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
                 $config['return']                                 = base_url() . 'checkout/notify_payment';
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
