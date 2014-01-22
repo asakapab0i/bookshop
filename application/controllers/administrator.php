@@ -412,6 +412,60 @@ $form_data = array('title' => $this->input->post('title'),
 
 	}
 
+	public function change_password)(){
+
+		$session = $this->session->userdata('login');
+		$userid = $session['id'];
+
+		if (isset($this->input->post('new_password'))) {
+
+
+			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('conf_new_password', 'Confirm New Password', 'trim|required|xss_clean|matches[new_password]');
+
+			if ($this->form_validation->run() == false) {
+
+				//Prepare Header Data
+				$header['page_title'] = 'Account Change Password';
+				
+				//Navigation
+				$navigation['page_cur_nav'] = 'dashboard';
+
+				//Page Header
+				$this->parser->parse('template/header', $header);
+				//Page Nav
+				$this->load->view('template/navigation', $navigation);
+				//Page Main Content
+				$this->parser->parse('dashboard/account_change_password');
+				//Page Footer
+				$this->load->view('template/footer');
+			}else{
+				$new_password = $this->input->post('new_password');
+				$this->customer_model->change_password($userid, $new_password);
+				$this->session->flashdata('success_change_pw', 'Change password successful!');
+				redirect('customer/change_password');
+			}
+
+				//Prepare Header Data
+				$header['page_title'] = 'Account Change Password';
+				
+				//Navigation
+				$navigation['page_cur_nav'] = 'dashboard';
+
+				//Page Header
+				$this->parser->parse('template/header', $header);
+				//Page Nav
+				$this->load->view('template/navigation', $navigation);
+				//Page Main Content
+				$this->parser->parse('dashboard/account_change_password');
+				//Page Footer
+				$this->load->view('template/footer');
+
+
+		}
+		
+	}
+
 }
 
 /* End of file administrator.php */
