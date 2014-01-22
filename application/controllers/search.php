@@ -12,6 +12,7 @@ class Search extends CI_Controller {
 	{
 		$search_term = $this->input->post('search');
 		$search['search_result'] = $this->search_model->search_query($search_term);
+		$search['term'];
 
 		//Prepare Header Data
 		$header['page_title'] = 'Search Book | '.$search.'';
