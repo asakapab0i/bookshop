@@ -4,7 +4,7 @@ class Search_model extends CI_Model {
 
 	public function search_model($term){
 
-		$this->db->select('*')->from('books')->like('books', $term);
+		$this->db->select('*')->from('books')->like('title', $term)->like('description', $term);
 		$result = $this->db->get();
 
 		if ($result->num_rows() > 0 ) {
@@ -13,8 +13,6 @@ class Search_model extends CI_Model {
 			return false;
 		}
 	}
-	
-
 }
 
 /* End of file search_model.php */
