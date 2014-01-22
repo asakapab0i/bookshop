@@ -352,11 +352,13 @@
                     <div class="col-md-8">
  
     <div class="input-group">
-      <input placeholder="What will you find today?" type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-success" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
+      <form method="post" action="<?php echo site_url('search')?>">     
+          <input placeholder="What will you find today?" type="text" name="search" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button">Go!</button>
+          </span>
+      </form>
+      </div><!-- /input-group -->
 
 </div>
 
