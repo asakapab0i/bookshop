@@ -2,13 +2,13 @@
 
 class Search_model extends CI_Model {
 
-	public function search_model($term){
+	public function search_query($term){
 
-		$this->db->select('*')->from('books')->like('title', $term)->like('description', $term);
+		$this->db->select('*')->from('books')->like('title', $term);
 		$result = $this->db->get();
 
 		if ($result->num_rows() > 0 ) {
-			return $result;
+			return $result->result_array();
 		}else{
 			return false;
 		}

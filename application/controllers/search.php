@@ -8,14 +8,15 @@ class Search extends CI_Controller {
 		$this->load->model('search_model');
 	}
 
-	public function index()
+	public function query($term)
 	{
-		$search_term = $this->input->post('search');
-		$search['search_result'] = $this->search_model->search_query($search_term);
-		$navigation['term'] = $search_term;
+		$search['search_result'] = $this->search_model->search_query($term);
+
+
+		$navigation['term'] = $term;
 
 		//Prepare Header Data
-		$header['page_title'] = 'Search Book | '.$search.'';
+		$header['page_title'] = 'Search Book | '.$term.'';
 		
 		//Navigation
 		$navigation['page_cur_nav'] = 'search';

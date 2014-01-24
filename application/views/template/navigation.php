@@ -352,14 +352,28 @@
                     <div class="col-md-8">
  
     <div class="input-group">
-      <form method="post" action="<?php echo site_url('search')?>">     
-          <input value="<?php (isset($term) ? echo $term; : echo '';) ?>" placeholder="What will you find today?" type="text" name="search" class="form-control">
+          
+          <input  placeholder="What will you find today?" type="text" id="search" class="form-control">
           <span class="input-group-btn">
-            <button class="btn btn-success" type="button">Go!</button>
+            <button id="search-go" class="btn btn-success" type="button">Go!</button>
           </span>
-      </form>
+ 
       </div><!-- /input-group -->
 
 </div>
 
 </div>
+
+
+     <script type="text/javascript">
+
+          $(document).on('click', '#search-go', function(){
+
+              var url = '<?php echo base_url(); ?>';
+              var term = $('#search').val();
+
+              window.location.replace(url +'search/query/'+term);
+
+          });
+
+    </script>
