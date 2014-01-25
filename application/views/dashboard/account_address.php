@@ -39,8 +39,7 @@
                  <h4>Primary Address</h4>
             {address_primary}
                                 <address>
-                                {fname} {lname} <br>               
-                                {company}<br>{street}
+                                {fname} {lname}<br>{street}
                                 <br>{country}<br>
                                 <abbr title="Telephone">Phone:</abbr> {telephone}            
                                 </address>

@@ -103,14 +103,6 @@
 
 <div class="col-md-3">
 
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="company">Company</label>
-  <div class="controls">
-    <input value="<?php echo set_value('company'); ?>" size="30" id="company" name="company" type="text" placeholder="" class="input-xlarge" required>
-    <?php echo form_error('company'); ?>
-  </div>
-</div>
 
 <!-- Text input-->
 <div class="control-group">
@@ -147,8 +139,8 @@
   <label class="control-label" for="state">State/Province</label>
   <div class="controls">
     <select id="state" name="state" class="input-xlarge" required>
+      <option></option>
       <option>Cebu City</option>
-      <option>Tacloban</option>
     </select>
     <?php echo form_error('state'); ?>
   </div>
@@ -159,8 +151,8 @@
   <label class="control-label" for="country">Country</label>
   <div class="controls">
     <select id="country" name="country" class="input-xlarge" required>
+      <option></option>
       <option>Philippines</option>
-      <option>USA</option>
     </select>
     <?php echo form_error('country'); ?>
   </div>

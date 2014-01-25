@@ -159,7 +159,7 @@ class Account extends CI_Controller {
 						  'marital_status' => $this->input->post('mstatus'),
 						  'password' => md5($this->input->post('password'))
 						  );
-		$address  = array('company' => $this->input->post('company'),
+		$address  = array('company' => 'None',
 						  'city' => $this->input->post('city'),
 						  'zip' => $this->input->post('zip'),
 						  'state' => $this->input->post('state'),
@@ -179,7 +179,6 @@ class Account extends CI_Controller {
 		$this->form_validation->set_rules('gender','Gender','required');
 		$this->form_validation->set_rules('mstatus','Marital Status','required');
 
-		$this->form_validation->set_rules('company','Company','required');
 		$this->form_validation->set_rules('city','City','required');
 		$this->form_validation->set_rules('zip','Zip/Postal Code','required');
 		$this->form_validation->set_rules('state','State/Province','required');
@@ -195,7 +194,8 @@ class Account extends CI_Controller {
 		else{
 
 			if ($this->account_model->insert_register_record($personal, $address)) {
-				redirect('account/register_validate_success');
+				$this->session->set_flashdata('register', 'Registration successful!, you can now login.');
+				redirect('account/login');
 			}
 
 			

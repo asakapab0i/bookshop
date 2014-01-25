@@ -8,6 +8,14 @@
         echo '</div>';
   
       }
+
+       if ($this->session->flashdata('register')) {
+        echo '<div class="alert alert-success">';
+        echo $this->session->flashdata('register');
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+        echo '</div>';
+  
+      }
         
 
        ?>
