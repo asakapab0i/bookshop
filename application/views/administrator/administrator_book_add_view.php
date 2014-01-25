@@ -78,7 +78,7 @@
 <div class="control-group">
   <label class="control-label" for="description">Description</label>
   <div class="controls">                     
-    <textarea required style="margin: 0px; width: 366px; height: 109px;" id="description" name="description"></textarea>
+    <textarea required style="margin: 0px; width: 340px; height: 109px;" id="description" name="description"></textarea>
   </div>
 </div>
 

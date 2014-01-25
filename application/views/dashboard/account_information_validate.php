@@ -8,7 +8,8 @@
             <a href="<?php echo site_url('customer/address'); ?>" class="list-group-item">Account Address</a>
             <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item">My Orders</a>
             <a href="<?php echo site_url('customer/wishlist'); ?>" class="list-group-item">My Wishlist</a>
-          </div>
+    </div>
+    
 	</div>
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">

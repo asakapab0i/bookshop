@@ -7,7 +7,7 @@
 	
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
             <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
-            <a id="reports" href="<?php echo site_url('administrator/reports'); ?>" class="list-group-item">Reports</a>
+            <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           
         </div>

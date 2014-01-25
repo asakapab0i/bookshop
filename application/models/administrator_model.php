@@ -63,7 +63,7 @@ class Administrator_model extends CI_Model {
 	public function change_password($userid, $new_password){
 		$this->db->from('users');
 		$this->db->set('password', $new_password);
-		$this->db->where('id', $userid)
+		$this->db->where('id', $userid);
 	}
 
 

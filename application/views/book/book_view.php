@@ -43,7 +43,6 @@
 							   </small>
 							 
 							   <span class="label label-success">PHP {price}</span><small><br/>
-							  	This product will ship in 2 to 3 days.<br/>
 							   </small><br/>
 						</div>
 						<div class="col-md-6">

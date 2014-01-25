@@ -116,6 +116,7 @@
   <label class="control-label" for="submit"></label>
   <div class="controls">
     <button id="submit" name="submit" class="btn btn-info">Submit</button>
+    <a href="<?php echo site_url('customer/change_password')?>" id="change_pw" name="submit" class="btn btn-danger">Change Password</a>
   </div>
 </div>
             	</div>

@@ -98,7 +98,7 @@ class Customer extends CI_Controller {
 						  'marital_status' => $this->input->post('mstatus')
 						  );
 
-		$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span>');
+		$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span><br/>');
 		$this->form_validation->set_rules('fname','First Name','required');
 		$this->form_validation->set_rules('lname','Last Name','required');
 		$this->form_validation->set_rules('email','Email Address','required|valid_email');
@@ -334,15 +334,17 @@ class Customer extends CI_Controller {
 
 	}
 
-	public function change_password)(){
+	public function change_password(){
 
 		$session = $this->session->userdata('login');
 		$userid = $session['id'];
 
-		if (isset($this->input->post('new_password'))) {
+		if (($this->input->post('password'))) {
 
-			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('conf_new_password', 'New Password', 'trim|required|xss_clean|matches[new_password]');
+			$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span>');
+			$this->form_validation->set_rules('old_password', 'Old Password', 'trim|required|xss_clean|callback_check_oldpw');
+			$this->form_validation->set_rules('password', 'New Password', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('conf_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
 
 			if ($this->form_validation->run() == false) {
 
@@ -357,16 +359,16 @@ class Customer extends CI_Controller {
 				//Page Nav
 				$this->load->view('template/navigation', $navigation);
 				//Page Main Content
-				$this->parser->parse('dashboard/account_change_password');
+				$this->load->view('dashboard/account_change_password');
 				//Page Footer
 				$this->load->view('template/footer');
 			}else{
-				$new_password = $this->input->post('new_password');
+				$new_password = $this->input->post('password');
 				$this->customer_model->change_password($userid, $new_password);
-				$this->session->flashdata('success_change_pw', 'Change password successful!');
+				$this->session->set_flashdata('success_change_pw', 'Change password successful!');
 				redirect('customer/change_password');
 			}
-
+		}else{
 				//Prepare Header Data
 				$header['page_title'] = 'Account Change Password';
 				
@@ -378,20 +380,10 @@ class Customer extends CI_Controller {
 				//Page Nav
 				$this->load->view('template/navigation', $navigation);
 				//Page Main Content
-				$this->parser->parse('dashboard/account_change_password');
+				$this->load->view('dashboard/account_change_password');
 				//Page Footer
 				$this->load->view('template/footer');
-
-
-		}
-
-
-
-
-
-
-
-		
+		}	
 	}
 
 
@@ -412,6 +404,20 @@ class Customer extends CI_Controller {
 		echo $datatables;
 
 
+	}
+
+	public function check_oldpw($oldpw){
+
+
+		$this->db->select('*')->from('users')->where('password', md5($oldpw));
+		$sql = $this->db->get();
+
+		if ($sql->num_rows() > 0) {
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_oldpw', 'Old Password does not match with your current password');
+			return FALSE;
+		}
 	}
 
 

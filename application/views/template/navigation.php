@@ -70,12 +70,7 @@
                                     <a href="'.$cart.'">Cart <i class="badge badge-info">'.$this->cart->total_items().'</i></a>
 
                                 </li>
-
-
-                              
-
-
-                                <li class="dropdown pull-right">
+                              <li class="dropdown pull-right">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
                                   <ul class="dropdown-menu">
                                     ';
@@ -83,9 +78,15 @@
 
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
+                                      
+                                        if ($login['type'] == 'admin') {
+                                        echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
+                                      }
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
+
+
                                       
                                   }else{
 
@@ -128,6 +129,10 @@
 
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
+
+                                        if ($login['type'] == 'admin') {
+                                        echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
+                                        }
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -173,6 +178,10 @@
 
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
+
+                                        if ($login['type'] == 'admin') {
+                                        echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
+                                        }
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -223,6 +232,10 @@
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
 
+                                      if ($login['type'] == 'admin') {
+                                        echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
+                                      }
+
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
 
@@ -272,6 +285,10 @@
 
                                   if ($this->session->userdata('login')) {
                                       $login = $this->session->userdata('login');
+
+                                        if ($login['type'] == 'admin') {
+                                        echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
+                                        }
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';

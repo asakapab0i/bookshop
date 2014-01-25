@@ -109,12 +109,23 @@ class Account extends CI_Controller {
 			$login_session = array(
                    'email'     => $userinfo[0]["email"],
                    'id'			=>$userinfo[0]["id"],
+                   'type'		=>$userinfo[0]['user_type'],
                    'name'		=>$userinfo[0]["fname"] .' '.$userinfo[0]["lname"],
                    'logged_in' => TRUE
                );
 
 			$this->session->set_userdata('login',$login_session);
-			redirect('customer/dashboard');
+
+
+			//Check the account type and redirect to appropriate page
+			if ($userinfo[0]['user_type'] == 'regular') {
+				redirect('customer/dashboard');
+			}elseif($userinfo[0]['user_type'] == 'admin'){
+				redirect('administrator');
+			}
+
+
+			
 		}
 
 
@@ -231,6 +242,13 @@ class Account extends CI_Controller {
 		$this->load->view('account/register_validate_error');
 		//Page Footer
 		$this->load->view('template/footer');
+	}
+
+
+	public function change_pw(){
+
+		
+
 	}
 
 	//login_validate callback
