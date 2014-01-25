@@ -2,6 +2,18 @@
 
 class Book_model extends CI_Model {
 
+	public function search_query($term){
+
+		$this->db->select('*')->from('books')->like('title', $term);
+		$result = $this->db->get();
+
+		if ($result->num_rows() > 0 ) {
+			return $result->result_array();
+		}else{
+			return false;
+		}
+	}
+
 	public function get_book_by_id($product_id){
 
 		$this->db->where('product_id', $product_id);
@@ -20,11 +32,14 @@ class Book_model extends CI_Model {
 		$this->db->limit($limit, $page);
 		$sql = $this->db->get('books');
 		return $sql->result_array();
+	}
 
-		
 
-		//var_dump($sql);
-		//die();
+	public function get_search_books($term){
+		$this->db->select('*')->from('books')->like('title', $term);
+		$sql = $this->db->get();
+		return $sql->result_array();
+
 	}
 
 	public function get_total_books($category){

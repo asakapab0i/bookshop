@@ -351,29 +351,60 @@
 
                     <div class="col-md-8">
  
-    <div class="input-group">
-          
-          <input  placeholder="What will you find today?" type="text" id="search" class="form-control">
+
+
+    <?php 
+
+    $attributes = array('method' => 'GET','class' => 'input-group', 'id' => 'search');
+    echo form_open('book/search', $attributes);
+
+    ?>
+        
+          <input value="<?php echo (isset($term) ? $term:'')?>" placeholder="What will you find today?" type="text" name="search" id="search" class="form-control">
           <span class="input-group-btn">
-            <button id="search-go" class="btn btn-success" type="button">Go!</button>
+            <button id="search-go" class="btn btn-success" type="submit">Go!</button>
           </span>
  
-      </div><!-- /input-group -->
+      </form><!-- /input-group -->
 
 </div>
 
 </div>
 
 
-     <script type="text/javascript">
+<!--     //  <script type="text/javascript">
 
-          $(document).on('click', '#search-go', function(){
+    //       $(document).on('click', '#search-go', function(){
 
-              var url = '<?php echo base_url(); ?>';
-              var term = $('#search').val();
+    //           var url = '<?php echo base_url(); ?>';
+    //           var term = $('#search').val();
 
-              window.location.replace(url +'search/query/'+term);
+    //           //window.location.replace(url +'book/search/'+term);
 
-          });
+    //           $('#search').submit(function(event) {
+    //             /* Act on the event */
 
-    </script>
+
+
+    //           });
+
+    //       });
+
+    // </script>
+
+    // <script type="text/javascript">
+
+    //       $(document).on('keypress', '#search', function(event) {
+    //         /* Act on the event */
+
+
+    //         if (event.which == 13) {
+    //           var url = '<?php echo base_url(); ?>';
+    //           var term = $('#search').val();
+    //           window.location.replace(url +'book/search/'+term);
+    //         }
+
+
+    //       });
+
+    // </script> -->

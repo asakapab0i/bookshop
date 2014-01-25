@@ -12,6 +12,7 @@ class Book extends CI_Controller {
 	}
 
 
+
 	public function view($product_id){
 		$login = $this->session->userdata('login');
 		$login = $login["id"];
@@ -69,7 +70,6 @@ class Book extends CI_Controller {
 		$this->pagination->initialize($config); 
 
 
-
 		//Prepare Header Data
 		$header['page_title'] = 'Book | Browse '.ucfirst($category).' ';
 		
@@ -104,6 +104,46 @@ class Book extends CI_Controller {
 			$this->parser->parse('book/book_browse', $book);
 		}else{
 			$this->parser->parse('book/book_browse_listmode', $book);
+		}
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function search(){
+
+		$term = $this->input->get('search');
+
+		$mode = 'grid';
+		$book['term'] = $term;
+		$config['uri_segment'] = 8;
+		$this->pagination->initialize($config); 
+
+
+		//Prepare Header Data
+		$header['page_title'] = 'Book | Search '.$term.' ';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'book';
+		$navigation['term'] = $term;
+
+
+		
+		$result = $this->book_model->get_search_books($term);
+		$search['search_result'] = $this->modify_array_data($result);
+		$q1 = $this->cart->contents();
+		shuffle($q1);
+		$search['recent_cart'] = $q1;
+		
+		
+	
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		if ($mode == 'grid') {
+			$this->parser->parse('search/search_view', $search);
 		}
 		//Page Footer
 		$this->load->view('template/footer');

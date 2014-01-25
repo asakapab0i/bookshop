@@ -95,110 +95,11 @@
             ?>
 
 
-         {pagination}
+        
 
             </center>
-              <div class="col-md-12"> <small> View as: <a class="
-              <?php
-
-              if ($link_segments['mode'] == "grid") {
-              	echo 'btn btn-xs btn-default';
-              }
-
-              ?>
-
-              " href="<?php 
-
-              $default = 'grid';
-              $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order_by'], $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>">Grid</a> <a class="
-
-
-              <?php
-
-              if ($link_segments['mode'] == "list") {
-              	echo 'btn btn-xs btn-default';
-              }
-
-              ?>
-
-              ?>
-
-
-              " href="
-
-             <?php 
-
-              $default = 'list';
-		      $attrib = array('book/browse',$link_segments['category'], $default, $link_segments['order_by'], $link_segments['order'],$link_segments['limit'],$link_segments['page']);
-              echo site_url($attrib); ?>
-
-              ">List</a> 
-             
-             	<div class="pull-right">
-             		Show per page: 
-			<select class="limit">
-
-				<?php
-					foreach ($limit as $key => $value) {
-
-
-						if ($value == $link_segments['limit']) {
-							echo '<option selected value='.$value.'>'.$value.'</option>';
-						}else{
-							echo '<option value='.$value.'>'.$value.'</option>';
-						}
-					}
-				?>
-            </select>
-            Order by: <select class="order_by">
-            	<?php
-
-            	foreach ($order as $key => $value) {
-            		
-            		if ($key == $link_segments['order_by']) {
-            			echo '<option selected value='.$key.'>'.$value.'</option>';
-            		}else{
-            			echo '<option value='.$key.'>'.$value.'</option>';
-            		}
-            	}
-
-            	?>
-            </select> 
-           
-
-
-
-            <?php
-            if ($link_segments['order'] == 'asc') {
-
-
-              $default = 'desc';
-              if ($link_segments['order_by'] == '') {
-              	$link_segments['order_by'] = 'title';
-              }
-
-              $attrib = array('book/browse',$link_segments['category'], $link_segments['mode'], $link_segments['order_by'], $default, $link_segments['limit'],$link_segments['page']);
-              $data = site_url($attrib); 
-
-            	echo '<a title="Descending" href="'.$data.'"><span class="glyphicon glyphicon-arrow-down"></span></a>';
-            }else{
-
-            	if ($link_segments['order_by'] == '') {
-              	$link_segments['order_by'] = 'title';
-              }
-
-			  $default = 'asc';
-              $attrib = array('book/browse',$link_segments['category'], $link_segments['mode'], $link_segments['order_by'], $default, $link_segments['limit'],$link_segments['page']);
-              $data = site_url($attrib); 
-
-            	echo '<a title="Ascending" href="'.$data.'"><span class="glyphicon glyphicon-arrow-up"></span></a>';
-            }
-            ?>
-
-             	</div>
-
-</small>
+              <div class="col-md-12">
+              <small>Search result(s) for: <strong><?php echo $term; ?></strong></small> 
               </div>
 
 
@@ -225,7 +126,7 @@
             <hr/>
              
                <center>
-         {pagination}
+        
 
             </center>
             </div>
