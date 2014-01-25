@@ -60,13 +60,22 @@ class Administrator_model extends CI_Model {
 		$this->db->update('books', $formdata); 
 	}
 
-	public function change_password($userid, $new_password){
-		$this->db->from('users');
-		$this->db->set('password', $new_password);
-		$this->db->where('id', $userid);
+	public function get_net_income(){
+		$sql = $this->db->query("SELECT FORMAT(SUM(order_total),2) AS total_net_income FROM orders WHERE order_status = 'Approved'");
+		return $sql->result_array();
 	}
 
+	public function get_recent_books(){
+		$this->db->select('*')->from('books')->order_by('dateadd', 'DESC')->limit(10);
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
 
+	public function get_recent_orders(){
+		$this->db->select('*')->from('orders')->order_by('dateorder', 'DESC')->limit(15)->join('users', 'users.id = orders.user_id');
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
 
 }
 

@@ -195,7 +195,7 @@ class Book extends CI_Controller {
 		 			foreach ($value as $key2 => $value) {
 		 				//echo $key2;
 		 				if ($key2 == 'title') {
-		 					//var_dump($result[$key][$key2]);
+	 					//var_dump($result[$key][$key2]);_e_
 
 		 					$end = $result[$key][$key2];
 		 					array_push($result[$key], $end);

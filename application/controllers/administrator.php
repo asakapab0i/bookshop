@@ -6,6 +6,7 @@ class Administrator extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('administrator_model');
+		$this->load->model('customer_model');
 		$this->load->library('datatables');
 		
 
@@ -32,14 +33,17 @@ class Administrator extends CI_Controller {
 		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Main Content
-
+		$index['net_income'] = $this->administrator_model->get_net_income();
+		$index['recent_books'] =  $this->administrator_model->get_recent_books();
+		$index['recent_orders'] = $this->administrator_model->get_recent_orders();
+ 
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
 		$this->load->view('template/navigation', $navigation);
 		//Page Main Content
-		$this->load->view('administrator/administrator_dashboad_view');
+		$this->parser->parse('administrator/administrator_dashboad_view', $index);
 		//Page Footer
 		$this->load->view('template/footer');
 	}
@@ -76,6 +80,9 @@ class Administrator extends CI_Controller {
 		//Main Content
 		$order['id'] = $id;
 		$order['order_data'] = $this->administrator_model->get_order($id);
+
+		$order['order_cart_contents'] = $this->customer_model->get_order_cart_contents($id);
+		$order['total'] = $this->customer_model->get_order_cart_total($id);
 
 
 		//Page Header

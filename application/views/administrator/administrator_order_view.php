@@ -1,27 +1,25 @@
 {order_data}
 
 <div class="row">
-	<div class="col-md-3">
-	
-		<div class="list-group">
-	
+    <div class="col-md-3">
+    
+        <div class="list-group">
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
             <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
             <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
-          
-        </div>
-	</div>
-	<div class="col-md-9">
-		<div class="panel panel-primary" id="panels">
+          </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-            Order No {id} (the order confirmation email was sent)
+            Order No {order_id} (the order confirmation email was sent)
             </div>
             <div class="panel-body">
 
             <div class="col-md-6">
                 <div class="panel panel-default" id="panels">
-            <div class="panel-heading">Order # {id}</div>
+            <div class="panel-heading">Order # {order_id}</div>
             <div class="panel-body">
                  <p>Order Date: {dateorder}</p>
                  <p>Order Status: {order_status}</p>
@@ -92,29 +90,77 @@
 
             <div class="col-md-6">
                 <div class="panel panel-default" id="panels">
-            <div class="panel-heading">Shipping and Handling Information
+            <div class="panel-heading">Paypal Invoice Information
             </div>
-            <div class="panel-body">
-            Standard Fixed: PHP 900.00
+            <div class="panel-body text-center">
+            <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">View Invoice Log</a>
             </div>
             <div class="panel-footer">
             </div>
           </div>
             </div>
+{/order_data}
 
-
-             <div class="col-md-11">
+             <div class="col-md-offet-1 col-md-11">
                 <div class="panel panel-default" id="panels">
             <div class="panel-heading">Items Ordered
             </div>
             <div class="panel-body">
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
-                <p>{cart_data}</p>
+               
+
+
+                 <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Unit Price</th>
+                  <th>Quantity</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+               <?php
+                  $attributes = array('class' => 'form-horizontal', 'id' => 'login');
+                  echo form_open('cart/update', $attributes);
+              ?>
+
+
+
+
+             
+              {order_cart_contents}
+              <tr>
+                  <td>{name}</td>
+                  <td>PHP {price}</td>
+                  <td>{qty}</td>
+                  <td>PHP {subtotal}.00</td>
+                </tr>
+
+            {/order_cart_contents}
+
+            
+
+            
+            
+               <tr>
+                
+              <td colspan="1"></td>
+              <td colspan="2"><strong>Grand total</strong></td>
+              <td colspan="2">
+              PHP {total}{order_total}{/total}
+              </td>
+
+              </tr>                  
+
+
+               
+
+
+              </tbody>
+</table>
+
+
+               
 
             </div>
             <div class="panel-footer">
@@ -127,7 +173,13 @@
                 <div class="panel panel-default" id="panels">
             <div class="panel-heading">Comments History
             </div>
-            <p class="panel-body">This is a panel</p>
+            <div class="panel-body">
+            <div class="panel-messages">
+                Your comments!
+            </div>
+            <br/>
+                <small><textarea class="form-control" placeholder="Comment here..."></textarea></small>
+            </div>
             <div class="panel-footer">
             </div>
           </div>
@@ -137,7 +189,12 @@
                 <div class="panel panel-default" id="panels">
             <div class="panel-heading">Order Totals
             </div>
-            <div class="panel-body">TOTALS HERE!</div>
+            <div class="text-center panel-body"> 
+
+   
+             <h1>PHP {total}{order_total}{/total}</h1>
+
+            </div>
             <div class="panel-footer">
             </div>
           </div>
@@ -145,14 +202,13 @@
 
 
 
-	 
+     
             </div>
             <div class="panel-footer">
             <p class="footer">
             </div>
           </div>
-	</div>
+    </div>
 </div>
 
 
-{/order_data}

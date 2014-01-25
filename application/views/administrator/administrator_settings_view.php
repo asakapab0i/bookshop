@@ -23,7 +23,7 @@
             <div class="col-md-12">
               
                 <div class="col-md-offset-4 col-md-6">
-                  <a href="<?php echo site_url('customer/change_password') ?>" title=""><button class="btn btn-success">Change Profile Information</button></a>
+                  <a href="<?php echo site_url('customer/account') ?>" title=""><button class="btn btn-success">Change Profile Information</button></a>
                   
                 </div>
 
