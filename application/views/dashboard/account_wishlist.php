@@ -50,12 +50,27 @@
                   <br>
                   </td>
                   <td>PHP {price}</td>
-                  <td class="text-center">Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> 
+                  <td class="text-center">Qty: <input class="" value="1" name="qty" id="qty{product_id}" type="text" size=6> 
 
-                  <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>" class="btn btn-success">Add to cart </a>
+                  <a id="add_cart{product_id}" href="<?php echo site_url('cart/add/{product_id}/1/')?>" class="btn btn-success">Add to cart </a>
                   <a class="btn btn-danger" href="<?php echo site_url('customer/remove_wishlist/{product_id}/') ?>">Remove</a></td>
                 </tr>
+
+                <script type="text/javascript">
+                                            $(document).on('keyup', '#qty{product_id}', function(){
+                                                var value = $('#qty{product_id}').val();
+                                                var link = "<?php echo site_url();?>";
+                                                link = link.concat('cart/add/{product_id}/');
+                                                link = link.concat(value);
+                                                var pathname = window.location.pathname;
+                                                link = link.concat(pathname);
+
+                                                $("#add_cart{product_id}").attr("href", link);
+
+                                            });
+                </script>
               {/wishlist}
+
 
               </tbody>
 </table>
@@ -71,16 +86,4 @@
 </div>
 
 
-    <script type="text/javascript">
-                                            $(document).on('keyup', '#qty', function(){
-                                                var value = $('#qty').val();
-                                                var link = "<?php echo site_url();?>";
-                                                link = link.concat('cart/add/{product_id}/');
-                                                link = link.concat(value);
-                                                var pathname = window.location.pathname;
-                                                link = link.concat(pathname);
-
-                                                $("#add_cart").attr("href", link);
-
-                                            });
-                                            </script>
+                                  

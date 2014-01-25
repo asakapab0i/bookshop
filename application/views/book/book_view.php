@@ -16,19 +16,17 @@
 						<div class="col-md-3">
 							
 								<img style="float: left; margin-right: 20px; width: 100%;" width="" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/' . '{image}' ?>">
-								<!-- Your rating: 
-								<span class="ratings">
-									<span data="1" title="Rate 1 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="2" title="Rate 2 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="3" title="Rate 3 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="4" title="Rate 4 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									<span data="5" title="Rate 5 out of 5" class="glyphicon glyphicon-star-empty"> </span>
-									
-								</span>
-
+								 
+								<ul class="ratings">
+									<li data="1" title="Rate 1 out of 5" class="rated glyphicon glyphicon-star-empty"></li>
+									<li data="2" title="Rate 2 out of 5" class="glyphicon glyphicon-star-empty"></li>
+									<li data="3" title="Rate 3 out of 5" class="glyphicon glyphicon-star-empty"></li>
+									<li data="4" title="Rate 4 out of 5" class="glyphicon glyphicon-star-empty"></li>
+									<li data="5" title="Rate 5 out of 5" class="glyphicon glyphicon-star-empty"></li>
+								</ul>
 								
-									<h4>Overall Ratings: <strong><span id="rates">4.5</span></strong></h4>
-									<h5>Out of 10,000 people rated.</h5> -->
+									<h4>Overall Ratings: <strong><span id="rates">{rate}</span></strong></h4>
+									<h5>Out of <span class='people'>{people}</span> people rated.</h5>
 								
 		
  
@@ -146,12 +144,55 @@ $(function(){
        $.ajax({
        	url: '<?php echo site_url("book/ratings"); ?>',
        	type: 'POST',
-       	data: {rate: data, product_id: product_id, user_id: 40},
+       	data: {rate: data, product_id: product_id, user_id: {user}},
        })
-       .done(function() {
+       .done(function(e) {
        	console.log("success");
 
-       	// location.reload();
+       if (e == 'existed') {
+       	var product_id = $('#title').attr('data');
+       			// location.reload();
+		       	$('.ratings').html('<small>User already rated.</small>');
+
+		       		$.ajax({
+       		 	       	url: '<?php echo site_url("book/avg_ratings"); ?>',
+       		 	       	type: 'POST',
+       		 	       	data: {product_id: product_id}
+       		 	       })
+       		 	       .done(function(e) {
+       		 	       		$('#rates').html(e)
+       		 	       });
+
+       		 	      $.ajax({
+       		 	       	url: '<?php echo site_url("book/people_rate"); ?>',
+       		 	       	type: 'POST',
+       		 	       	data: {product_id: product_id}
+       		 	       })
+       		 	       .done(function(e) {
+       		 	       		$('.people').html(e)
+       		 	       });
+
+       }else{
+
+       	var product_id = $('#title').attr('data');
+       		 	$.ajax({
+       		 	       	url: '<?php echo site_url("book/avg_ratings"); ?>',
+       		 	       	type: 'POST',
+       		 	       	data: {product_id: product_id}
+       		 	       })
+       		 	       .done(function(e) {
+       		 	       		$('#rates').html(e)
+       		 	       });
+
+       		 	       $.ajax({
+       		 	       	url: '<?php echo site_url("book/people_rate"); ?>',
+       		 	       	type: 'POST',
+       		 	       	data: {product_id: product_id}
+       		 	       })
+       		 	       .done(function(e) {
+       		 	       		$('.people').html(e)
+       		 	       });
+       	}
 
        })
        .fail(function() {

@@ -20,7 +20,9 @@ class Book extends CI_Controller {
 		$book['bookview'] = $this->book_model->get_book_by_id($product_id);
 		$book['subtotal'] = $this->cart->format_number($this->cart->total());
 		$book['items'] = $this->cart->total_items();
-
+		$book['rate'] = $this->book_model->get_avg_ratings($product_id);
+		$book['people'] = $this->book_model->get_people_rate($product_id);
+		$book['user'] = $login;
 		$sum_rating = $this->book_model->get_ratings($product_id);
 		
 
@@ -159,6 +161,28 @@ class Book extends CI_Controller {
 		$this->book_model->insert_rate($rate_data);
 
 		
+
+	}
+
+	public function avg_ratings(){
+		$id = $this->input->post('product_id');
+		$sql = $this->db->query("SELECT SUM(rate)/COUNT(rate) as rating FROM ratings WHERE product_id = '$id'");
+
+		$result = $sql->result();
+
+		echo number_format((float)$result[0]->rating, 1, '.', '');
+
+	}
+
+	public function people_rate(){
+		$id = $this->input->post('product_id');
+
+		$this->db->select('*')->from('ratings')->where('product_id', $id);
+
+		$result = $this->db->get();
+
+		echo $result->num_rows();
+
 
 	}
 

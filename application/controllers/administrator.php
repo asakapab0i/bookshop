@@ -14,21 +14,27 @@ class Administrator extends CI_Controller {
 
 		//Everytime this class is called it automatically checks the the function is_logged_in
 		//If not then redirect to homepage
-		if (!$this->_is_logged_in()) {
-			redirect("home");
+		if ($this->_is_logged_in() == false) {
+			redirect('home');
 		}
 	}
 
 	private function _is_logged_in(){
 		$login_session = $this->session->userdata('login');
-		return $login_session["logged_in"];
+		
+		if ($login_session['type'] == 'admin') {
+			return true;
+		}else{
+			return false;
+		}
+
 	}
 
 	public function index()
 	{
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator';
-		
+	
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 

@@ -22,12 +22,8 @@ hr{
 	margin: 0 auto; height: 200px; /*width: 100%;*/ overflow: hidden;
 }
 
-.glyphicon-star{
-	font-size: 14px;
-}
-
-.glyphicon-star-empty{
-	font-size: 16px;
+.glyphicon-star, .glyphicon-star-empty{
+	font-size: 18px;
 }
 
 .social-icons{

@@ -58,14 +58,15 @@ class Book_model extends CI_Model {
 	}
 
 	public function insert_rate($form_data){
-		$this->db->select('*')->from('ratings');
-		$this->db->where('user_id', $form_data['user_id']);
-		$result = $this->db->get();
+		$id = $form_data['user_id'];
+		$product_id = $form_data['product_id'];
 
-		if (!$result->num_rows() > 0) {
+		$result = $this->db->query("SELECT * FROM ratings WHERE user_id = '$id' AND product_id = '$product_id' ");
+
+		if ($result->num_rows() == 0) {
 			$sql = $this->db->insert('ratings', $form_data);	
 		}else{
-			echo 'User already exist';
+			echo 'existed';
 		}
 
 		
@@ -95,6 +96,30 @@ class Book_model extends CI_Model {
 		$this->db->from('ratings');
 		$this->db->where('product_id', $id);
 		$query = $this->db->get();
+
+	}
+
+
+	public function get_avg_ratings($product_id){
+		$id = $product_id;
+
+		$sql = $this->db->query("SELECT SUM(rate)/COUNT(rate) as rating FROM ratings WHERE product_id = '$id' ");
+
+		$result = $sql->result();
+
+		return number_format((float)$result[0]->rating, 1, '.', '');
+
+	}
+
+	public function get_people_rate($product_id){
+		$id = $product_id;
+
+		$this->db->select('*')->from('ratings')->where('product_id', $id);
+
+		$result = $this->db->get();
+
+		return $result->num_rows();
+
 
 	}
 
