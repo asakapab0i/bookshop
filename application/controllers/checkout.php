@@ -6,6 +6,7 @@ class Checkout extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('checkout_model');
+		$this->load->model('cart_model');
 		$this->load->helper('string');
 
 		//Everytime this class is called it automatically checks the the function is_logged_in
@@ -23,7 +24,8 @@ class Checkout extends CI_Controller {
 	}
 
 	public function index(){
-
+		$cart = $this->cart_model->check_checkout($this->cart->contents());
+		
 		if (!$this->_is_logged_in()) {
 			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
 			redirect("account/login");
@@ -34,6 +36,14 @@ class Checkout extends CI_Controller {
 			$this->session->set_flashdata('checkout', 'You cannot checkout because your cart is empty!');
 			redirect("cart");
 		}
+
+		
+
+		if ($cart == false) {
+			$this->session->set_flashdata('checkout', 'Please check your cart for possible unavailability of items.');
+			redirect("cart");
+		}
+
 
 		$login_session = $this->session->userdata('login');
 		$user_id = $login_session["id"];
@@ -173,6 +183,7 @@ class Checkout extends CI_Controller {
 	public function notify_payment(){
 		
 		if ($this->input->post()) {
+
 			
 			$data['paypal'] = $this->input->post();
 
@@ -199,9 +210,7 @@ class Checkout extends CI_Controller {
 	}
 
 	public function cancel_payment(){
-
-
-		echo 'Cancelled!';
+		redirect('home');
 	}
 
 	public function paypal_notify(){
@@ -210,44 +219,27 @@ class Checkout extends CI_Controller {
 				// 
 				
 				if ($this->input->post()) {
+
+
 					$paypal_log = $this->input->post();
-				 	$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log),
-				 													'order_id' => $paypal_log['custom']));
+				 	$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log),'order_id' => $paypal_log['custom']));
 				 	$this->checkout_model->update_approve_order($paypal_log['custom']);
 
+				 	$cart = $this->checkout_model->get_cart_details($paypal_log['custom']);
+					foreach ($cart as $key => $value) {
+				 	$id = $value['id'];
+				 	$qty = $value['qty'];
+				 	$this->db->query("UPDATE books SET product_qty = product_qty - $qty WHERE product_id = '$id' ");
+				 }
 
 
 
 
 
-
-				// $cart = $this->cart->contents();
-				// $data = array();
-
-				//  	foreach ($cart as $key => $cart2) {
-				// 	foreach ($cart2 as $key2 => $value) {
-				// 	}
-				// 	$data[] = array('product_id' => $cart2['name'],
-				// 					'product_qty' => 'product_qty-'.$cart2['qty']);
-				// 	}
-
-
-				// 	$this->checkout_model->product_deduction($data);
-
-				// 	//destroy the cart
-				// $this->cart->destroy();
-
-
-
-
-
-
-
-
-
-
-
-
+				 	
+			
+				 	#SKU4990 = 5
+				 	#SKU2579 = 2
 
 				}
 			

@@ -10,6 +10,7 @@ class Cart_model extends CI_Model {
 		return $sql->result_array();
 	}
 
+	//Checks if the quantity of each book is available or > 0
 	public function check_checkout($contents){
 		
 		$data = array();
@@ -28,8 +29,10 @@ class Cart_model extends CI_Model {
 
 							if ($inner['qty'] > $product_qty ) {
 								
-								 $data = 0;
+								 return false;
 
+							}else{
+								 $data = true;
 							}
 						
 					}

@@ -71,7 +71,7 @@
           
           <div class="col-md-offset-5 col-md-5">
             
-        <button class="btn btn-warning btn-lg">Paypal Checkout</button> <input checked name="payment_method" type="radio" value="paypal_checkout">
+        <a class="btn btn-warning btn-lg">Paypal Checkout</a> <input checked name="payment_method" type="radio" value="paypal_checkout">
      
           </div>
 

@@ -24,6 +24,10 @@ class Cart extends CI_Controller {
 
 		$cart['ready_checkout'] = $this->cart_model->check_checkout($this->cart->contents());
 
+
+		// var_dump($cart['ready_checkout']);
+		// die();
+
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav

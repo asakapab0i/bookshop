@@ -32,10 +32,17 @@ class Checkout_model extends CI_Model {
 
 	}
 
-	public function product_deduction($data){
 
+	public function get_cart_details($orderid){
 
-		$this->db->update_batch('books', $data, 'product_id'); 
+		$this->db->where('order_id', $orderid);
+		$sql = $this->db->get('orders');
+		$sql = $sql->result_array();
+
+		$cart = unserialize($sql[0]['cart_data']);
+
+		return $cart;
+
 
 	}
 
