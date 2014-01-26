@@ -302,15 +302,16 @@
     var status = $(this).val();
     var order_id = $('#panel-head').attr('data');
 
-    $.ajax({
+    if (status != '') {
+      $.ajax({
       url: '<?php echo site_url("administrator/post_change_status") ?>',
       type: 'POST',
-      data: {status: status, order_id:order_id},
-    })
-    .done(function(e) {
-      $('.order_status').html(e);
-    });
-    
+        data: {status: status, order_id:order_id},
+      })
+      .done(function(e) {
+        $('.order_status').html(e);
+      });
+    };
     
 
   });
