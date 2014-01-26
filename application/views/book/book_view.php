@@ -53,10 +53,10 @@
 							   <hr/>
                 					
 							   			<h4 class="">PHP {price}</h4>
-							   				
-							   				
 
-							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6> <a id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>" class="btn btn-info">Add to cart</a><a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
+							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6>
+							   				<a class="btn btn-info" id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>">Add to cart</a>
+							   				<a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
 							   		
 							   			<script type="text/javascript">
 							   				$(document).on('keyup', '#qty', function(){

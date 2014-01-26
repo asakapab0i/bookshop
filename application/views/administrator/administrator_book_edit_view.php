@@ -29,7 +29,13 @@
 
 
 
+<?php
+  if ($this->session->flashdata('edit_error')) {
+      
+      echo '<div class="alert alert-warning">'; echo $this->session->flashdata('edit_error'); echo'</div>';
 
+  }
+?>
 <div class="col-md-6">
     
     <fieldset>
@@ -108,7 +114,7 @@
      <select required id="category" name="category">
       <option  value=""></option>
         {categories}
-        <option value="{name}">{name}</option>
+        <option value="{name}"  <?php echo set_select('category', '{name}', TRUE); ?> >{name}</option>
         {/categories}
     </select>
   </div>
@@ -132,14 +138,6 @@
   </div>
 </div>
 
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="author">Image</label>
-  <div class="controls">
-    <input required id="userfile" name="userfile" type="File" placeholder="" class="input-xlarge">
-    
-  </div>
-</div>
 
 <br/>
 <br/>

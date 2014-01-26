@@ -25,10 +25,11 @@ class Checkout extends CI_Controller {
 
 	public function index(){
 		$cart = $this->cart_model->check_checkout($this->cart->contents());
+		$reflink = $_SERVER['HTTP_REFERER'];
 		
 		if (!$this->_is_logged_in()) {
 			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
-			redirect("account/login");
+			redirect("account/login?ref=$reflink");
 		}
 
 
@@ -142,7 +143,7 @@ class Checkout extends CI_Controller {
 
 
 				//Perform the payment
-                $config['business']                         = 'bojorquebryan-facilitator@gmail.com';
+                $config['business']                         = 'rrongie-facilitator@gmail.com';
                 $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
                 $config['return']                                 = base_url() . 'checkout/notify_payment';
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
@@ -173,11 +174,13 @@ class Checkout extends CI_Controller {
 	}
 
 	public function pay_with_bank($address_id, $shipping_type){
+
+		echo 'Not yet implemented';
 		
 	}
 
 	public function pay_with_credit_card($address_id, $shipping_type){
-		
+		echo 'Not yet implemented';
 	}
 
 	public function notify_payment(){
@@ -231,11 +234,6 @@ class Checkout extends CI_Controller {
 				 	$qty = $value['qty'];
 				 	$this->db->query("UPDATE books SET product_qty = product_qty - $qty WHERE product_id = '$id' ");
 				 }
-
-
-
-
-
 				 	
 			
 				 	#SKU4990 = 5

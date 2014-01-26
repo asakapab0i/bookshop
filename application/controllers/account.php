@@ -31,29 +31,78 @@ class Account extends CI_Controller {
 		if ($this->is_logged_in()) {
 			redirect('customer/dashboard');
 		}
+			
+
+		if ($this->input->post('email') && $this->input->post('password')) {
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
 		
+			$this->form_validation->set_error_delimiters('<span class="label label-danger">', '</span>');
+			$this->form_validation->set_rules('password','password','required');
+			$this->form_validation->set_rules('email','Email','required|callback_checklogin['.$password.']');
+			
 
-	
+			if ($this->form_validation->run() == FALSE){
+				//Prepare Header Data
+				$header['page_title'] = 'Login';
+				
+				//Navigation
+				$navigation['page_cur_nav'] = 'account';
 
-		//Prepare Header Data
-		$header['page_title'] = 'Login';
-		
-		//Navigation
-		$navigation['page_cur_nav'] = 'account';
+				//Main Content
 
-		//Main Content
+				//Page Header
+				$this->parser->parse('template/header', $header);
+				//Page Nav
+				$this->load->view('template/navigation', $navigation);
+				//Page Main Content
+				$this->load->view('account/login');
+				//Page Footer
+				$this->load->view('template/footer');
+			}
+			else{
+
+				$userinfo = $this->account_model->get_login_by_email($email);
+
+				$login_session = array(
+	                   'email'     => $userinfo[0]["email"],
+	                   'id'			=>$userinfo[0]["id"],
+	                   'type'		=>$userinfo[0]['user_type'],
+	                   'name'		=>$userinfo[0]["fname"] .' '.$userinfo[0]["lname"],
+	                   'logged_in' => TRUE
+	               );
+
+				$this->session->set_userdata('login',$login_session);
 
 
+				//Check the account type and redirect to appropriate page
+				if ($userinfo[0]['user_type'] == 'regular') {
+					redirect('customer/dashboard');
+				}elseif($userinfo[0]['user_type'] == 'admin'){
+					redirect('administrator');
+				}
 
 
-		//Page Header
-		$this->parser->parse('template/header', $header);
-		//Page Nav
-		$this->load->view('template/navigation', $navigation);
-		//Page Main Content
-		$this->load->view('account/login');
-		//Page Footer
-		$this->load->view('template/footer');
+				
+			}
+		}else{
+			//Prepare Header Data
+			$header['page_title'] = 'Login';
+			
+			//Navigation
+			$navigation['page_cur_nav'] = 'account';
+
+			//Main Content
+
+			//Page Header
+			$this->parser->parse('template/header', $header);
+			//Page Nav
+			$this->load->view('template/navigation', $navigation);
+			//Page Main Content
+			$this->load->view('account/login');
+			//Page Footer
+			$this->load->view('template/footer');
+		}
 
 		
 		

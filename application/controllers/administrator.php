@@ -214,8 +214,8 @@ class Administrator extends CI_Controller {
 		$this->form_validation->set_rules('format', 'Format', 'trim|required');
 		$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required');
-		$this->form_validation->set_rules('price', 'Price', 'trim|required');
-		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required|integer|callback_check_number');
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|integer|callback_check_number');
 
 		if (empty($_FILES['userfile']['name']))
 		{
@@ -285,6 +285,18 @@ $form_data = array('title' => $this->input->post('title'),
 	}
 
 
+	public function check_number($number){
+
+		if ($number > 0) {
+			return TRUE;
+		}else{
+			$this->form_validation->set_message('check_number', 'This field should not be negative.');
+			return False;
+		}
+
+	}
+
+
 	public function book_edit($id){
 
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
@@ -294,39 +306,9 @@ $form_data = array('title' => $this->input->post('title'),
 		$this->form_validation->set_rules('format', 'Format', 'trim|required');
 		$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required');
-		$this->form_validation->set_rules('price', 'Price', 'trim|required');
-		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required|callback_check_number');
+		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|callback_check_number');
 
-		if (empty($_FILES['userfile']['name']))
-		{
-		    $this->form_validation->set_rules('userfile', 'Image', 'required');
-		}
-
-
-
-		
-			$config['file_name'] = $this->input->post('title');
-			$config['upload_path'] = './assets/img/books_image/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '1000';
-
-			
-			$this->load->library('upload', $config);
-
-		
-
-
-
-		if (!$this->upload->do_upload())
-		{
-			$error = array('error' => $this->upload->display_errors());	
-			var_dump($error);
-			die();	
-		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
-		}
 
 
 		$form_data = array('title' => $this->input->post('title'),
@@ -339,7 +321,6 @@ $form_data = array('title' => $this->input->post('title'),
 							'category' => $this->input->post('category'),
 							'price' => $this->input->post('price'),
 							'product_qty' => $this->input->post('quantity'),
-							'image' => $data['upload_data']['file_name'],
 							'product_url' => url_title($this->input->post('title'))
 							);
 
@@ -350,8 +331,10 @@ $form_data = array('title' => $this->input->post('title'),
 
 
 		if ($this->form_validation->run() == False) {
-			 var_dump(validation_errors());
-			 die();
+
+			$this->session->set_flashdata('edit_error', 'There is an error on the form field.');
+			 // var_dump(validation_errors());
+			 // die();
 			redirect('administrator/book/'.$id.'');
 		}else{
 			$this->session->set_flashdata('edit_success', 'Book Successfully Edited!');

@@ -133,7 +133,7 @@ class Cart extends CI_Controller {
 
 		$this->cart->update($data); 
 
-		redirect('book');
+		redirect('cart');
 
 	}
 

@@ -37,8 +37,9 @@
               <h4>Registered Customers</h4>
 
                   <?php
+                  echo validation_errors();
                   $attributes = array('class' => 'form-horizontal', 'id' => 'login');
-                  echo form_open('account/login_validate', $attributes);
+                  echo form_open('account/login', $attributes);
                   ?>
 
                 <fieldset>
