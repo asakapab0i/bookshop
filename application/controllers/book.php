@@ -129,7 +129,8 @@ class Book extends CI_Controller {
 		$navigation['term'] = $term;
 
 
-		
+		$search['subtotal'] = $this->cart->format_number($this->cart->total());
+		$search['items'] = $this->cart->total_items();
 		$result = $this->book_model->get_search_books($term);
 		$search['search_result'] = $this->modify_array_data($result);
 		$q1 = $this->cart->contents();
