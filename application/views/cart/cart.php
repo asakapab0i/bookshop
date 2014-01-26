@@ -30,14 +30,14 @@
               </thead>
               <tbody>
                <?php
-                  $attributes = array('class' => 'form-horizontal', 'id' => 'login');
+                  $attributes = array('class' => 'form-horizontal', 'id' => 'cart');
                   echo form_open('cart/update', $attributes);
               ?>
 
               {updated_cart}
               
               <tr>
-                  <td class="text-center"><img src="<?php echo base_url().'assets/img/books_image' . '/{image}' ?>" width="75" height="75" alt="The Smurfs My Busy Books"></td>
+                  <td class="text-center"><img src="<?php echo base_url().'assets/img/books_image' . '/{image}' ?>" width="75" height="75" alt="{name}"></td>
                   <td><a href="<?php echo base_url() . 'book/view/' . '{id}/{link}' ?>">{name}</a>
                   <br><span  class="label label-danger">{availability}</span>
                   </td>
