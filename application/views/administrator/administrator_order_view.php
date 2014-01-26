@@ -20,7 +20,7 @@
                                     <div style="height: 200px; overflow: auto;" class="chat-area">
                                    
 
-                                    {message_box}
+                                  {message_box}
                                     <p><strong>{name}</strong>: {message} <br/><span>sent on: {date}</span></p>
                                     {/message_box}                                        
                                       
@@ -107,7 +107,7 @@
                                 <div class="panel-body">
                              
                                   <p>Order Date: {dateorder}</p>
-                 <p>Order Status: {order_status} &nbsp &nbsp &nbsp &nbsp &nbsp<select name="admin_action">
+                 <p>Order Status: {order_status} &nbsp &nbsp &nbsp<select name="admin_action">
                   <option value="">Set Status</option>
                    <option value="">Advance to Cancel</option>
                    <option value="">Advance to Pending</option>

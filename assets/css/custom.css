@@ -24,6 +24,7 @@ hr{
 
 .glyphicon-star, .glyphicon-star-empty{
 	font-size: 18px;
+	cursor: pointer;
 }
 
 .social-icons{
