@@ -84,6 +84,12 @@ class Administrator_model extends CI_Model {
 		return $sql->result_array();
 	}
 
+	public function get_recent_messages(){
+		$this->db->select('fname AS name, message, date, order_id')->from('messages')->join('users', 'users.id = messages.user_id', 'left')->order_by('date', 'DESC');
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
+
 }
 
 /* End of file administrator_model.php */

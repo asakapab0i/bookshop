@@ -78,33 +78,77 @@
                     </div>
 
                 <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Recent Orders</div>
-                        <div style="height: 250px; overflow: auto" class="panel-body">
+                        <div class="panel-heading">Recent Orders & Order Messages</div>
+                        <div class="panel-body">
 
-                          <table class="table">
-                              <thead>
-                                  <tr>
-                                      <th>Order #</th>
-                                      <th>Total Price</th>
-                                      <th>Ordered On</th>
-                                      <th>Ordered By</th>
-                                      <th>Order Status</th>
-                                      <th>Action</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                               {recent_orders}
-                                  <tr>
-                                      <td>{order_id}</td>
-                                      <td>{order_total}</td>
-                                      <td>{dateorder}</td>
-                                      <td>{lname}</td>
-                                      <td>{order_status}</td>
-                                      <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
-                                  </tr>
-                                {/recent_orders}
-                              </tbody>
-                          </table>
+
+                         <div class="col-md-7">
+                                
+                                <div class="panel panel-default" id="panels">
+                                <div class="panel-heading">Recently Added Books</div>
+                                <div style="height: 150px; overflow: auto" class="panel-body">
+                              
+                                    
+                       
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order #</th>
+                                                <th>Total Price</th>
+                                                <th>Order Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         {recent_orders}
+                                            <tr>
+                                                <td>{order_id}</td>
+                                                <td>{order_total}</td>
+                                                <td>{order_status}</td>
+                                                <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
+                                            </tr>
+                                          {/recent_orders}
+                                        </tbody>
+                                    </table>
+                        
+                                </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-md-5">
+                                
+                                <div class="panel panel-default" id="panels">
+                                <div class="panel-heading">Recently Order Messages</div>
+                                <div style="height: 150px; overflow: auto" class="panel-body">
+                              
+                                    
+                       
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Message</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         {recent_message}
+                                            <tr>
+                                                <td>{name}</td>
+                                                <td>{message}</td>
+                                                <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
+                                            </tr>
+                                          {/recent_message}
+                                        </tbody>
+                                    </table>
+                        
+                                </div>
+                                </div>
+                                
+                            </div>
+
+                          
                        
                         </div>
                     </div>

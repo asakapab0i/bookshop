@@ -42,7 +42,7 @@ class Administrator extends CI_Controller {
 		$index['net_income'] = $this->administrator_model->get_net_income();
 		$index['recent_books'] =  $this->administrator_model->get_recent_books();
 		$index['recent_orders'] = $this->administrator_model->get_recent_orders();
- 
+ 		$index['recent_message'] = $this->administrator_model->get_recent_messages();
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
