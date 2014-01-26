@@ -29,7 +29,7 @@ class Chat extends CI_Controller {
 		//ajax request
 		$order_id = $this->input->post('order_id');
 		$result = $this->chat_model->get_messages_product($order_id);
-		
+		$haha = '';
 		foreach ($result as $key => $value) {
 			$data[] = $value;
 			$haha .=  '<p><strong>'.$data[$key]['fname'].'</strong>: '.$data[$key]['message'].'<br/><span>sent on: '.$data[$key]['date'].'</span></p>';

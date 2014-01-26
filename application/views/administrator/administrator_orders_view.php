@@ -53,7 +53,7 @@
     
                 $(document).ready(function() {
     $('#example').dataTable( {
-        "aaSorting": [[ 2, "desc" ]],
+        "aaSorting": [[ 2, "asc" ]],
         "bProcessing": true,
         "sAjaxSource": "<?php echo site_url('administrator/datatables_orders'); ?>",
         "aoColumnDefs": [

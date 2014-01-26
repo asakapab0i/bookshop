@@ -44,47 +44,7 @@
           </div>
 
 
-          <script type="text/javascript">
-          //Chat Script
-          
-        
 
-          setInterval(function (){
-            //set interval every 10 second
-               var order_id = $('#panel-head').attr('data');
-               $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
-                });
-
-          }, 10000);
-
-
-
-          //Post Chat
-          $(document).on('click', '#post-message-btn', function(event) {
-            event.preventDefault();
-            /* Act on the event */
-
-            var message = $('#message').val();
-            var order_id = $('#panel-head').attr('data');
-            
-            $.ajax({
-              url: '<?php echo site_url("chat/post_message")?>',
-              type: 'POST',
-                data: {message: message, order_id: order_id},
-              })
-              .done(function() {
-                 $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
-                });
-              }).always(function(){
-                $('#message').val('');
-              });
-            
-
-          });
-
-
-
-          </script>
 
     </div>
     <div class="col-md-9">
@@ -107,13 +67,17 @@
                                 <div class="panel-body">
                              
                                   <p>Order Date: {dateorder}</p>
-                 <p>Order Status: {order_status} &nbsp &nbsp &nbsp<select name="admin_action">
-                  <option value="">Set Status</option>
-                   <option value="">Advance to Cancel</option>
-                   <option value="">Advance to Pending</option>
-                   <option value="">Advance to Refund</option>
-                   <option value="">Advance to Approve</option>
-                 </select>
+                 <p>
+                 Order Status: <span class="order_status">{order_status}</span> &nbsp &nbsp &nbsp
+                
+                     <select id="admin_action">
+                       <option value="">Set Status ---</option>
+                       <option value="Cancelled"> to Cancel</option>
+                       <option value="Pending"> to Pending</option>
+                       <option value="Refunded"> to Refund</option>
+                       <option value="Approved"> to Approve</option>
+                    </select>
+               
                  </p>
 
                                
@@ -292,4 +256,62 @@
     </div>
 </div>
 
+ <script type="text/javascript">
+          //Chat Script
+          
+          setInterval(function (){
+            //set interval every 10 second
+               var order_id = $('#panel-head').attr('data');
+               $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
+                });
 
+          }, 10000);
+
+
+
+          //Post Chat
+          $(document).on('click', '#post-message-btn', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+
+            var message = $('#message').val();
+            var order_id = $('#panel-head').attr('data');
+            
+            $.ajax({
+              url: '<?php echo site_url("chat/post_message")?>',
+              type: 'POST',
+                data: {message: message, order_id: order_id},
+              })
+              .done(function() {
+                 $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
+                });
+              }).always(function(){
+                $('#message').val('');
+              });
+            
+
+          });
+
+</script>
+
+<script type="text/javascript">
+  $(document).on('change', '#admin_action', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+
+    var status = $(this).val();
+    var order_id = $('#panel-head').attr('data');
+
+    $.ajax({
+      url: '<?php echo site_url("administrator/post_change_status") ?>',
+      type: 'POST',
+      data: {status: status, order_id:order_id},
+    })
+    .done(function(e) {
+      $('.order_status').html(e);
+    });
+    
+    
+
+  });
+</script>

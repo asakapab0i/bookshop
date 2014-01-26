@@ -60,4 +60,13 @@ hr{
 	font-size: 9px;
 }
 
+/*Chat System Styles*/
+#message {
+	font-size: 11px;
+}
 
+.chat-area{
+	background-color: #f5f5f5;
+	padding: 5px;
+	border-radius: 3px;
+}

@@ -431,6 +431,28 @@ $form_data = array('title' => $this->input->post('title'),
 	}
 
 
+	/**AJAX REQUESTS**/
+
+	public function post_change_status(){
+
+		$status = $this->input->post('status');
+		$order_id = $this->input->post('order_id');
+		$status_arr = array('order_status' => $status);
+
+		//Update
+		$this->db->where('order_id', $order_id);
+		$this->db->update('orders', $status_arr);
+		//Retrieve
+		$this->db->select('order_status')->from('orders')->where('order_id', $order_id);
+		$sql = $this->db->get();
+		$result = $sql->result_array();
+
+		//Send this message back to HTML
+		echo $result[0]['order_status'];
+
+	}
+
+
 }
 
 /* End of file administrator.php */
