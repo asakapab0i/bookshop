@@ -5,6 +5,7 @@ class Customer extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('customer_model');
+		$this->load->model('administrator_model');
 		$this->load->library('datatables');
 
 		
@@ -174,6 +175,8 @@ class Customer extends CI_Controller {
 		$order['order_data'] = $this->customer_model->get_order_by_order_no($order_no);
 		$order['order_cart_contents'] = $this->customer_model->get_order_cart_contents($order_no);
 		$order['total'] = $this->customer_model->get_order_cart_total($order_no);
+		
+		$order['message_box'] = $this->administrator_model->get_messages($order_no);
 
 
 

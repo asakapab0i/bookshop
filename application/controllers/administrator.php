@@ -89,6 +89,8 @@ class Administrator extends CI_Controller {
 
 		$order['order_cart_contents'] = $this->customer_model->get_order_cart_contents($id);
 		$order['total'] = $this->customer_model->get_order_cart_total($id);
+		$order['message_box'] = $this->administrator_model->get_messages($id);
+
 
 
 		//Page Header
