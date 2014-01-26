@@ -34,43 +34,7 @@
 <div class="col-md-9">
 	
 	<div class="panel panel-primary" id="panels">
-            <div class="panel-heading">Books | Category 
-
-            <select class="category">
-              <option value="all">All</option>
-			 <?php
-            	foreach ($category as $key => $value) {
-            		foreach ($value as $key2 => $value2) {
-            			
-            			if ($key2 == 'name') {
-
-            				
-            				if (strtolower($value[$key2]) == $link_segments['category']) {
-            					//echo $link_segments['category'];
-            					//echo $value[$key2];
-            					
-            					echo '<option selected value="'.strtolower($value[$key2]).'">'.$value[$key2].'</option>';
-            				}else{
-            					
-            					echo '<option value="'.strtolower($value[$key2]).'">'.$value[$key2].'</option>';;
-            				}
-
-            			}
-            		}
-            		
-            	}
-            ?>
-
-            				
-            		
-            	<!-- <option value="all">All Books</option>
-            	<option value="ecommerce">eCommerce Books</option>
-            	<option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
-            	<option>16</option> -->
-            </select> 
-
-
-         
+            <div class="panel-heading">Books | Search          
 
 
 
