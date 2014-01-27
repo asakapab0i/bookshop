@@ -67,6 +67,8 @@
             event.preventDefault();
             /* Act on the event */
 
+            $(this).addClass('disabled');
+
             var message = $('#message').val();
             var order_id = $('#panel-head').attr('data');
             
@@ -78,6 +80,8 @@
               .done(function() {
                  $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
                 });
+
+                 $('#post-message-btn').removeClass('disabled');
               }).always(function(){
                 $('#message').val('');
               });
