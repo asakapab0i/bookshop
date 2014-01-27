@@ -236,7 +236,8 @@ class Checkout extends CI_Controller {
 
 				// }
 
-                
+               //destroy the cart
+			   $this->cart->destroy();
                $this->paypal->pay(); //Proccess the payment
 
 	}
