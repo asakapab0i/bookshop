@@ -2,6 +2,14 @@
 
 class Cart_model extends CI_Model {
 
+	public function get_order_cart_data($order_id){
+		$this->db->select('cart_data, order_id')->from('orders')->where('order_id', $order_id);
+		$sql = $this->db->get();
+
+		$result = $sql->result_array();
+		return $result;
+	}
+
 	public function get_product_info($id){
 
 		$this->db->where('product_id', $id);

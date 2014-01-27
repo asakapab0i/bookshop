@@ -2,12 +2,16 @@
 
 class Checkout extends CI_Controller {
 	
+	public $paypal_id;
 
 	function __construct(){
 		parent::__construct();
 		$this->load->model('checkout_model');
 		$this->load->model('cart_model');
 		$this->load->helper('string');
+
+		$this->paypal_id = 'rrongie-facilitator@gmail.com';
+
 
 		//Everytime this class is called it automatically checks the the function is_logged_in
 		//If not then redirect to homepage
@@ -143,7 +147,7 @@ class Checkout extends CI_Controller {
 
 
 				//Perform the payment
-                $config['business']                         = 'rrongie-facilitator@gmail.com';
+                $config['business']                         = $this->paypal_id;
                 $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
                 $config['return']                                 = base_url() . 'checkout/notify_payment';
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
@@ -170,6 +174,70 @@ class Checkout extends CI_Controller {
                 
                $this->paypal->pay(); //Proccess the payment
 
+
+	}
+
+
+	public function approve_order(){
+		
+
+		$order_id = $this->input->post('order_id');
+		//get cart contents
+			$cart_data = $this->cart_model->get_order_cart_data($order_id);
+			$cart_data = unserialize($cart_data[0]['cart_data']);
+
+
+
+			$cart_availability = $this->cart_model->check_checkout($cart_data);
+
+			//check if items in the cart is available for purchase
+			if ($cart_availability == false) {
+				$this->session->set_flashdata('approve_order', 'One or more items in this current order is either not available or on limited stock. <br/> Please reorder and adjust your cart contents.');
+				redirect('customer/order/'.$order_id.'');
+			}
+
+
+
+
+			//Perform the payment
+                $config['business']                         = $this->paypal_id;
+                $config['cpp_header_image']         = ''; //Image header url [750 pixels wide by 90 pixels high]
+                $config['return']                                 = base_url() . 'checkout/notify_payment';
+                $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
+                $config['notify_url']                         = base_url() . 'checkout/paypal_notify'; //IPN Post
+                $config['production']                         = FALSE; //Its false by default and will use sandbox
+                $config["invoice"]                                = random_string('alnum', 8); //The invoice id
+                $config["custom"] = $order_id; 
+
+
+                $this->load->library('paypal',$config);
+                
+                #$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
+
+	               foreach ($cart_data as $key => $value) {
+
+						// $data = array(
+						// 	'id'      => $value['id'],
+						// 	'qty'     => $value['qty'],
+						// 	'price'   => $value['price'],
+						// 	'name'    => $value['name'],
+						// 	'image'	  => $value['image'],
+						// 	'link'	  => $value['link']
+						// );
+						
+						$this->paypal->add($value['name'],$value['price'],$value['qty']); //First item
+					}
+
+				// foreach ($cart as $key => $cart2) {
+				// 	foreach ($cart2 as $key2 => $value) {
+				// 	}
+
+				// 	$this->paypal->add($cart2['name'],$cart2['price'],$cart2['qty']); //First item
+
+				// }
+
+                
+               $this->paypal->pay(); //Proccess the payment
 
 	}
 
@@ -222,6 +290,8 @@ class Checkout extends CI_Controller {
 				// 
 				
 				if ($this->input->post()) {
+
+
 
 
 					$paypal_log = $this->input->post();

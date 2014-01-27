@@ -4,7 +4,7 @@
             <div class="text-center panel-body">
               
 
-            <pre>
+           
             	<?php
             	
               foreach ($paypal as $key => $value) {
@@ -12,7 +12,7 @@
               }
 
             	?>
-            </pre>
+           
 
 
            	<h1>Checkout Success!</h1>

@@ -1,5 +1,6 @@
 {order_data}
 
+
 <div class="row">
     <div class="col-md-3">
     
@@ -15,7 +16,7 @@
            <div class="panel panel-primary" id="panels">
                                 
 
-                                <div class="panel-heading" id="panel-head" data="{order_id}">Comment Box ({order_id})</div>
+                                <div class="panel-heading" id="panel-head" data="{order_id}">Message Box ({order_id})</div>
                                   <div  class="panel-body">
 
                                   <small>
@@ -97,6 +98,23 @@
             </div>
             <div class="panel-body">
 
+
+   <?php
+
+            if ($this->session->flashdata('approve_order')) {
+              $notice = $this->session->flashdata('approve_order');
+
+              echo '<div class="alert alert-warning text-center">';
+              echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+              echo $notice;
+              echo '</div>';
+
+            }
+
+  ?>
+
+
+
             <!-- Start Structure -->
              <div class="col-md-12">
                     <div class="panel panel-default" id="panels">
@@ -109,7 +127,16 @@
                                 <div class="panel-body">
                              
                                   <p>Order Date: {dateorder}</p>
-                 <p>Order Status: {order_status}
+                 <p>Order Status: <strong>{order_status}</strong> 
+                 <?php 
+
+                   if ($status == 'Pending') {
+                     echo form_open('checkout/approve_order', '');
+                     echo form_hidden('order_id', '{order_id}');
+                     echo '<button href="'.site_url('checkout/finish_pending').'" class="pull-right btn btn-xs btn-success">Finish Order</button>';
+                   }
+                 
+                 ?>
                  </p>
 
                                
@@ -123,8 +150,10 @@
                         <div class="panel-heading">Account Information</div>
                         <div class="panel-body">
 
-                         <p>Customer Name: {fname} {lname}</p>
-                          <p>Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
+                         <p>Customer Name: {fname} {lname}<br/>
+                         Gender: {gender} <br/>
+                         Marital Status: {marital_status}<br/>
+                         Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
                           
                        
                         </div>
@@ -267,6 +296,8 @@
 
               </tbody>
     </table>
+    <a href="<?php echo site_url('cart/reorder/{order_id}'); ?>" class="pull-right btn btn-success btn-xs">Reorder Cart</a>
+
                           
                        
                         </div>

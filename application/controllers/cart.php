@@ -70,6 +70,36 @@ class Cart extends CI_Controller {
 
 	}
 
+	public function reorder($order_id){
+
+		//get the cart data in db
+		//assign it in $this->cart->contents()
+
+		$cart_data = $this->cart_model->get_order_cart_data($order_id);
+		$cart_data = unserialize($cart_data[0]['cart_data']);
+
+		$this->cart->destroy();
+
+
+
+		foreach ($cart_data as $key => $value) {
+
+			$data = array(
+				'id'      => $value['id'],
+				'qty'     => $value['qty'],
+				'price'   => $value['price'],
+				'name'    => $value['name'],
+				'image'	  => $value['image'],
+				'link'	  => $value['link']
+			);
+			
+			$this->cart->insert($data);
+		}
+
+		redirect('cart');
+
+	}
+
 	public function update(){
 		/*
 			@task Remember to add codes here to update the cart
