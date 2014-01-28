@@ -47,51 +47,7 @@
           </div>
 
 
-          <script type="text/javascript">
-          //Chat Script
-          
-        
-
-          setInterval(function (){
-            //set interval every 10 second
-               var order_id = $('#panel-head').attr('data');
-               $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
-                });
-
-          }, 10000);
-
-
-
-          //Post Chat
-          $(document).on('click', '#post-message-btn', function(event) {
-            event.preventDefault();
-            /* Act on the event */
-
-            $(this).addClass('disabled');
-
-            var message = $('#message').val();
-            var order_id = $('#panel-head').attr('data');
-            
-            $.ajax({
-              url: '<?php echo site_url("chat/post_message")?>',
-              type: 'POST',
-                data: {message: message, order_id: order_id},
-              })
-              .done(function() {
-                 $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
-                });
-
-                 $('#post-message-btn').removeClass('disabled');
-              }).always(function(){
-                $('#message').val('');
-              });
-            
-
-          });
-
-
-
-          </script>
+     
 
     </div>
     <div class="col-md-9">
@@ -131,8 +87,9 @@
                                 <div class="panel-body">
                              
                                   <p>Order Date: {dateorder}</p>
-                 <p>Order Status: <strong>{order_status}</strong> 
-                 <?php 
+                 <p>Order Status: <strong>{order_status}</strong>
+                  
+                 <?php
 
                    if ($status == 'Pending') {
                      echo form_open('checkout/approve_order', '');
@@ -323,6 +280,52 @@
     </div>
 </div>
 
+
+     <script type="text/javascript">
+          //Chat Script
+          
+        
+
+          setInterval(function (){
+            //set interval every 10 second
+               var order_id = $('#panel-head').attr('data');
+               $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
+                });
+
+          }, 10000);
+
+
+
+          //Post Chat
+          $(document).on('click', '#post-message-btn', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+
+            $(this).addClass('disabled');
+
+            var message = $('#message').val();
+            var order_id = $('#panel-head').attr('data');
+            
+            $.ajax({
+              url: '<?php echo site_url("chat/post_message")?>',
+              type: 'POST',
+                data: {message: message, order_id: order_id},
+              })
+              .done(function() {
+                 $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
+                });
+
+                 $('#post-message-btn').removeClass('disabled');
+
+                $('#message').val('');
+              });
+            
+
+          });
+
+
+
+          </script>
 
 
 

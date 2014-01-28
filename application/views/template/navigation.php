@@ -193,10 +193,6 @@
 
                                   }
 
-                                    // <li><a href="'.site_url('account/login').'">Login Account</a></li>
-                                    // <li><a href="'.site_url('account/register').'">Register Account</a></li>
-                                    // <li class="divider"></li>
-                                    //  <li><a href="'.site_url('account/logout').'">Account Logout</a></li>
                                   echo '</ul>
                                 </li>
 
@@ -300,10 +296,6 @@
 
                                   }
 
-                                    // <li><a href="'.site_url('account/login').'">Login Account</a></li>
-                                    // <li><a href="'.site_url('account/register').'">Register Account</a></li>
-                                    // <li class="divider"></li>
-                                    //  <li><a href="'.site_url('account/logout').'">Account Logout</a></li>
                                   echo '</ul>
                                 </li>
 
@@ -322,24 +314,6 @@
 
 
                                ?>
-
-
-                                
-                          <!--      <li class="dropdown pull-right">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="<?php echo site_url('account/login');?>">Login Account</a></li>
-                                    <li><a href="<?php echo site_url('account/register');?>">Register Account</a></li>
-                                    <li class="divider"></li>
-                                     <li><a href="<?php echo site_url('account/logout')?>">Account Logout</a></li>
-                                  </ul>
-                                </li>    
-
-                                <li class="pull-right">
-                                    <a href="<?php echo site_url('cart'); ?>">My Cart  <span class="badge badge-info"><?php echo $this->cart->total_items(); ?></span></a>
-                                </li> -->
-
-
                                 
                             </ul>
                         </div>
@@ -389,39 +363,3 @@
 </div>
 
 
-<!--     //  <script type="text/javascript">
-
-    //       $(document).on('click', '#search-go', function(){
-
-    //           var url = '<?php echo base_url(); ?>';
-    //           var term = $('#search').val();
-
-    //           //window.location.replace(url +'book/search/'+term);
-
-    //           $('#search').submit(function(event) {
-    //             /* Act on the event */
-
-
-
-    //           });
-
-    //       });
-
-    // </script>
-
-    // <script type="text/javascript">
-
-    //       $(document).on('keypress', '#search', function(event) {
-    //         /* Act on the event */
-
-
-    //         if (event.which == 13) {
-    //           var url = '<?php echo base_url(); ?>';
-    //           var term = $('#search').val();
-    //           window.location.replace(url +'book/search/'+term);
-    //         }
-
-
-    //       });
-
-    // </script> -->

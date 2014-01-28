@@ -256,9 +256,11 @@
     </div>
 </div>
 
- <script type="text/javascript">
+     <script type="text/javascript">
           //Chat Script
           
+        
+
           setInterval(function (){
             //set interval every 10 second
                var order_id = $('#panel-head').attr('data');
@@ -274,6 +276,8 @@
             event.preventDefault();
             /* Act on the event */
 
+            $(this).addClass('disabled');
+
             var message = $('#message').val();
             var order_id = $('#panel-head').attr('data');
             
@@ -285,14 +289,18 @@
               .done(function() {
                  $('.chat-area').load('<?php echo site_url("chat/messages")?>', { order_id: order_id },  function(e) {
                 });
-              }).always(function(){
+
+                 $('#post-message-btn').removeClass('disabled');
+
                 $('#message').val('');
               });
             
 
           });
 
-</script>
+
+
+          </script>
 
 <script type="text/javascript">
   $(document).on('change', '#admin_action', function(event) {

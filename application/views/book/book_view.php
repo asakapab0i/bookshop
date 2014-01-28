@@ -57,21 +57,6 @@
 							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6>
 							   				<a class="btn btn-info" id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>">Add to cart</a>
 							   				<a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
-							   		
-							   			<script type="text/javascript">
-							   				$(document).on('keyup', '#qty', function(){
-							   					var value = $('#qty').val();
-							   					var link = "<?php echo site_url();?>";
-							   					link = link.concat('cart/add/{product_id}/');
-							   					link = link.concat(value);
-							   					var pathname = window.location.pathname;
-							   					link = link.concat(pathname);
-
-							   					$("#add_cart").attr("href", link);
-
-							   				});
-							   				</script>
-							   		
 
               					
 					 </div>
@@ -125,6 +110,22 @@
 
 
 </div>
+
+
+<script type="text/javascript">
+                        $(document).on('keyup', '#qty', function(){
+                          var value = $('#qty').val();
+                          var link = "<?php echo site_url();?>";
+                          link = link.concat('cart/add/{product_id}/');
+                          link = link.concat(value);
+                          var pathname = window.location.pathname;
+                          link = link.concat(pathname);
+
+                          $("#add_cart").attr("href", link);
+
+                        });
+                        </script>
+
 
 <script type="text/javascript">
     
