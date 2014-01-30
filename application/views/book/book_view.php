@@ -45,7 +45,7 @@
 						</div>
 						<div class="col-md-6">
 							<h4>Description</h4>
-							<p>{description}</p>
+							<p class="desc more">{description}</p>
 						</div>
 					</div>	
 
@@ -58,8 +58,48 @@
 							   				<a class="btn btn-info" id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>">Add to cart</a>
 							   				<a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
 
-              					
+              			<hr/>		
 					 </div>
+
+
+            <!-- Disqus API -->
+      <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'labelleaurorebookstore'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+                
+
+           {/bookview}
+
+           <!-- Random Books -->
+             
+            <h4>Related Books</h4>
+            {random}
+                <div class="col-md-3 text-center">
+                    <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <small>{title}</small> <br/> by <small>{author}</small>
+                    </a>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
+                      <a href="<?php $segments = array('cart', 'add', '{product_id}');
+                                    echo site_url($segments); ?>" class="btn btn-xs btn-default">Add cart</a>
+                     
+                    </div>
+                </div>
+            {/random}
+
+            
+
 
             </div>
             
@@ -67,7 +107,7 @@
             </div>
 </div>
 
-{/bookview}
+
 
 
 		
@@ -239,4 +279,40 @@ $(function(){
 
 });
 
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+  var showChar = 800;
+  var ellipsestext = "...";
+  var moretext = "more";
+  var lesstext = "less";
+  $('.desc').each(function() {
+    var content = $(this).html();
+
+    if(content.length > showChar) {
+
+      var c = content.substr(0, showChar);
+      var h = content.substr(showChar-1, content.length - showChar);
+
+      var html = c + '<span class="moreelipses">'+ellipsestext+'</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+      $(this).html(html);
+    }
+
+  });
+
+  $(".morelink").click(function(){
+    if($(this).hasClass("less")) {
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
+  });
+});
 </script>

@@ -5,6 +5,7 @@ class Book extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('book_model');
+		$this->load->model('home_model');
 	}
 
 	public function index(){
@@ -24,7 +25,17 @@ class Book extends CI_Controller {
 		$book['people'] = $this->book_model->get_people_rate($product_id);
 		$book['user'] = $login;
 		$sum_rating = $this->book_model->get_ratings($product_id);
+		$book['random'] = $random = $this->home_model->home_random();
 		
+
+		//Limit character in titles
+		foreach ($random as $key => $value) {
+				
+				foreach ($value as $key2 => $value2) {
+					$book['random'][$key]['title'] = character_limiter($random[$key]['title'], 20);
+				}
+
+		}
 
 
 		$q1 = $this->cart->contents();

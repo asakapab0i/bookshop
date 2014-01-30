@@ -33,7 +33,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 			            	<strong>{fname} {lname}</strong>
 			            	<br>{email}<br>
 			            	<abbr title="Mobile">Phone:</abbr> {mobile}<br>
-			            	<a href="#">Change Password</a>
+			            	<a href="<?php echo site_url('customer/change_password')?>">Change Password</a>
 			            	</address>
 		            	</div>
 

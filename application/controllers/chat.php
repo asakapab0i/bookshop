@@ -32,7 +32,7 @@ class Chat extends CI_Controller {
 		$haha = '';
 		foreach ($result as $key => $value) {
 			$data[] = $value;
-			$haha .=  '<p><strong>'.$data[$key]['fname'].'</strong>: '.$data[$key]['message'].'<br/><span>sent on: '.$data[$key]['date'].'</span></p>';
+			$haha .=  '<p><strong>'.$data[$key]['fname'].'</strong>: '.wordwrap($data[$key]['message'], 21, "<br/>",true).'<br/><span>sent on: '.$data[$key]['date'].'</span></p>';
 		}
 
 		echo $haha;

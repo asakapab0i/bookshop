@@ -20,7 +20,7 @@
                                   <div  class="panel-body">
 
                                   <small>
-                                    <div style="height: 200px; overflow: auto;" class="chat-area">
+                                    <div style="max-width: 210px; height: 200px; overflow: auto;" class="chat-area">
                                    
 
                                     {message_box}

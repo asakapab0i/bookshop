@@ -70,3 +70,13 @@ hr{
 	padding: 5px;
 	border-radius: 3px;
 }
+
+/*Comment Style*/
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
+}

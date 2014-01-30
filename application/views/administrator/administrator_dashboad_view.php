@@ -136,7 +136,7 @@
                                          {recent_message}
                                             <tr>
                                                 <td>{name}</td>
-                                                <td>{message}</td>
+                                                <td style="max-width: 120px;">{message}</td>
                                                 <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
                                             </tr>
                                           {/recent_message}
