@@ -160,11 +160,9 @@
                           link = link.concat(value);
                           var pathname = window.location.pathname;
                           link = link.concat(pathname);
-
                           $("#add_cart").attr("href", link);
-
                         });
-                        </script>
+</script>
 
 
 <script type="text/javascript">
@@ -286,7 +284,8 @@ $(function(){
   var showChar = 800;
   var ellipsestext = "...";
   var moretext = "More";
-  var lesstext = "Less";
+  var lesstext = "aa
+  Less";
   $('.desc').each(function() {
     var content = $(this).html();
 
