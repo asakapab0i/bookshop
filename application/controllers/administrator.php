@@ -452,6 +452,50 @@ $form_data = array('title' => $this->input->post('title'),
 
 	}
 
+	/*** AJAX REQUEST FOR GOOGLE CHARTS ***/
+
+	public function get_bookstore_data($cur_month = '2014-01'){
+		
+
+		$month  = array('01' => '2013-12', '02' => '2014-01');
+
+		// echo '<pre>';
+		// foreach ($result as $key => $value) {
+		// 	var_dump($value);
+		// }
+
+		//$data[] = ;
+		//echo '<pre>';
+        //var_dump($result);
+
+        $data = [];
+        $tableHeader = ['Month', 'Net Income'];
+        $data[] = $tableHeader;
+
+        foreach ($month as $key => $value) {
+        	$result = $this->db->query("SELECT dateorder, SUM(order_total) AS total_order FROM orders WHERE dateorder LIKE '%".$value."%' AND order_status = 'Approved' ");
+        	$result = $result->result_array();
+
+        	$total_val = (int)$result[0]['total_order'];
+        	$date_month = (string)date('M Y', strtotime($result[0]['dateorder']));
+
+			$data[] = [$date_month,$total_val];        	
+        }
+
+          $rdata = [
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]];
+
+        //var_dump($rdata);
+        //var_dump($data);
+
+		echo json_encode($data);
+		#echo json_encode($rdata);
+	}
+
 
 }
 

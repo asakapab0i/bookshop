@@ -285,8 +285,8 @@ $(function(){
   $(document).ready(function() {
   var showChar = 800;
   var ellipsestext = "...";
-  var moretext = "more";
-  var lesstext = "less";
+  var moretext = "More";
+  var lesstext = "Less";
   $('.desc').each(function() {
     var content = $(this).html();
 
@@ -295,7 +295,7 @@ $(function(){
       var c = content.substr(0, showChar);
       var h = content.substr(showChar-1, content.length - showChar);
 
-      var html = c + '<span class="moreelipses">'+ellipsestext+'</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+      var html = c + '<span class="moreelipses">'+ellipsestext+'</span>&nbsp;<span class="morecontent"><span class="morestyle">' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
 
       $(this).html(html);
     }
