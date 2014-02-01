@@ -431,7 +431,7 @@ $form_data = array('title' => $this->input->post('title'),
 	}
 
 
-	/**AJAX REQUESTS**/
+	/*** AJAX REQUESTS FOR STATUS CHANGE ***/
 
 	public function post_change_status(){
 
@@ -456,20 +456,9 @@ $form_data = array('title' => $this->input->post('title'),
 
 	public function get_bookstore_data($cur_month = '2014-01'){
 		
-
 		$month  = array('01' => '2013-12', '02' => '2014-01');
-
-		// echo '<pre>';
-		// foreach ($result as $key => $value) {
-		// 	var_dump($value);
-		// }
-
-		//$data[] = ;
-		//echo '<pre>';
-        //var_dump($result);
-
         $data = [];
-        $tableHeader = ['Month', 'Net Income'];
+        $tableHeader = ['Month', 'Monthly Income'];
         $data[] = $tableHeader;
 
         foreach ($month as $key => $value) {
@@ -482,18 +471,15 @@ $form_data = array('title' => $this->input->post('title'),
 			$data[] = [$date_month,$total_val];        	
         }
 
-          $rdata = [
+          /* $rdata = [
           ['Year', 'Sales', 'Expenses'],
           ['2004',  1000,      400],
           ['2005',  1170,      460],
           ['2006',  660,       1120],
-          ['2007',  1030,      540]];
+          ['2007',  1030,      540]]; */
 
-        //var_dump($rdata);
-        //var_dump($data);
 
 		echo json_encode($data);
-		#echo json_encode($rdata);
 	}
 
 
