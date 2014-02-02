@@ -526,7 +526,7 @@ $form_data = array('title' => $this->input->post('title'),
 
 	public function get_bookstore_data($cur_month = '2014-01'){
 		
-		$month  = array('01' => '2013-12', '02' => '2014-01');
+		$month  = array('01' => '2013-12', '02' => '2014-01','03' => '2014-02');
         $data = [];
         $tableHeader = ['Month', 'Monthly Income'];
         $data[] = $tableHeader;

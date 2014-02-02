@@ -38,10 +38,10 @@
                             <br>{email}<br>
                             <abbr title="Mobile">Phone:</abbr> {mobile}<br>
                             Account Type: <span id="user_type">{user_type}</span> &nbsp&nbsp<select id="admin_action">
-                            <option>Set to ...</option>
-                            <option value="admin">Admin Account</option>
-                            <option value="staff">Staff Account</option>
-                            <option value="regular">Regular Account</option>
+                            <option value="">Set to ...</option>
+                            <option value="admin">Admin</option>
+                            <option value="staff">Staff</option>
+                            <option value="regular">Regular</option>
                         </select>
                             </address>
                         </div>
@@ -112,10 +112,11 @@
 <script type="text/javascript">
     
                 $(document).ready(function() {
+                     var user_id = $('#panel-head').attr('data');
     $('#example').dataTable( {
         "aaSorting": [[ 2, "asc" ]],
         "bProcessing": true,
-        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders_by_id/44'); ?>",
+        "sAjaxSource": "<?php echo site_url('administrator/datatables_orders_by_id/"+user_id+"'); ?>",
         "aoColumnDefs": [
             {
                 "fnRender": function ( oObj ) {

@@ -24,10 +24,11 @@ ____    __    ____  ___   .___________.  ______  __    __    ____    ____  _____
 
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.min.js'?> "></script>
-        <script type="text/javascript" src="<?php echo base_url() . 'assets/js/custom.js'?> "></script>
              <!-- Table Tools -->
         <script type="text/javascript" charset="utf8" src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js'?>"></script>
-
+            <!-- Horizontal Slider Tool -->
+        <script type="text/javascript" charset="utf8" src="<?php echo base_url() . 'assets/js/jquery.als-1.2.min.js'?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() . 'assets/js/custom.js'?> "></script>
 
 
     </head>
