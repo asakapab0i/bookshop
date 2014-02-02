@@ -387,14 +387,50 @@ $form_data = array('title' => $this->input->post('title'),
 
 	}
 
-	public function settings(){
+	public function accountlist(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Settings';
 		
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->load->view('administrator/administrator_accountlist_view');
+		//Page Footer
+		$this->load->view('template/footer');
+	}
 
+	public function account($id){
+
+		$account['personal'] = $this->administrator_model->get_account($id);
+
+
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Settings';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('administrator/administrator_account_view', $account);
+		//Page Footer
+		$this->load->view('template/footer');
+	}
+
+	public function settings(){
+		//Prepare Header Data
+		$header['page_title'] = 'Administrator | Settings';
+		
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
@@ -413,6 +449,12 @@ $form_data = array('title' => $this->input->post('title'),
 		echo $datatables;
 	}
 
+	public function datatables_orders_by_id($id){
+		$this->datatables->select('order_id,order_total, dateadd, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id')->where('users.id',$id);
+		$datatables = $this->datatables->generate();
+		echo $datatables;
+	}
+
 	public function datatables_shipments(){
 		$this->datatables->select('shipment_id, shipment_date,order_total, dateadd, lname,order_status')->from('shipments')->join('orders', 'shipments.order_id = orders.order_id')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
@@ -424,6 +466,15 @@ $form_data = array('title' => $this->input->post('title'),
 		->datatables
 		->select('product_id, title, author, category, product_qty, price, dateadd')
 		->from('books');
+
+		$datatables = $this->datatables->generate('JSON');
+		echo $datatables;
+	}
+
+	public function datatables_accounts(){
+		$this
+		->datatables->select('id, fname, lname, email, user_type, mobile')
+		->from('users');
 
 		$datatables = $this->datatables->generate('JSON');
 		echo $datatables;
@@ -450,6 +501,25 @@ $form_data = array('title' => $this->input->post('title'),
 		//Send this message back to HTML
 		echo $result[0]['order_status'];
 
+	}
+
+	/*** AJAX REQUEST FOR USER TYPE CHANGE ***/
+	public function post_change_user_type(){
+
+		$status = $this->input->post('status');
+		$user_id = $this->input->post('user_id');
+		$status_arr = array('user_type' => $status);
+
+		//Update
+		$this->db->where('id', $user_id);
+		$this->db->update('users', $status_arr);
+		//Retrieve
+		$this->db->select('user_type')->from('users')->where('id', $user_id);
+		$sql = $this->db->get();
+		$result = $sql->result_array();
+
+		//Send this message back to HTML
+		echo $result[0]['user_type'];
 	}
 
 	/*** AJAX REQUEST FOR GOOGLE CHARTS ***/

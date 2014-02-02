@@ -42,6 +42,12 @@
       $this->ci =& get_instance();
     }
 
+
+    public function query($query){
+      $this->db->query($query);
+      return $this;
+    }
+
     /**
     * If you establish multiple databases in config/database.php this will allow you to
     * set the database (other than $active_group) - more info: http://ellislab.com/forums/viewthread/145901/#712942

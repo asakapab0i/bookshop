@@ -7,6 +7,7 @@
             <a id="dashboard" href="<?php echo site_url('administrator'); ?>" class="list-group-item ">Dashboard</a>
             <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item active">Orders</a>
             <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
+            <a id="reports" href="<?php echo site_url('administrator/accountlist'); ?>" class="list-group-item">Accounts</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           </div>
 
@@ -149,7 +150,7 @@
                                 <div class="panel-heading">Paypal Information</div>
                                 <div class="panel-body">
                              
-                                  Payment Method: <button type="button" class="btn btn-info btn-xs">{payment_method}</button> <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">View Invoice Log</a>
+                                  Payment Method: <button type="button" class="btn btn-info btn-xs">{payment_method}</button> <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">Invoice Log</a>
 
                                
                                 </div>
