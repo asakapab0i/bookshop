@@ -2,6 +2,15 @@
 
 class Book_model extends CI_Model {
 
+        public function get_authordata($name){
+          $this->db->select('*')->from('books')->where('author',$name);
+          $result = $this->db->get();
+          $result = $result->result_array();
+        
+          return $result;
+          
+        }
+
 	public function search_query($term){
 
 		$this->db->select('*')->from('books')->like('title', $term);

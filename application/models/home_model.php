@@ -19,6 +19,12 @@ class Home_model extends CI_Model {
 
 		$sql =  $this->db->query("SELECT * FROM books ORDER BY RAND() LIMIT 4");
 		return $sql->result_array();
-	}
+        }
+
+        public function home_ratings(){
+ 		$sql =  $this->db->query("SELECT books.product_id, books.*, ratings.product_id, SUM(rate) as rates FROM ratings RIGHT JOIN books ON ratings.product_id = books.product_id GROUP BY ratings.product_id ORDER BY rates DESC LIMIT 4");
+		return $sql->result_array();
+                
+        }
 
 }
