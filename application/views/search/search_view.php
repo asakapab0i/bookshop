@@ -75,7 +75,7 @@
             <div style="margin-bottom: 10px;" class="col-md-3">
             <a href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>" title="{0} by {1}">
             <img class="image-size thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">	
-            <small><strong><span class="text-center">{title}</span></strong> <br/> by {author}</small>
+            <small><strong><span class="text-center">{title}</span></strong> <br/> by <a href="<?php echo site_url('book/author/{author}')?>">{author}</a></small>
             </a>
             <hr>
             <div><button class="btn btn-xs btn-danger">Price: PHP {price}</button> <br> 
