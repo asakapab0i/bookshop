@@ -409,6 +409,25 @@ class Customer extends CI_Controller {
 
 	}
 
+	public function datatables_recent_order(){
+		$login_session = $this->session->userdata('login');
+		$user_id = $login_session["id"];
+
+		$this
+		->datatables
+		->select('order_id, dateorder, lname, order_total, order_status')
+		->from('users')
+		->join('address', 'users.id = address.user_id')
+		->join('orders','orders.address_id = address.address_id')
+		->where('users.id', $user_id);
+
+
+		$datatables = $this->datatables->generate('JSON');
+		echo $datatables;
+
+
+	}
+
 	public function check_oldpw($oldpw){
 
 
