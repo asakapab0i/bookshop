@@ -66,15 +66,6 @@
             	}
             ?>
 
-
-
-	
-            				
-            		
-            	<!-- <option value="all">All Books</option>
-            	<option value="ecommerce">eCommerce Books</option>
-            	<option value="antiquesandcollectible">Antiques &amp; Collectibles</option>
-            	<option>16</option> -->
             </select> 
 
 
@@ -218,8 +209,8 @@
             <div style="margin-bottom: 10px;" class="col-md-3">
             <a href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>" title="{0} by {1}">
             <img class="image-size thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">	
-            <small><strong><span class="text-center">{title}</span></strong> <br/> by {author}</small>
-            </a>
+            <small><strong><span class="text-center">{title}</span></strong> <br/></a> by <a href="<?php echo site_url('book/author/{author}')?>" >{author}</a></small>
+          
             <hr>
             <div><button class="btn btn-xs btn-danger">Price: PHP {price}</button> <br> 
 	            {available}
@@ -353,10 +344,6 @@
 
             		var cat = $('.category').val();
             		var base = '<?php echo site_url().'book/browse/'?>'
-            		// var mode = '<?php echo $link_segments['mode']?>'
-            		// var order = '<?php echo $link_segments['order']?>'
-            		// var limit = '<?php echo $link_segments['limit']?>'
-            		// var page = '<?php echo $link_segments['page']?>'
 
             		if (cat == '') {
             			cat = 'all';

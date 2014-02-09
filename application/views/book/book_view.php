@@ -34,7 +34,7 @@
 						<div class="col-md-3">
 							<h6 id="title" data="{product_id}"><strong>{title}</strong></h6>
 							<small> 
-							   Author: {author} <br/>
+							   Author: <a href="<?php echo site_url("book/author/{author}")?>">{author}</a><br/>
 							   Publisher: {publisher} <br/>
 							   Format: {format} <br/>
 							   ISBN: {isbn} <br/>
@@ -57,6 +57,17 @@
 							   				Qty: <input class="" value="1" name="qty" id="qty" type="text" size=6>
 							   				<a class="btn btn-info" id="add_cart" href="<?php echo site_url('cart/add/{product_id}/1/')?>">Add to cart</a>
 							   				<a class="btn btn-danger" href="<?php echo site_url('book/add_wishlist/{product_id}') ?>">Add to Wishlist</a>
+                        <script type="text/javascript">
+                        $(document).on('keyup', '#qty', function(){
+                          var value = $('#qty').val();
+                          var link = "<?php echo site_url();?>";
+                          link = link.concat('cart/add/{product_id}/');
+                          link = link.concat(value);
+                          var pathname = window.location.pathname;
+                          link = link.concat(pathname);
+                          $("#add_cart").attr("href", link);
+                        });
+</script>
 
               			<hr/>		
 					 </div>
@@ -87,9 +98,8 @@
             {random}
                 <div class="col-md-3 text-center">
                     <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <small>{title}</small> <br/> by <small>{author}</small>
-                    </a>
-                    <div class="btn-group">
+                    <small>{title}</a> by </small><br/> <small><a href="<?php echo site_url('book/author/{author}'); ?>">{author}</a></small>
+                   <div class="btn-group">
                       <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
                       <a href="<?php $segments = array('cart', 'add', '{product_id}');
                                     echo site_url($segments); ?>" class="btn btn-xs btn-default">Add cart</a>
@@ -120,7 +130,7 @@
             	<p>There are <span class="label label-danger">{items} item(s)</span> in your cart.</p>
             	<span class="btn btn-xs btn-info">Subtotal: PHP {subtotal}</span>
             	
-            	<a href="<?php echo site_url('cart') ?>" class="btn btn-sm btn-danger">Checkout</a>
+            	<a href="<?php echo site_url('cart') ?>" class="btn btn-xs btn-danger">Checkout</a>
             </div>
              
             <div class="panel-footer">
@@ -152,17 +162,7 @@
 </div>
 
 
-<script type="text/javascript">
-                        $(document).on('keyup', '#qty', function(){
-                          var value = $('#qty').val();
-                          var link = "<?php echo site_url();?>";
-                          link = link.concat('cart/add/{product_id}/');
-                          link = link.concat(value);
-                          var pathname = window.location.pathname;
-                          link = link.concat(pathname);
-                          $("#add_cart").attr("href", link);
-                        });
-</script>
+
 
 
 <script type="text/javascript">
