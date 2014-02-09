@@ -128,7 +128,7 @@ class Checkout extends CI_Controller {
 
 				 $cart = $this->cart->contents();
 				//insert order data
-				$order_data = array('order_id' => random_string('alnum', 8),
+				$order_data = array('order_id' => random_string('alnum', 16),
 									'address_id' => $address_id,
 									'order_total' => $this->cart->total(),
 									'order_status' => 'Pending', //Always pending, to be changed by administrator
@@ -153,7 +153,7 @@ class Checkout extends CI_Controller {
                 $config['cancel_return']                 = base_url() . 'checkout/cancel_payment';
                 $config['notify_url']                         = base_url() . 'checkout/paypal_notify'; //IPN Post
                 $config['production']                         = FALSE; //Its false by default and will use sandbox
-                $config["invoice"]                                = random_string('alnum', 8); //The invoice id
+                $config["invoice"]                                = random_string('alnum', 16); //The invoice id
                 $config["custom"] = $order_data['order_id']; 
 
 
