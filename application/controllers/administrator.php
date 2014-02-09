@@ -118,7 +118,7 @@ class Administrator extends CI_Controller {
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
-		$this->load->view('template/navigation', $navigation);
+                
 		//Page Main Content
 		$this->load->view('administrator/administrator_shipments_view');
 		//Page Footer
@@ -210,7 +210,7 @@ class Administrator extends CI_Controller {
 
 	
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
-		$this->form_validation->set_rules('author', 'Author', 'trim|required');
+		$this->form_validation->set_rules('author', 'Author', 'trim|required|alpha');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
 		$this->form_validation->set_rules('format', 'Format', 'trim|required');
@@ -524,22 +524,39 @@ $form_data = array('title' => $this->input->post('title'),
 
 	/*** AJAX REQUEST FOR GOOGLE CHARTS ***/
 
-	public function get_bookstore_data($cur_month = '2014-01'){
+	public function get_bookstore_data(){
 		
-		$month  = array('01' => '2013-12', '02' => '2014-01','03' => '2014-02');
-        $data = [];
-        $tableHeader = ['Month', 'Monthly Income'];
-        $data[] = $tableHeader;
+		$this->db->select('dateorder, order_total')->from('orders')->where('order_status', 'Approved');
+		$sql = $this->db->get();
+		$result = $sql->result_array();
+		$result2 = $result;
 
-        foreach ($month as $key => $value) {
-        	$result = $this->db->query("SELECT dateorder, SUM(order_total) AS total_order FROM orders WHERE dateorder LIKE '%".$value."%' AND order_status = 'Approved' ");
-        	$result = $result->result_array();
 
-        	$total_val = (int)$result[0]['total_order'];
-        	$date_month = (string)date('M Y', strtotime($result[0]['dateorder']));
+		$i = 0;
+		$day_total = array();
+		$tableHeader = ['Month', 'Monthly Income'];
+        $day_total[] = $tableHeader;
+		foreach($result as $key => $value) {
+			$odate = date('Y-m', strtotime($value['dateorder']));
+			$total = 0;
+			foreach($result2 as $key2 => $value2) {
+				$idate = date('Y-m', strtotime($value2['dateorder']));
+					if ($odate == $idate) {
+						$total = $total + $value2['order_total']; 			
+					}
+				}
 
-			$data[] = [$date_month,$total_val];        	
-        }
+			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
+				continue;
+			}else{
+				$day_total[] = [$odate, $total];
+			}
+
+			
+			$i++;
+			
+	
+		}
 
           /* $rdata = [
           ['Year', 'Sales', 'Expenses'],
@@ -548,8 +565,92 @@ $form_data = array('title' => $this->input->post('title'),
           ['2006',  660,       1120],
           ['2007',  1030,      540]]; */
 
+         # echo '<pre>';
+          # var_dump($data);
+		echo json_encode($day_total);
 
-		echo json_encode($data);
+
+	}
+
+
+        	/*** AJAX REQUEST FOR GOOGLE CHARTS DAYS***/
+
+	public function get_bookstore_data_days(){
+		
+		$this->db->select('dateorder, order_total')->from('orders')->where('order_status', 'Approved');
+		$sql = $this->db->get();
+		$result = $sql->result_array();
+		$result2 = $result;
+
+
+		$i = 0;
+		$day_total = array();
+		$tableHeader = ['Days', 'Daily Income'];
+        $day_total[] = $tableHeader;
+		foreach($result as $key => $value) {
+			$odate = date('Y-m-d', strtotime($value['dateorder']));
+			$total = 0;
+			foreach($result2 as $key2 => $value2) {
+				$idate = date('Y-m-d', strtotime($value2['dateorder']));
+					if ($odate == $idate) {
+						$total = $total + $value2['order_total']; 			
+					}
+				}
+
+			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
+				continue;
+			}else{
+				$day_total[] = [$odate, $total];
+			}
+
+			
+			$i++;
+			
+	
+		}
+		
+		echo json_encode($day_total);
+
+	
+
+
+		#echo $day_total[1][0];
+
+		
+		// foreach ($day_total as $key => $value) {
+		// 	if ($value[0] != '2013-12-29') {
+		// 		echo 'he';
+		// 	}
+
+		// 	var_dump($value);
+		// }
+
+		 // echo '<pre>';
+		 // var_dump($day_total);
+		#echo json_encode($day_total);
+
+
+		// $month  = array('01' => '2014-02-08', '02' => '2014-02-09','03' => '2013-12-03');
+  //       $data = [];
+  //       $tableHeader = ['Day', 'Daily Income'];
+  //       $data[] = $tableHeader;
+
+  //       foreach ($month as $key => $value) {
+  //       	$result = $this->db->query("SELECT dateorder, SUM(order_total) AS total_order FROM orders WHERE dateorder LIKE '%".$value."%' AND order_status = 'Approved' ");
+  //       	$result = $result->result_array();
+
+  //       	$total_val = (int)$result[0]['total_order'];
+  //       	$date_month = (string)date('F m d', strtotime($result[0]['dateorder']));
+
+		// 	$data[] = [$date_month,$total_val];        	
+  //       }
+
+  //         /* $rdata = [
+  //         ['Year', 'Sales', 'Expenses'],
+  //         ['2004',  1000,      400],
+  //         ['2005',  1170,      460],
+  //         ['2006',  660,       1120],
+  //         ['2007',  1030,      540]]; */
 	}
 
 
