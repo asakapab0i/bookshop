@@ -14,7 +14,7 @@
            <div class="panel panel-primary" id="panels">
                                 
 
-                                <div class="panel-heading" id="panel-head" data="{order_id}">Comment Box ({order_id})</div>
+                                <div class="panel-heading" id="panel-head" data="{order_id}">Comment Box (<small>{order_id}</small>)</div>
                                   <div  class="panel-body">
 
                                   <small>
@@ -48,141 +48,19 @@
 
 
     </div>
+
     <div class="col-md-9">
 
         <div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-            Order No {order_id} (the order confirmation email was sent)
+            Order No {order_id}
             </div>
             <div class="panel-body">
 
             <!-- Start Structure -->
-             <div class="col-md-12">
-                    <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Order Information</div>
-                        <div class="panel-body">
-
-                         <div class="col-md-6">
-                                <div class="panel panel-default" id="panels">
-                                <div class="panel-heading">Order # {order_id}</div>
-                                <div class="panel-body">
-                             
-                                  <p>Order Date: {dateorder}</p>
-                 <p>
-                 Order Status: <span class="order_status">{order_status}</span> &nbsp &nbsp &nbsp
-                
-                     <select id="admin_action">
-                       <option value="">Set Status ---</option>
-                       <option value="Cancelled"> to Cancel</option>
-                       <option value="Pending"> to Pending</option>
-                       <option value="Refunded"> to Refund</option>
-                       <option value="Approved"> to Approve</option>
-                    </select>
-               
-                 </p>
-
-                               
-                                </div>
-                            </div>
-
-                        </div>
-
-            <div class="col-md-6">
-                    <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Account Information</div>
-                        <div class="panel-body">
-
-                         <p>Customer Name: {fname} {lname}</p>
-                          <p>Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
-                          
-                       
-                        </div>
-                    </div>
-
-            </div>
-
-                          
-                       
-                        </div>
-                    </div>
-
-            </div>
-
             <div class="col-md-12">
                     <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Payment & Shipping Information</div>
-                        <div class="panel-body">
-
-                         <div class="col-md-6">
-                                <div class="panel panel-default" id="panels">
-                                <div class="panel-heading">Billing Address</div>
-                                <div class="panel-body">
-                             
-                                  <strong>{fname} {lname}</strong>
-                                <br>{company}<br>{street}
-                                <br>{country}<br>
-                                <abbr title="Telephone">Phone:</abbr> {telephone}    
-
-                               
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-                        <div class="panel panel-default" id="panels">
-                            <div class="panel-heading">Shipping Information</div>
-                            <div class="panel-body">
-
-                               <strong>{fname} {lname}</strong>
-                                    <br>{company}<br>{street}
-                                      <br>{country}<br>
-                                       <abbr title="Telephone">Phone:</abbr> {telephone}    
-                            
-                         
-                          </div>
-                      </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-                                <div class="panel panel-default" id="panels">
-                                <div class="panel-heading">Paypal Information</div>
-                                <div class="panel-body">
-                             
-                                  Payment Method: <button type="button" class="btn btn-info btn-xs">{payment_method}</button> <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">Invoice Log</a>
-
-                               
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-                        <div class="panel panel-default" id="panels">
-                            <div class="panel-heading">Order Total Amount</div>
-                            <div class="panel-body text-center">
-
-                               
-                                <span style="font-size: 15px;">PHP {total}{order_total}{/total}</span>
-                               
-                            
-                         
-                          </div>
-                      </div>
-
-                    </div>
-
-                          
-                       
-                        </div>
-                    </div>
-
-            </div>
-
-            <div class="col-md-12">
-                    <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Items Ordered Details</div>
+                        <div class="panel-heading">Items Ordered</div>
                         <div class="panel-body">
 
                       
@@ -243,7 +121,100 @@
 
             </div>
 
+             <div class="col-md-12">
+                    <div class="panel panel-default" id="panels">
+                        <div class="panel-heading">Order Information</div>
+                        <div class="panel-body">
 
+                         <div class="col-md-6">
+                                <div class="panel panel-default" id="panels">
+                                <div class="panel-heading">Order # {order_id}</div>
+                                <div class="panel-body">
+                             
+                                  <p>Order Date: {dateorder}</p>
+                 <p>
+                 Order Status: <span class="order_status">{order_status}</span> &nbsp &nbsp &nbsp
+                
+                     <select id="admin_action">
+                       <option value="">Set Status ---</option>
+                       <option value="Cancelled"> to Cancel</option>
+                       <option value="Pending"> to Pending</option>
+                       <option value="Refunded"> to Refund</option>
+                       <option value="Approved"> to Approve</option>
+                    </select>
+               
+                 </p>
+
+                               
+                                </div>
+                            </div>
+
+                        </div>
+
+            <div class="col-md-6">
+                    <div class="panel panel-default" id="panels">
+                        <div class="panel-heading">Account Information</div>
+                        <div class="panel-body">
+
+                         <p>Customer Name: {fname} {lname}</p>
+                          <p>Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
+                          
+                       
+                        </div>
+                    </div>
+
+            </div>
+
+                          
+                       
+                        </div>
+                    </div>
+
+            </div>
+
+
+
+            <div class="col-md-12">
+                    <div class="panel panel-default" id="panels">
+                        <div class="panel-heading">Payment Information</div>
+                        <div class="panel-body">
+
+                    
+
+                    <div class="col-md-6">
+                                <div class="panel panel-default" id="panels">
+                                <div class="panel-heading">Paypal Information</div>
+                                <div class="panel-body">
+                             
+                                  Payment Method: <button type="button" class="btn btn-info btn-xs">{payment_method}</button> <a class="btn btn-success btn-xs" href="<?php echo base_url() . 'customer/invoice_log/{order_id}'?>">Invoice Log</a>
+
+                               
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="panel panel-default" id="panels">
+                            <div class="panel-heading">Order Total Amount</div>
+                            <div class="panel-body text-center">
+
+                               
+                                <span style="font-size: 15px;">PHP {total}{order_total}{/total}</span>
+                               
+                            
+                         
+                          </div>
+                      </div>
+
+                    </div>
+
+                          
+                       
+                        </div>
+                    </div>
+
+            </div>
 
             <!-- End Structure -->
 

@@ -29,6 +29,8 @@
                                  <div id="chart_div">
                 
                                  </div>
+                                 <div id="chart_div_days">
+                                 </div>
                             </div>
                     </div>
             </div>
@@ -54,6 +56,47 @@
                             </div>
 
                             <div class="col-md-7">
+                                <div class="panel panel-default" id="panels">
+                                <div class="panel-heading">Recent Orders</div>
+                                <div style="height: 150px; overflow: auto" class="panel-body">
+                              
+                                    
+                       
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order #</th>
+                                                <th>Total Price</th>
+                                                <th>Order Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         {recent_orders}
+                                            <tr>
+                                                <td>{order_id}</td>
+                                                <td>{order_total}</td>
+                                                <td>{order_status}</td>
+                                                <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
+                                            </tr>
+                                          {/recent_orders}
+                                        </tbody>
+                                    </table>
+                        
+                                </div>
+                                </div>
+                                
+                            </div>
+                       
+                        </div>
+                    </div>
+
+                <div class="panel panel-default" id="panels">
+                        <div class="panel-heading">Recent Books & Order Messages</div>
+                        <div class="panel-body">
+
+
+                         <div class="col-md-7">
                                 
                                 <div class="panel panel-default" id="panels">
                                 <div class="panel-heading">Recently Added Books</div>
@@ -80,48 +123,6 @@
                                         </tbody>
                                     </table>
                                 
-                                </div>
-                                </div>
-                                
-                            </div>
-                       
-                        </div>
-                    </div>
-
-                <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Recent Orders & Order Messages</div>
-                        <div class="panel-body">
-
-
-                         <div class="col-md-7">
-                                
-                                <div class="panel panel-default" id="panels">
-                                <div class="panel-heading">Recently Added Books</div>
-                                <div style="height: 150px; overflow: auto" class="panel-body">
-                              
-                                    
-                       
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Order #</th>
-                                                <th>Total Price</th>
-                                                <th>Order Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                         {recent_orders}
-                                            <tr>
-                                                <td>{order_id}</td>
-                                                <td>{order_total}</td>
-                                                <td>{order_status}</td>
-                                                <td><a class="label label-success" href="<?php echo site_url('administrator/order/{order_id}')?>" title="">View</a></td>
-                                            </tr>
-                                          {/recent_orders}
-                                        </tbody>
-                                    </table>
-                        
                                 </div>
                                 </div>
                                 
@@ -182,16 +183,36 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
          var jsonData = $.ajax({
-          url: "<?php echo site_url('administrator/get_bookstore_data/2014-1')?>",
+          url: "<?php echo site_url('administrator/get_bookstore_data')?>",
           async: false
           }).responseText;
          var data = google.visualization.arrayToDataTable($.parseJSON(jsonData));
 
         var options = {
-          title: 'Labelle Aurore Bookstore Income Statistics',
-          vAxis: {title: 'Month'}
+          title: 'Labelle Aurore Bookstore Monthly Income Statistics',
+          hAxis: {title: 'Months'}
         };
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+         var jsonData = $.ajax({
+          url: "<?php echo site_url('administrator/get_bookstore_data_days')?>",
+          async: false
+          }).responseText;
+         var data = google.visualization.arrayToDataTable($.parseJSON(jsonData));
+
+        var options = {
+          title: 'Labelle Aurore Bookstore Daily Income Statistics',
+          hAxis: {title: 'Days'}
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_days'));
         chart.draw(data, options);
       }
     </script>
