@@ -103,8 +103,10 @@ class Book extends CI_Controller {
 		
 		$result = $this->book_model->get_books($page, $limit, $order_by, $order, $category);
 		$book['books'] = $this->modify_array_data($result);
+
 		
-		
+		// var_dump($book['books'][0]['author']);
+		// die();		
 		
 
 
@@ -122,9 +124,55 @@ class Book extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+        public function author($authorname){
+         
+        	//Prepare Header Data
+		$header['page_title'] = 'Book | Author '.urldecode($authorname).' ';
+		
+		//Navigation
+                $navigation['page_cur_nav'] = 'book';
+                $navigation['authorname'] = $authorname;
+                $mode = 'grid';
+
+		$book_author['subtotal'] = $this->cart->format_number($this->cart->total());
+		$book_author['items'] = $this->cart->total_items();
+                
+                
+                $name = urldecode($authorname);
+                $result = $this->book_model->get_authordata($name);
+                $book_author['book_author'] = $this->modify_array_data($result);
+
+
+                $q1 = $this->cart->contents();
+		shuffle($q1);
+		$book_author['recent_cart'] = $q1;
+		
+		
+	
+
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		if ($mode == 'grid') {
+			$this->parser->parse('book/book_authorview', $book_author);
+		}
+		//Page Footer
+		$this->load->view('template/footer');
+
+
+
+
+
+
+        }
+
 	public function search(){
 
 		$term = $this->input->get('search');
+		$term = urlencode($term);
+
 
 		$mode = 'grid';
 		$book['term'] = $term;
