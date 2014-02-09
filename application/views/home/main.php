@@ -74,9 +74,8 @@
             <center>
                 <div class="col-md-3">
                     <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <small>{title}</small> <br/> by <small>{author}</small>
-                    </a>
-                    <div class="btn-group">
+ <small>{title}</small> <br/> </a> by <small><a href="<?php echo site_url('book/author/{author}')?>">{author}</a></small>
+                   <div class="btn-group">
                       <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
                       <a href="<?php $segments = array('cart', 'add', '{product_id}');
                                     echo site_url($segments); ?>" class="btn btn-xs btn-default">Add cart</a>
@@ -104,9 +103,8 @@
             <center>
                 <div class="col-md-3">
                     <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <small>{title}</small> <br/> by <small>{author}</small>
-                    </a>
-                    <div class="btn-group">
+ <small>{title}</small> <br/> </a> by <small><a href="<?php echo site_url('book/author/{author}')?>">{author}</a></small>
+                                      <div class="btn-group">
                       <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
                       <a href="<?php $segments = array('cart', 'add', '{product_id}');
                                     echo site_url($segments); ?>" class="btn btn-xs btn-default">Add cart</a>
@@ -122,20 +120,20 @@
 
         </section>
 
-                     <section id="random">
+                     <section id="most-rated">
            
 <div class="panel panel-default" id="content-formatting">
-            <div class="panel-heading">Random Book
+            <div class="panel-heading">Most Rated Books
             </div>
             <div class="panel-body">
 
 
-            {random}
+            {ratings}
             <center>
                 <div class="col-md-3">
                     <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
-                    <small>{title}</small> <br/> by <small>{author}</small>
-                    </a>
+                    <small>{title}</small> <br/> </a> by <small><a href="<?php echo site_url('book/author/{author}')?>">{author}</a></small>
+                    
                     <div class="btn-group">
                       <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
                       <a href="<?php $segments = array('cart', 'add', '{product_id}');
@@ -144,12 +142,13 @@
                     </div>
                 </div>
                 </center>
-            {/random}
+            {/ratings}
 
 
             </div>
           </div>
         </section>
+
 
 
             </div>

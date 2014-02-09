@@ -21,12 +21,7 @@
            	<a class="btn btn-success btn-lg" href="<?php echo base_url() . 'customer/order/'.$order_id.' '?>" title="">View Order Transaction</a>
 
             </div>
-
-
-
-           
-
-           
+ 
 
 </div>
    

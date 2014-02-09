@@ -6,7 +6,7 @@
             <a href="<?php echo site_url('customer/dashboard'); ?>" class="list-group-item ">Account Dashboard</a>
             <a href="<?php echo site_url('customer/account'); ?>" class="list-group-item">Account Information</a>
             <a href="<?php echo site_url('customer/address'); ?>" class="list-group-item active">Account Address</a>
-            <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item ">My Orders</a>
+            <a href="<?php echo site_url('customer/orders'); ?>" class="list-group-item ">My Order History</a>
             <a href="<?php echo site_url('customer/wishlist'); ?>" class="list-group-item">My Wishlist</a>
           </div>
 	</div>
