@@ -40,7 +40,6 @@
                             Account Type: <span id="user_type">{user_type}</span> &nbsp&nbsp<select id="admin_action">
                             <option value="">Set to ...</option>
                             <option value="admin">Admin</option>
-                            <option value="staff">Staff</option>
                             <option value="regular">Regular</option>
                         </select>
                             </address>

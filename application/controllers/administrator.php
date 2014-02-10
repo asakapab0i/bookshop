@@ -210,7 +210,7 @@ class Administrator extends CI_Controller {
 
 	
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
-		$this->form_validation->set_rules('author', 'Author', 'trim|required|alpha');
+		$this->form_validation->set_rules('author', 'Author', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
 		$this->form_validation->set_rules('format', 'Format', 'trim|required');
