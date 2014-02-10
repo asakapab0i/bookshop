@@ -651,7 +651,25 @@ $form_data = array('title' => $this->input->post('title'),
   //         ['2005',  1170,      460],
   //         ['2006',  660,       1120],
   //         ['2007',  1030,      540]]; */
-	}
+        }
+
+        public function get_bookstore_data_weeks(){
+          $sql = $this->db->query("SELECT dateorder, SUM(order_total) AS weekly_sales FROM orders WHERE order_status = 'Approved' GROUP BY week(dateorder) ORDER BY dateorder ASC");
+          $result = $sql->result_array();
+
+          
+    	  $tableHeader = ['Weeks', 'Weekly Income'];
+          $weekly[] = $tableHeader;
+	
+          foreach($result as $key => $value){
+            $weekly[] = [$value['dateorder'], (int)$value['weekly_sales']];
+          }
+
+          echo json_encode($weekly);
+          #var_dump($weekly);
+
+        }
+
 
 
 }

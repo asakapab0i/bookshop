@@ -26,11 +26,13 @@
                     <div class="panel panel-default" id="panels">
                         <div class="panel-heading">Bookstore Statistics</div>
                             <div class="panel-body">
-                                 <div id="chart_div">
-                
+                                <div id="chart_div_days">
                                  </div>
-                                 <div id="chart_div_days">
+                                <div id="chart_div_weeks">
+                                 </div>                                 
+                                  <div id="chart_div_months">
                                  </div>
+
                             </div>
                     </div>
             </div>
@@ -192,13 +194,12 @@
           title: 'Labelle Aurore Bookstore Monthly Income Statistics',
           hAxis: {title: 'Months'}
         };
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_months'));
         chart.draw(data, options);
       }
     </script>
 
- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+   <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -213,6 +214,25 @@
           hAxis: {title: 'Days'}
         };
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_days'));
+        chart.draw(data, options);
+      }
+    </script>
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+         var jsonData = $.ajax({
+          url: "<?php echo site_url('administrator/get_bookstore_data_weeks')?>",
+          async: false
+          }).responseText;
+         var data = google.visualization.arrayToDataTable($.parseJSON(jsonData));
+
+        var options = {
+          title: 'Labelle Aurore Bookstore Weekly Income Statistics',
+          hAxis: {title: 'Weeks'}
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_weeks'));
         chart.draw(data, options);
       }
     </script>
