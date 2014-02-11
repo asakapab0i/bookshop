@@ -273,8 +273,8 @@ $form_data = array('title' => $this->input->post('title'),
 
 
 		if ($this->form_validation->run() == False) {
-			var_dump(validation_errors());
-			die();
+			//var_dump(validation_errors());
+			//die();
 			redirect('administrator/book_add');
 		}else{
 			$this->session->set_flashdata('add_success', 'Book Successfully Added!');
