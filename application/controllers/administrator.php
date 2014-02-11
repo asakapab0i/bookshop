@@ -537,10 +537,10 @@ $form_data = array('title' => $this->input->post('title'),
 		$tableHeader = ['Month', 'Monthly Income'];
         $day_total[] = $tableHeader;
 		foreach($result as $key => $value) {
-			$odate = date('Y-m', strtotime($value['dateorder']));
+			$odate = date('y-m', strtotime($value['dateorder']));
 			$total = 0;
 			foreach($result2 as $key2 => $value2) {
-				$idate = date('Y-m', strtotime($value2['dateorder']));
+				$idate = date('y-m', strtotime($value2['dateorder']));
 					if ($odate == $idate) {
 						$total = $total + $value2['order_total']; 			
 					}
@@ -588,10 +588,10 @@ $form_data = array('title' => $this->input->post('title'),
 		$tableHeader = ['Days', 'Daily Income'];
         $day_total[] = $tableHeader;
 		foreach($result as $key => $value) {
-			$odate = date('Y-m-d', strtotime($value['dateorder']));
+			$odate = date('d', strtotime($value['dateorder']));
 			$total = 0;
 			foreach($result2 as $key2 => $value2) {
-				$idate = date('Y-m-d', strtotime($value2['dateorder']));
+				$idate = date('d', strtotime($value2['dateorder']));
 					if ($odate == $idate) {
 						$total = $total + $value2['order_total'];			
 					}
@@ -600,7 +600,8 @@ $form_data = array('title' => $this->input->post('title'),
 			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
 				continue;
 			}else{
-				$day_total[] = [$odate, $total];
+				$week = date('d', strtotime($value['dateorder']));
+				$day_total[] = [$week, $total];
 			}
 
 			
@@ -662,7 +663,7 @@ $form_data = array('title' => $this->input->post('title'),
           $weekly[] = $tableHeader;
 	
           foreach($result as $key => $value){
-          	$week = date('Y', strtotime($value['dateorder'])) .'-'.date('m-d', strtotime($value['dateorder']));
+          	$week = date('y', strtotime($value['dateorder'])) .'-'.date('m-d', strtotime($value['dateorder']));
             $weekly[] = [$week, (int)$value['weekly_sales']];
           }
 
