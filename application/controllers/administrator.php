@@ -216,7 +216,7 @@ class Administrator extends CI_Controller {
 		$this->form_validation->set_rules('format', 'Format', 'trim|required');
 		$this->form_validation->set_rules('isbn', 'ISBN', 'trim|required');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required');
-		$this->form_validation->set_rules('price', 'Price', 'trim|required|integer|callback_check_number');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required|callback_check_number');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|integer|callback_check_number');
 
 		if (empty($_FILES['userfile']['name']))
@@ -273,8 +273,8 @@ $form_data = array('title' => $this->input->post('title'),
 
 
 		if ($this->form_validation->run() == False) {
-			// var_dump(validation_errors());
-			// die();
+			var_dump(validation_errors());
+			die();
 			redirect('administrator/book_add');
 		}else{
 			$this->session->set_flashdata('add_success', 'Book Successfully Added!');
