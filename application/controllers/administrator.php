@@ -593,7 +593,7 @@ $form_data = array('title' => $this->input->post('title'),
 			foreach($result2 as $key2 => $value2) {
 				$idate = date('Y-m-d', strtotime($value2['dateorder']));
 					if ($odate == $idate) {
-						$total = $total + $value2['order_total']; 			
+						$total = $total + $value2['order_total'];			
 					}
 				}
 
@@ -662,7 +662,8 @@ $form_data = array('title' => $this->input->post('title'),
           $weekly[] = $tableHeader;
 	
           foreach($result as $key => $value){
-            $weekly[] = [$value['dateorder'], (int)$value['weekly_sales']];
+          	$week = date('Y', strtotime($value['dateorder'])) .'-'.date('m-d', strtotime($value['dateorder']));
+            $weekly[] = [$week, (int)$value['weekly_sales']];
           }
 
           echo json_encode($weekly);

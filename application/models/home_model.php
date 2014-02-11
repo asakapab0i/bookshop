@@ -10,7 +10,7 @@ class Home_model extends CI_Model {
 
 	public function home_releases(){
 
-		$this->db->select('*')->from('books')->order_by('dateadd','asc')->limit(4);
+		$this->db->select('*')->from('books')->order_by('dateadd','desc')->limit(4);
 		$sql = $this->db->get();
 		return $sql->result_array();
 	}
