@@ -25,7 +25,7 @@
 
                     <div class="panel panel-default" id="panels">
                         <div class="panel-heading">Bookstore Statistics</div>
-                            <div class="panel-body">
+                            <div style="height: 200px; overflow:auto;"  class="panel-body">
                                 <div id="chart_div_days">
                                  </div>
                                 <div id="chart_div_weeks">
