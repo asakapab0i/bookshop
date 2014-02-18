@@ -64,7 +64,8 @@ class Cart extends CI_Controller {
 		if($this->cart->insert($product)){
 			redirect('cart');
 		}else{
-			die('Something is wrong');
+			#var_dump($product);
+			die('Something is wrong. We are being notified with this problem please bear with us.');
 		}
 
 

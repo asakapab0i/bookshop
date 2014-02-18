@@ -10,7 +10,7 @@ class Checkout extends CI_Controller {
 		$this->load->model('cart_model');
 		$this->load->helper('string');
 
-		$this->paypal_id = 'rrongie-facilitator@gmail.com';
+		$this->paypal_id = 'rongie.andrade@gmail.com';
 
 
 		//Everytime this class is called it automatically checks the the function is_logged_in
