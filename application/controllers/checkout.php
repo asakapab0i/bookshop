@@ -29,11 +29,10 @@ class Checkout extends CI_Controller {
 
 	public function index(){
 		$cart = $this->cart_model->check_checkout($this->cart->contents());
-		$reflink = $_SERVER['HTTP_REFERER'];
 		
 		if (!$this->_is_logged_in()) {
 			$this->session->set_flashdata('checkout', 'You need to be logged in to checkout!');
-			redirect("account/login?ref=$reflink");
+			redirect("account/login");
 		}
 
 
@@ -292,10 +291,14 @@ class Checkout extends CI_Controller {
 				
 				if ($this->input->post()) {
 
-
-
-
+					#email			
 					$paypal_log = $this->input->post();
+					#$order_id = $paypal["custom"];
+					#$link = site_url("administrator/order/$order_id"); 
+				 	#$url = "<a href='$link'>Order $order_id";
+					$message = "Another sales report. \n Please check your adminstrator dashboard";
+					mail('rrongie@gmail.com,bojorquebryan@gmail.com,helpdesk@labelleaurorebookshop.com', 'Sales Notification', $message);
+
 				 	$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log),'order_id' => $paypal_log['custom']));
 				 	$this->checkout_model->update_approve_order($paypal_log['custom']);
 

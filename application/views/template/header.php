@@ -20,7 +20,7 @@ ____    __    ____  ___   .___________.  ______  __    __    ____    ____  _____
         <!-- DataTables CSS -->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css'?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/custom.css'?>">
-
+	<!-- <link rel="shortcut iconi" type="image/png" href="<?php echo base_url() . 'assets/img/favicon.ico'?>"> -->
 
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.min.js'?> "></script>

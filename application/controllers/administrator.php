@@ -444,7 +444,7 @@ $form_data = array('title' => $this->input->post('title'),
 	}
 
 	public function datatables_orders(){
-		$this->datatables->select('order_id,order_total, dateadd, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->datatables->select('order_id,order_total, dateorder, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}

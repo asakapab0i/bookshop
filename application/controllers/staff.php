@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include 'Administrator.php';
+include 'administrator.php';
 
 class Staff extends Administrator {
 

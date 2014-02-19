@@ -62,9 +62,13 @@ class Cart extends CI_Controller {
             );
 
 		if($this->cart->insert($product)){
+			#$message = "An error occured while adding product to cart.\n -Labelle Aurore Bookshop Autoresponder";
+			#mail('bojorquebryan@gmail.com,helpdesk@labelleaurorebookshop.com', 'Error Notification', $message);
 			redirect('cart');
 		}else{
 			#var_dump($product);
+			$message = "An error occured while adding product to cart.\n -Labelle Aurore Bookshop Autoresponder";
+			mail('bojorquebryan@gmail.com,helpdesk@labelleaurorebookshop.com', 'Error Notification', $message);
 			die('Something is wrong. We are being notified with this problem please bear with us.');
 		}
 
