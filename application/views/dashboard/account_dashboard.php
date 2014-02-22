@@ -74,6 +74,8 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 						         				<th>Date</th>
 						         				<th>Ship To</th>
 						         				<th>Order Total</th>
+
+     <th>Package Status</th>
 						         				<th>Order Status</th>
 						         				<th>Options</th>
 						         			</tr>
@@ -113,7 +115,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
                 "fnRender": function ( oObj ) {
                     return '<a href="order/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
                 },
-                "aTargets": [ 5 ],
+                "aTargets": [ 6 ],
                 "sDefaultContent": ""
             }
         ]

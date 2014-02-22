@@ -27,6 +27,7 @@
          				<th>Date</th>
          				<th>Ship To</th>
          				<th>Order Total</th>
+					<th>Package Status</th>
          				<th>Order Status</th>
          				<th>Options</th>
          			</tr>
@@ -61,7 +62,7 @@
                 "fnRender": function ( oObj ) {
                     return '<a href="order/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
                 },
-                "aTargets": [ 5 ],
+                "aTargets": [ 6 ],
                 "sDefaultContent": ""
             }
         ]
