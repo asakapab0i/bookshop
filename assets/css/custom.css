@@ -84,3 +84,7 @@ a.morelink {
 .morestyle{
 	font-size: 12px;
 }
+
+.panel-primary{
+	border:none;
+}

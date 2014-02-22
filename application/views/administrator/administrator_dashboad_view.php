@@ -45,7 +45,7 @@
                             <div class="col-md-5">
                                 
                                 <div class="panel panel-default" id="panels">
-                                <div class="panel-heading">Net Income</div>
+                                <div class="panel-heading">Net Income <span class="pull-right"><a href="https://sandbox.paypal.com">Go to PayPal</a></span></div>
                                 <div style="height: 150px; overflow: auto" class="panel-body text-center">
                                     <br/><br/><p style="font-size: 30px;"><strong>
                                     {net_income}
