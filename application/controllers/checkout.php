@@ -297,7 +297,7 @@ class Checkout extends CI_Controller {
 					#$link = site_url("administrator/order/$order_id"); 
 				 	#$url = "<a href='$link'>Order $order_id";
 					$message = "Another sales report. \n Please check your adminstrator dashboard";
-					mail('rrongie@gmail.com,bojorquebryan@gmail.com,helpdesk@labelleaurorebookshop.com', 'Sales Notification', $message);
+					mail('helpdesk@labelleaurorebookshop.com', 'Sales Notification', $message);
 
 				 	$this->checkout_model->insert_paypal_log(array('data' => serialize($paypal_log),'order_id' => $paypal_log['custom']));
 				 	$this->checkout_model->update_approve_order($paypal_log['custom']);
