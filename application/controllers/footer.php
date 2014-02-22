@@ -5,7 +5,7 @@ Class Footer Extends CI_Controller{
   public function aboutus(){
 
     //Prepare Header Data
-    $header['page_title'] = 'Footer';
+    $header['page_title'] = 'About us | La Belle Aurore Bookshop';
 
     //Navigation
     $navigation['page_cur_nav'] = 'account';
@@ -26,7 +26,7 @@ Class Footer Extends CI_Controller{
   public function payment_method(){
 
     //Prepare Header Data
-    $header['page_title'] = 'Footer';
+    $header['page_title'] = 'Payment Method | La Belle Aurore Bookshop ';
 
     //Navigation
     $navigation['page_cur_nav'] = 'account';
@@ -47,7 +47,7 @@ Class Footer Extends CI_Controller{
   public function private_policy(){
 
     //Prepare Header Data
-    $header['page_title'] = 'Footer';
+    $header['page_title'] = 'Private Policy | La Belle Aurore Bookshop';
 
     //Navigation
     $navigation['page_cur_nav'] = 'account';
@@ -71,7 +71,7 @@ Class Footer Extends CI_Controller{
   public function faq(){
 
     //Prepare Header Data
-    $header['page_title'] = 'Footer';
+    $header['page_title'] = 'FAQ | La Belle Aurore Bookshop';
 
     //Navigation
     $navigation['page_cur_nav'] = 'account';
