@@ -107,6 +107,13 @@ class Administrator_model extends CI_Model {
 		$sql = $this->db->get();
 		return $sql->result_array();
 	}
+	
+	public function get_latest_claims($limit){
+		$this->db->select('*')->from('orders')->where('package_status', 'Claimed')->order_by('dateorder', 'DESC')->limit($limit);
+		$sql = $this->db->get();
+		
+		return $sql->result_array();
+	}
 
 }
 

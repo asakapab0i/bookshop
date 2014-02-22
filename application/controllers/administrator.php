@@ -22,7 +22,7 @@ class Administrator extends CI_Controller {
 	private function _is_logged_in(){
 		$login_session = $this->session->userdata('login');
 		
-		if ($login_session['type'] == 'admin') {
+		if ($login_session['type'] == 'admin' || $login_session['type'] == 'staff') {
 			return true;
 		}else{
 			return false;
@@ -442,9 +442,14 @@ $form_data = array('title' => $this->input->post('title'),
 		$this->load->view('template/footer');
 
 	}
+		public function datatables_orders_staff(){
+		$this->datatables->select('order_id,order_total, dateorder, lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$datatables = $this->datatables->generate();
+		echo $datatables;
+	}
 
 	public function datatables_orders(){
-		$this->datatables->select('order_id,order_total, dateorder, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->datatables->select('order_id,order_total, dateorder, lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}

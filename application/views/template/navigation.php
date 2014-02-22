@@ -89,7 +89,11 @@
                                       
                                         if ($login['type'] == 'admin') {
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
-                                      }
+					echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+
+                                      }elseif($login['type'] == 'staff'){
+					echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+					}
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -140,7 +144,12 @@
 
                                         if ($login['type'] == 'admin') {
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
-                                        }
+					echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+
+                                        }elseif($login['type'] = 'staff'){
+				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+					
+					}
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -189,7 +198,13 @@
 
                                         if ($login['type'] == 'admin') {
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
-                                        }
+                                       	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+
+                                        }elseif($login['type'] = 'staff'){
+				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+					
+					}
+
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -238,7 +253,13 @@
 
                                       if ($login['type'] == 'admin') {
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
-                                      }
+                                      	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+
+                                        }elseif($login['type'] = 'staff'){
+				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+					
+					}
+
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';
@@ -292,7 +313,13 @@
 
                                         if ($login['type'] == 'admin') {
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
-                                        }
+                                      	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+
+                                        }elseif($login['type'] = 'staff'){
+				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
+					
+					}
+
 
                                       echo '<li><a href="'.site_url('customer/dashboard').'">Account Dashboard</a></li>';
                                       echo ' <li><a href="'.site_url('account/logout').'">Account Logout</a></li>';

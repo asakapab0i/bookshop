@@ -41,6 +41,7 @@
                             <option value="">Set to ...</option>
                             <option value="admin">Admin</option>
                             <option value="regular">Regular</option>
+			    <option value="staff">Staff</option>
                         </select>
                             </address>
                         </div>

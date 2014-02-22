@@ -52,8 +52,8 @@
                   <td>PHP {price}</td>
                   <td class="text-center">Qty: <input class="" value="1" name="qty" id="qty{product_id}" type="text" size=6> 
 
-                  <a id="add_cart{product_id}" href="<?php echo site_url('cart/add/{product_id}/1/')?>" class="btn btn-success">Add to cart </a>
-                  <a class="btn btn-danger" href="<?php echo site_url('customer/remove_wishlist/{product_id}/') ?>">Remove</a></td>
+                  <a id="add_cart{product_id}" href="<?php echo site_url('cart/add/{product_id}/1/')?>" class="btn btn-xs btn-success">Add to cart </a>
+                  <a class="btn btn-xs btn-danger" href="<?php echo site_url('customer/remove_wishlist/{product_id}/') ?>">Remove</a></td>
                 </tr>
 
                 <script type="text/javascript">
