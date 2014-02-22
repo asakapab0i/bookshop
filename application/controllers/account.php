@@ -173,6 +173,8 @@ class Account extends CI_Controller {
 				redirect('customer/dashboard');
 			}elseif($userinfo[0]['user_type'] == 'admin'){
 				redirect('administrator');
+			}elseif($userinfo[0]['user_type'] == 'staff'){
+				redirect('staff');
 			}
 
 

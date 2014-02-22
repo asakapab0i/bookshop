@@ -442,7 +442,25 @@ $form_data = array('title' => $this->input->post('title'),
 		$this->load->view('template/footer');
 
 	}
-		public function datatables_orders_staff(){
+
+	public function add_featured($id){
+		$data = array('product_id' => $id);
+		$this->db->select('*')->from('featured')->where('product_id', $id);
+		$sql = $this->db->get();
+		$num = $sql->num_rows();
+	
+		if($num == 1){
+			$this->session->set_flashdata('featured', 'The book is already in the featured list.');	
+			redirect('administrator/books');
+		}else{
+			$this->db->insert('featured',$data);
+			$this->session->set_flashdata('featured', 'Book has been added to featured list.');	
+		redirect('administrator/books');
+
+		}
+
+	}
+	public function datatables_orders_staff(){
 		$this->datatables->select('order_id,order_total, dateorder, lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
