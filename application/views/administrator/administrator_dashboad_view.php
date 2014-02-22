@@ -16,7 +16,7 @@
 	<div class="col-md-9">
 		<div class="panel panel-primary" id="panels">
             <div class="panel-heading">
-            Admin Dashboard <span class="pull-right"><a target="_blank" style="color: #fffff;" href="http://sandbox.paypal.com">Print Paypal Sales Summary</a></span>
+            Admin Dashboard <span class="pull-right"><a target="_blank" style="color: white;" href="http://sandbox.paypal.com">Print Paypal Sales Summary</a></span>
             </div>
             <div class="panel-body">
 

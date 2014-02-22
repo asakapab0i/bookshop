@@ -21,7 +21,19 @@
              Books <a href="<?php echo site_url('administrator/book_add'); ?>" class="pull-right btn btn-default">Add Book</a> <a href="<?php echo site_url('administrator/category_add'); ?>" class="pull-right btn btn-default">Add Category</a>
           </div>
             <div class="panel-body">
+<?php 
 
+          if ($this->session->flashdata('featured')) {
+            $wishlist = $this->session->flashdata('featured');
+
+            echo '<div class="text-center alert alert-warning">';
+            echo $wishlist;
+            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'; 
+            echo '</div>';
+          }
+
+
+?>
         
         <table id="books-view" class="table">
             <thead>
@@ -66,7 +78,9 @@
         "aoColumnDefs": [
             {
                 "fnRender": function ( oObj ) {
-                    return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
+                   //return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a><a href="add_featured/'+oObj.aData[0]+'" class="btn btn-xs btn-danger">Feature</a>';
+		return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
+
                 },
                 "aTargets": [ 7 ],
                 "sDefaultContent": ""

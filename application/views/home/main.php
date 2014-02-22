@@ -61,7 +61,7 @@
 
 <hr>
 
-       
+    <!--   
                      <section id="featured">
            
 <div class="panel panel-default" id="content-formatting">
@@ -90,7 +90,7 @@
           </div>
 
         </section>
-
+-->
              <section id="releases">
            
 <div class="panel panel-default" id="content-formatting">
@@ -149,6 +149,36 @@
           </div>
         </section>
 
+<!-- Most Viewed -->
+
+              <section id="most-viewed">
+           
+<div class="panel panel-default" id="content-formatting">
+            <div class="panel-heading">Most Viewed Books
+            </div>
+            <div class="panel-body">
+
+
+            {most_viewed}
+            <center>
+                <div class="col-md-3">
+                    <a  href="<?php echo base_url() . 'book/view/' . '{product_id}/{product_url}' ?>"> <img style="height: 150px;" height="150px" width="150px" class="thumbnail" src="<?php echo base_url() . 'assets/img/books_image/{image}' ?>">
+                    <small>{title}</small> <br/> </a> by <small><a href="<?php echo site_url('book/author/{author}')?>">{author}</a></small>
+                    
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-xs btn-success">&#8369 {price}</button>
+                      <a href="<?php $segments = array('cart', 'add', '{product_id}');
+                                    echo site_url($segments); ?>" class="btn btn-xs btn-default">Add cart</a>
+                     
+                    </div>
+                </div>
+                </center>
+            {/most_viewed}
+
+
+            </div>
+          </div>
+        </section>
 
 
             </div>

@@ -3,7 +3,7 @@
 class Home_model extends CI_Model {
 
 	public function home_featured(){
-		$this->db->select('*')->from('featured')->join('books', 'featured.product_id = books.product_id');
+		$this->db->select('*')->from('featured')->join('books', 'featured.product_id = books.product_id ORDER BY date DESC LIMIT 4');
 		$sql = $this->db->get();
 		return $sql->result_array();
 	}
@@ -20,6 +20,12 @@ class Home_model extends CI_Model {
 		$sql =  $this->db->query("SELECT * FROM books ORDER BY RAND() LIMIT 4");
 		return $sql->result_array();
         }
+	
+	public function home_mostviewed(){
+	 	$this->db->select('*')->from('books')->order_by('book_pageview', 'desc')->limit(4);
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
 
         public function home_ratings(){
  		$sql =  $this->db->query("SELECT books.product_id, books.*, ratings.product_id, SUM(rate) as rates FROM ratings RIGHT JOIN books ON ratings.product_id = books.product_id GROUP BY ratings.product_id ORDER BY rates DESC LIMIT 4");

@@ -1,7 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Book_model extends CI_Model {
-
+	
+	public function insert_pageview($product_id){
+	  $this->db->query("UPDATE books SET book_pageview = book_pageview + 1
+		WHERE product_id = '$product_id' LIMIT 1");
+	}
+	
         public function get_authordata($name){
           $this->db->select('*')->from('books')->where('author',$name);
           $result = $this->db->get();
