@@ -40,6 +40,9 @@ class Book extends CI_Controller {
 
 		$q1 = $this->cart->contents();
 		shuffle($q1);
+		
+		//Add pageviews
+		$this->book_model->insert_pageview($product_id);
 
 
 

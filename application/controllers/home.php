@@ -20,6 +20,8 @@ class Home extends CI_Controller {
 		$main['releases'] = $releases = $this->home_model->home_releases();
 		$main['ratings'] = $ratings = $this->home_model->home_ratings();
                 $main['random'] = $random = $this->home_model->home_random();
+		$main['most_viewed'] = $most_viewed = $this->home_model->home_mostviewed();
+
 
                 //var_dump($main);
 
@@ -56,7 +58,13 @@ class Home extends CI_Controller {
 
 		}
 
+		foreach ($most_viewed as $key => $value) {
+				
+				foreach ($value as $key2 => $value2) {
+					$main['random'][$key]['title'] = character_limiter($ratings[$key]['title'], 20);
+				}
 
+		}
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
