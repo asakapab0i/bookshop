@@ -78,8 +78,8 @@
         "aoColumnDefs": [
             {
                 "fnRender": function ( oObj ) {
-                   //return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a><a href="add_featured/'+oObj.aData[0]+'" class="btn btn-xs btn-danger">Feature</a>';
-		return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
+                  return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a><a href="add_featured/'+oObj.aData[0]+'" class="btn btn-xs btn-danger">Feature</a>';
+		//return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
 
                 },
                 "aTargets": [ 7 ],

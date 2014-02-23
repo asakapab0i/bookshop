@@ -1,5 +1,4 @@
     <?php
-
 // Prepping Navigation Links
     $nav = array('home' => 'Home',
                  'books' => 'Books',
@@ -146,7 +145,7 @@
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
 					echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 
-                                        }elseif($login['type'] = 'staff'){
+                                        }elseif($login['type'] == 'staff'){
 				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 					
 					}
@@ -200,7 +199,7 @@
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
                                        	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 
-                                        }elseif($login['type'] = 'staff'){
+                                        }elseif($login['type'] == 'staff'){
 				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 					
 					}
@@ -255,7 +254,7 @@
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
                                       	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 
-                                        }elseif($login['type'] = 'staff'){
+                                        }elseif($login['type'] == 'staff'){
 				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 					
 					}
@@ -315,7 +314,7 @@
                                         echo '<li><a href="'.site_url('administrator').'">Admin Dashboard</a></li>';
                                       	echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 
-                                        }elseif($login['type'] = 'staff'){
+                                        }elseif($login['type'] == 'staff'){
 				echo '<li><a href="'.site_url('staff').'">Staff Dashboard</a></li>';
 					
 					}

@@ -40,7 +40,7 @@
 		</div>
 <div class="panel panel-default">
 			<div class="panel-heading">Home Slider</div>
-			<div class="panel-body">
+			<div class="panel-body text-center">
 			<p>Note: Image file should be 740 x 280 pixels and must be jpg file format or else you die.</p>
 				<div class="slider text-center">
 					<?php echo form_open_multipart('administrator/home_slider') ?>

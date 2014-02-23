@@ -71,7 +71,7 @@
 
 <hr>
 
-    <!--   
+       
                      <section id="featured">
            
 <div class="panel panel-default" id="content-formatting">
@@ -100,7 +100,7 @@
           </div>
 
         </section>
--->
+
              <section id="releases">
            
 <div class="panel panel-default" id="content-formatting">

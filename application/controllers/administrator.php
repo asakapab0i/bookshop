@@ -226,8 +226,8 @@ class Administrator extends CI_Controller {
 
 		//do an upload first before inserting the whole data
 
-		$config['file_name'] = $this->input->post('title');
-		$config['upload_path'] = './assets/img/books_image/';
+		$config['file_name'] = url_title($this->input->post('title'));
+ 		$config['upload_path'] = './assets/img/books_image/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
 
@@ -254,8 +254,8 @@ class Administrator extends CI_Controller {
 		$product_id = 'SKU'.$product_id; 
 
 		$form_data = array('title' => $this->input->post('title'),
-				'author' => $this->input->post('author'),
-				'description' => $this->input->post('description'),
+				'author' =>  ascii_to_entities($this->input->post('author')),
+				'description' => ascii_to_entities($this->input->post('description')),
 				'publisher' => $this->input->post('publisher'),
 				'format' => $this->input->post('format'),
 				'isbn' => $this->input->post('isbn'),
@@ -313,9 +313,9 @@ class Administrator extends CI_Controller {
 
 
 
-		$form_data = array('title' => $this->input->post('title'),
-				'author' => $this->input->post('author'),
-				'description' => $this->input->post('description'),
+		$form_data = array('title' => ascii_to_entities($this->input->post('title')),
+				'author' => ascii_to_entities($this->input->post('author')),
+				'description' => ascii_to_entities($this->input->post('description')),
 				'publisher' => $this->input->post('publisher'),
 				'format' => $this->input->post('format'),
 				'isbn' => $this->input->post('isbn'),
