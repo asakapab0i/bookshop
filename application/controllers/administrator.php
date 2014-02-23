@@ -319,7 +319,6 @@ class Administrator extends CI_Controller {
 				'publisher' => $this->input->post('publisher'),
 				'format' => $this->input->post('format'),
 				'isbn' => $this->input->post('isbn'),
-				'dateadd' => date('Y-m-d'),
 				'category' => $this->input->post('category'),
 				'price' => $this->input->post('price'),
 				'product_qty' => $this->input->post('quantity'),
