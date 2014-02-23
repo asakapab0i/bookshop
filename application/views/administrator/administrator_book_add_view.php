@@ -26,7 +26,7 @@
             if ($this->session->flashdata('add_success')) {
               $success = $this->session->flashdata('add_success');
 
-              echo '<div class="alert alert-success">';
+              echo '<div class="text-center alert alert-success">';
               echo $success;
               echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
               echo '</div>';

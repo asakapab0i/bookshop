@@ -8,7 +8,7 @@ class Administrator extends CI_Controller {
 		$this->load->model('administrator_model');
 		$this->load->model('customer_model');
 		$this->load->library('datatables');
-		
+
 
 
 
@@ -21,7 +21,7 @@ class Administrator extends CI_Controller {
 
 	private function _is_logged_in(){
 		$login_session = $this->session->userdata('login');
-		
+
 		if ($login_session['type'] == 'admin' || $login_session['type'] == 'staff') {
 			return true;
 		}else{
@@ -34,7 +34,7 @@ class Administrator extends CI_Controller {
 	{
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator';
-	
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -42,7 +42,7 @@ class Administrator extends CI_Controller {
 		$index['net_income'] = $this->administrator_model->get_net_income();
 		$index['recent_books'] =  $this->administrator_model->get_recent_books();
 		$index['recent_orders'] = $this->administrator_model->get_recent_orders();
- 		$index['recent_message'] = $this->administrator_model->get_recent_messages();
+		$index['recent_message'] = $this->administrator_model->get_recent_messages();
 
 		//Page Header
 		$this->parser->parse('template/header', $header);
@@ -57,7 +57,7 @@ class Administrator extends CI_Controller {
 	public function orders(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Orders';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -79,7 +79,7 @@ class Administrator extends CI_Controller {
 
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Order No: ' . $id;
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -106,7 +106,7 @@ class Administrator extends CI_Controller {
 	public function shipments(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Shipments';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -118,7 +118,7 @@ class Administrator extends CI_Controller {
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav
-                
+
 		//Page Main Content
 		$this->load->view('administrator/administrator_shipments_view');
 		//Page Footer
@@ -128,7 +128,7 @@ class Administrator extends CI_Controller {
 	public function shipment($shipment_id){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Shipments No '.$shipment_id.' ';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -148,7 +148,7 @@ class Administrator extends CI_Controller {
 	public function books(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Books';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -167,7 +167,7 @@ class Administrator extends CI_Controller {
 
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Book No '.$id.' ';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -189,7 +189,7 @@ class Administrator extends CI_Controller {
 	public function book_add(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Book No ';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -208,7 +208,7 @@ class Administrator extends CI_Controller {
 
 	public function  book_add_validate(){
 
-	
+
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
 		$this->form_validation->set_rules('author', 'Author', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
@@ -221,20 +221,20 @@ class Administrator extends CI_Controller {
 
 		if (empty($_FILES['userfile']['name']))
 		{
-		    $this->form_validation->set_rules('userfile', 'Image', 'required');
+			$this->form_validation->set_rules('userfile', 'Image', 'required');
 		}
 
 		//do an upload first before inserting the whole data
 
-			$config['file_name'] = $this->input->post('title');
-			$config['upload_path'] = './assets/img/books_image/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '1000';
+		$config['file_name'] = $this->input->post('title');
+		$config['upload_path'] = './assets/img/books_image/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
 
-			
-			$this->load->library('upload', $config);
 
-		
+		$this->load->library('upload', $config);
+
+
 
 
 
@@ -250,23 +250,23 @@ class Administrator extends CI_Controller {
 		}
 
 
-$product_id = rand(100, 9999);
-$product_id = 'SKU'.$product_id; 
+		$product_id = rand(100, 9999);
+		$product_id = 'SKU'.$product_id; 
 
-$form_data = array('title' => $this->input->post('title'),
-							'author' => $this->input->post('author'),
-							'description' => $this->input->post('description'),
-							'publisher' => $this->input->post('publisher'),
-							'format' => $this->input->post('format'),
-							'isbn' => $this->input->post('isbn'),
-							'dateadd' => date('Y-m-d'),
-							'category' => $this->input->post('category'),
-							'price' => $this->input->post('price'),
-							'product_id' => $product_id,
-							'product_qty' => $this->input->post('quantity'),
-							'image' => $data['upload_data']['file_name'],
-							'product_url' => url_title($this->input->post('title'))
-							);
+		$form_data = array('title' => $this->input->post('title'),
+				'author' => $this->input->post('author'),
+				'description' => $this->input->post('description'),
+				'publisher' => $this->input->post('publisher'),
+				'format' => $this->input->post('format'),
+				'isbn' => $this->input->post('isbn'),
+				'dateadd' => date('Y-m-d'),
+				'category' => $this->input->post('category'),
+				'price' => $this->input->post('price'),
+				'product_id' => $product_id,
+				'product_qty' => $this->input->post('quantity'),
+				'image' => $data['upload_data']['file_name'],
+				'product_url' => url_title($this->input->post('title'))
+				);
 
 
 
@@ -314,17 +314,17 @@ $form_data = array('title' => $this->input->post('title'),
 
 
 		$form_data = array('title' => $this->input->post('title'),
-							'author' => $this->input->post('author'),
-							'description' => $this->input->post('description'),
-							'publisher' => $this->input->post('publisher'),
-							'format' => $this->input->post('format'),
-							'isbn' => $this->input->post('isbn'),
-							'dateadd' => date('Y-m-d'),
-							'category' => $this->input->post('category'),
-							'price' => $this->input->post('price'),
-							'product_qty' => $this->input->post('quantity'),
-							'product_url' => url_title($this->input->post('title'))
-							);
+				'author' => $this->input->post('author'),
+				'description' => $this->input->post('description'),
+				'publisher' => $this->input->post('publisher'),
+				'format' => $this->input->post('format'),
+				'isbn' => $this->input->post('isbn'),
+				'dateadd' => date('Y-m-d'),
+				'category' => $this->input->post('category'),
+				'price' => $this->input->post('price'),
+				'product_qty' => $this->input->post('quantity'),
+				'product_url' => url_title($this->input->post('title'))
+				);
 
 
 
@@ -335,8 +335,8 @@ $form_data = array('title' => $this->input->post('title'),
 		if ($this->form_validation->run() == False) {
 
 			$this->session->set_flashdata('edit_error', 'There is an error on the form field.');
-			 // var_dump(validation_errors());
-			 // die();
+			// var_dump(validation_errors());
+			// die();
 			redirect('administrator/book/'.$id.'');
 		}else{
 			$this->session->set_flashdata('edit_success', 'Book Successfully Edited!');
@@ -352,7 +352,7 @@ $form_data = array('title' => $this->input->post('title'),
 
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Add Category';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -390,7 +390,7 @@ $form_data = array('title' => $this->input->post('title'),
 	public function accountlist(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Settings';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -411,7 +411,7 @@ $form_data = array('title' => $this->input->post('title'),
 
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Settings';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -428,7 +428,7 @@ $form_data = array('title' => $this->input->post('title'),
 	public function settings(){
 		//Prepare Header Data
 		$header['page_title'] = 'Administrator | Settings';
-		
+
 		//Navigation
 		$navigation['page_cur_nav'] = 'dashboard';
 
@@ -448,16 +448,62 @@ $form_data = array('title' => $this->input->post('title'),
 		$this->db->select('*')->from('featured')->where('product_id', $id);
 		$sql = $this->db->get();
 		$num = $sql->num_rows();
-	
+
 		if($num == 1){
 			$this->session->set_flashdata('featured', 'The book is already in the featured list.');	
 			redirect('administrator/books');
 		}else{
 			$this->db->insert('featured',$data);
 			$this->session->set_flashdata('featured', 'Book has been added to featured list.');	
-		redirect('administrator/books');
+			redirect('administrator/books');
 
 		}
+	}
+
+	public function home_slider(){
+
+		$this->load->library('upload');
+
+		$files = $_FILES;
+		$cpt = count($_FILES['userfile']['name']);
+		for($i=0; $i<$cpt; $i++)
+		{
+
+			$_FILES['userfile']['name']= $files['userfile']['name'][$i];
+			$_FILES['userfile']['type']= $files['userfile']['type'][$i];
+			$_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+			$_FILES['userfile']['error']= $files['userfile']['error'][$i];
+			$_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+
+			$this->upload->initialize($this->set_upload_options($i));
+
+
+			if(!$this->upload->do_upload()){
+				$error = array('error' => $this->upload->display_errors());	
+#var_dump($error);
+
+			}
+		}	
+		if(!empty($error)){
+			$this->session->set_flashdata('banner', 'There are errors while uploading the images.</br><pre>'.var_dump($error).'</pre> ');
+		}else{
+			$this->session->set_flashdata('banner', 'Banner has been uploaded.');
+		}	
+
+		redirect('administrator/settings');
+
+	} 
+
+	private  function set_upload_options($i){
+		$i + 1;
+		$config['file_name'] = 'content-slider-'.$i;
+		$config['upload_path'] = './assets/img/slider/';
+		$config['allowed_types'] = 'jpg';
+		$config['max_size']	= '1000';
+		$config['max_width'] = 1000;
+		$config['max_height'] = 500;
+		$config['overwrite'] = TRUE;
+		return $config;
 
 	}
 	public function datatables_orders_staff(){
@@ -486,9 +532,9 @@ $form_data = array('title' => $this->input->post('title'),
 
 	public function datatables_books(){
 		$this
-		->datatables
-		->select('product_id, title, author, category, product_qty, price, dateadd')
-		->from('books');
+			->datatables
+			->select('product_id, title, author, category, product_qty, price, dateadd')
+			->from('books');
 
 		$datatables = $this->datatables->generate('JSON');
 		echo $datatables;
@@ -496,8 +542,8 @@ $form_data = array('title' => $this->input->post('title'),
 
 	public function datatables_accounts(){
 		$this
-		->datatables->select('id, fname, lname, email, user_type, mobile')
-		->from('users');
+			->datatables->select('id, fname, lname, email, user_type, mobile')
+			->from('users');
 
 		$datatables = $this->datatables->generate('JSON');
 		echo $datatables;
@@ -548,7 +594,7 @@ $form_data = array('title' => $this->input->post('title'),
 	/*** AJAX REQUEST FOR GOOGLE CHARTS ***/
 
 	public function get_bookstore_data(){
-		
+
 		$this->db->select('dateorder, order_total')->from('orders')->where('order_status', 'Approved');
 		$sql = $this->db->get();
 		$result = $sql->result_array();
@@ -558,16 +604,16 @@ $form_data = array('title' => $this->input->post('title'),
 		$i = 0;
 		$day_total = array();
 		$tableHeader = ['Month', 'Monthly Income'];
-        $day_total[] = $tableHeader;
+		$day_total[] = $tableHeader;
 		foreach($result as $key => $value) {
 			$odate = date('y-m', strtotime($value['dateorder']));
 			$total = 0;
 			foreach($result2 as $key2 => $value2) {
 				$idate = date('y-m', strtotime($value2['dateorder']));
-					if ($odate == $idate) {
-						$total = $total + $value2['order_total']; 			
-					}
+				if ($odate == $idate) {
+					$total = $total + $value2['order_total']; 			
 				}
+			}
 
 			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
 				continue;
@@ -575,31 +621,31 @@ $form_data = array('title' => $this->input->post('title'),
 				$day_total[] = [$odate, $total];
 			}
 
-			
+
 			$i++;
-			
-	
+
+
 		}
 
-          /* $rdata = [
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]]; */
+		/* $rdata = [
+		   ['Year', 'Sales', 'Expenses'],
+		   ['2004',  1000,      400],
+		   ['2005',  1170,      460],
+		   ['2006',  660,       1120],
+		   ['2007',  1030,      540]]; */
 
-         # echo '<pre>';
-          # var_dump($data);
+# echo '<pre>';
+# var_dump($data);
 		echo json_encode($day_total);
 
 
 	}
 
 
-        	/*** AJAX REQUEST FOR GOOGLE CHARTS DAYS***/
+	/*** AJAX REQUEST FOR GOOGLE CHARTS DAYS***/
 
 	public function get_bookstore_data_days(){
-		
+
 		$this->db->select('dateorder, order_total')->from('orders')->where('order_status', 'Approved');
 		$sql = $this->db->get();
 		$result = $sql->result_array();
@@ -609,16 +655,16 @@ $form_data = array('title' => $this->input->post('title'),
 		$i = 0;
 		$day_total = array();
 		$tableHeader = ['Days', 'Daily Income'];
-        $day_total[] = $tableHeader;
+		$day_total[] = $tableHeader;
 		foreach($result as $key => $value) {
 			$odate = date('d', strtotime($value['dateorder']));
 			$total = 0;
 			foreach($result2 as $key2 => $value2) {
 				$idate = date('d', strtotime($value2['dateorder']));
-					if ($odate == $idate) {
-						$total = $total + $value2['order_total'];			
-					}
+				if ($odate == $idate) {
+					$total = $total + $value2['order_total'];			
 				}
+			}
 
 			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
 				continue;
@@ -627,20 +673,20 @@ $form_data = array('title' => $this->input->post('title'),
 				$day_total[] = [$week, $total];
 			}
 
-			
+
 			$i++;
-			
-	
+
+
 		}
-		
+
 		echo json_encode($day_total);
 
-	
 
 
-		#echo $day_total[1][0];
 
-		
+#echo $day_total[1][0];
+
+
 		// foreach ($day_total as $key => $value) {
 		// 	if ($value[0] != '2013-12-29') {
 		// 		echo 'he';
@@ -649,51 +695,51 @@ $form_data = array('title' => $this->input->post('title'),
 		// 	var_dump($value);
 		// }
 
-		 // echo '<pre>';
-		 // var_dump($day_total);
-		#echo json_encode($day_total);
+		// echo '<pre>';
+		// var_dump($day_total);
+#echo json_encode($day_total);
 
 
 		// $month  = array('01' => '2014-02-08', '02' => '2014-02-09','03' => '2013-12-03');
-  //       $data = [];
-  //       $tableHeader = ['Day', 'Daily Income'];
-  //       $data[] = $tableHeader;
+		//       $data = [];
+		//       $tableHeader = ['Day', 'Daily Income'];
+		//       $data[] = $tableHeader;
 
-  //       foreach ($month as $key => $value) {
-  //       	$result = $this->db->query("SELECT dateorder, SUM(order_total) AS total_order FROM orders WHERE dateorder LIKE '%".$value."%' AND order_status = 'Approved' ");
-  //       	$result = $result->result_array();
+		//       foreach ($month as $key => $value) {
+		//       	$result = $this->db->query("SELECT dateorder, SUM(order_total) AS total_order FROM orders WHERE dateorder LIKE '%".$value."%' AND order_status = 'Approved' ");
+		//       	$result = $result->result_array();
 
-  //       	$total_val = (int)$result[0]['total_order'];
-  //       	$date_month = (string)date('F m d', strtotime($result[0]['dateorder']));
+		//       	$total_val = (int)$result[0]['total_order'];
+		//       	$date_month = (string)date('F m d', strtotime($result[0]['dateorder']));
 
 		// 	$data[] = [$date_month,$total_val];        	
-  //       }
+		//       }
 
-  //         /* $rdata = [
-  //         ['Year', 'Sales', 'Expenses'],
-  //         ['2004',  1000,      400],
-  //         ['2005',  1170,      460],
-  //         ['2006',  660,       1120],
-  //         ['2007',  1030,      540]]; */
-        }
+		//         /* $rdata = [
+		//         ['Year', 'Sales', 'Expenses'],
+		//         ['2004',  1000,      400],
+		//         ['2005',  1170,      460],
+		//         ['2006',  660,       1120],
+		//         ['2007',  1030,      540]]; */
+	}
 
-        public function get_bookstore_data_weeks(){
-          $sql = $this->db->query("SELECT dateorder, SUM(order_total) AS weekly_sales FROM orders WHERE order_status = 'Approved' GROUP BY week(dateorder) ORDER BY dateorder ASC");
-          $result = $sql->result_array();
+	public function get_bookstore_data_weeks(){
+		$sql = $this->db->query("SELECT dateorder, SUM(order_total) AS weekly_sales FROM orders WHERE order_status = 'Approved' GROUP BY week(dateorder) ORDER BY dateorder ASC");
+		$result = $sql->result_array();
 
-          
-    	  $tableHeader = ['Weeks', 'Weekly Income'];
-          $weekly[] = $tableHeader;
-	
-          foreach($result as $key => $value){
-          	$week = date('y', strtotime($value['dateorder'])) .'-'.date('m-d', strtotime($value['dateorder']));
-            $weekly[] = [$week, (int)$value['weekly_sales']];
-          }
 
-          echo json_encode($weekly);
-          #var_dump($weekly);
+		$tableHeader = ['Weeks', 'Weekly Income'];
+		$weekly[] = $tableHeader;
 
-        }
+		foreach($result as $key => $value){
+			$week = date('y', strtotime($value['dateorder'])) .'-'.date('m-d', strtotime($value['dateorder']));
+			$weekly[] = [$week, (int)$value['weekly_sales']];
+		}
+
+		echo json_encode($weekly);
+#var_dump($weekly);
+
+	}
 
 
 

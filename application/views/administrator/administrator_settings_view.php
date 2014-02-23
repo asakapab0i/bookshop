@@ -19,17 +19,42 @@
            Administrative Settings
             </div>
             <div class="panel-body">
+<?php
 
-         
-            <div class="col-md-12">
-              
-                <div class="col-md-offset-4 col-md-6">
-                  <a href="<?php echo site_url('customer/account') ?>" title=""><button class="btn btn-success">Change Profile Information</button></a>
-                  
-                </div>
+            if ($this->session->flashdata('banner')) {
+              $banner = $this->session->flashdata('banner');
+
+              echo '<div class="text-center alert alert-success">';
+              echo $banner;
+              echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+              echo '</div>';
+            }
 
 
-            </div>
+?>
+		<div class="panel panel-default">
+			<div class="panel-heading">Profile</div>
+			<div class="panel-body text-center">
+				                  <a href="<?php echo site_url('customer/account') ?>" title=""><button class="btn btn-success">Change Profile Information</button></a>
+			</div>
+		</div>
+<div class="panel panel-default">
+			<div class="panel-heading">Home Slider</div>
+			<div class="panel-body">
+			<p>Note: Image file should be 740 x 280 pixels and must be jpg file format or else you die.</p>
+				<div class="slider text-center">
+					<?php echo form_open_multipart('administrator/home_slider') ?>
+					<input type="file" name="userfile[]" class="input-file">
+					<input type="file" name="userfile[]" class="input-file">
+					<input type="file" name="userfile[]" class="input-file">
+					<input type="file" name="userfile[]" class="input-file">
+
+					<input type="submit" class="btn btn-primary btn-xs upload-slider" value="Upload">		
+				</div>
+			</div>
+		</div>
+
+
 
 
 

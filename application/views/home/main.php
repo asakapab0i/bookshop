@@ -34,19 +34,29 @@
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img width="100%" src="http://www.nationalbookstore.com.ph/media/bannernext/resized/740x280//m/i/mitch-albom.jpg" alt="Mitch Albom">
+      <img width="100%" src="<?php echo base_url() .
+      'assets/img/slider/content-slider-0.jpg'?>" alt="slider1">
     </div>
     <div class="item">
-      <img width="100%" src="http://www.nationalbookstore.com.ph/media/bannernext/resized/740x280//r/a/rajo_1.jpg" alt="Mitch Albom">
+      <img width="100%" src="<?php echo base_url() .
+      'assets/img/slider/content-slider-1.jpg'?>" alt="slider2">
     </div>
     <div class="item">
-      <img width="100%" src="http://www.nationalbookstore.com.ph/media/bannernext/resized/740x280//w/e/website_banner_-_britto.jpg" alt="Mitch Albom">
+      <img width="100%" src="<?php echo base_url() .
+      'assets/img/slider/content-slider-2.jpg'?>" alt="slider3">
     </div>
+<div class="item">
+      <img width="100%" src="<?php echo base_url() .
+      'assets/img/slider/content-slider-3.jpg'?>" alt="slider4">
+    </div>
+
   </div>
 
 
