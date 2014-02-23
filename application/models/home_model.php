@@ -3,7 +3,7 @@
 class Home_model extends CI_Model {
 
 	public function home_featured(){
-		$this->db->select('*')->from('featured')->join('books', 'featured.product_id = books.product_id ORDER BY date DESC LIMIT 4');
+		$this->db->select('*')->from('featured')->join('books', 'featured.product_id = books.product_id ORDER BY date_featured DESC LIMIT 4');
 		$sql = $this->db->get();
 		return $sql->result_array();
 	}
