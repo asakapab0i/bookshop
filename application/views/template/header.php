@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- Start Header -->
 
 <!--
@@ -16,8 +16,10 @@
  <html>
     
     <head>
+	<!-- Bing Verify  -->
+	<meta name="msvalidate.01" content="AEFD8AA5F4593A9CC0940282EE484E59" />
         <title>{page_title}</title>
-       <!--  <meta name="viewport" content="width=device-width"> -->
+        <!--  <meta name="viewport" content="width=device-width"> -->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/bootstrap2.css'?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/font-awesome.min.css'?>">
         <!-- DataTables CSS -->
@@ -27,15 +29,13 @@
 
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.min.js'?> "></script>
-             <!-- Table Tools -->
+        <!-- Table Tools -->
         <script type="text/javascript" charset="utf8" src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js'?>"></script>
-            <!-- Horizontal Slider Tool -->
+        <!-- Horizontal Slider Tool -->
         <script type="text/javascript" charset="utf8" src="<?php echo base_url() . 'assets/js/jquery.als-1.2.min.js'?>"></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/custom.js'?> "></script>
-
-
     </head>
-    
-    <body>
-        <div class="container"><!-- Start Container -->
 <!-- End Header -->
+    <body>
+	<!-- Start Container -->
+        <div class="container">
