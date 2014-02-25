@@ -396,7 +396,7 @@ class Customer extends CI_Controller {
 
 		$this
 		->datatables
-		->select('order_id, dateorder, lname, order_total,package_status, order_status')
+		->select('order_id, DATE_FORMAT(dateorder, "%b %e, %Y") AS dateorder, CONCAT(fname," ",lname) AS lname, order_total,package_status, order_status', FALSE)
 		->from('users')
 		->join('address', 'users.id = address.user_id')
 		->join('orders','orders.address_id = address.address_id')
@@ -415,7 +415,7 @@ class Customer extends CI_Controller {
 
 		$this
 		->datatables
-		->select('order_id, dateorder, lname, order_total, package_status, order_status')
+		->select('order_id, DATE_FORMAT(dateorder, "%b %e, %Y") AS dateorder, CONCAT(fname," ",lname) AS lname, order_total, package_status, order_status',FALSE)
 		->from('users')
 		->join('address', 'users.id = address.user_id')
 		->join('orders','orders.address_id = address.address_id')

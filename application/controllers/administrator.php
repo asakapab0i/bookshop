@@ -506,19 +506,19 @@ class Administrator extends CI_Controller {
 
 	}
 	public function datatables_orders_staff(){
-		$this->datatables->select('order_id,order_total, dateorder, lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}
 
 	public function datatables_orders(){
-		$this->datatables->select('order_id,order_total, dateorder, lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,package_status,order_status',FALSE)->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}
 
 	public function datatables_orders_by_id($id){
-		$this->datatables->select('order_id,order_total, dateorder, lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id')->where('users.id',$id);
+		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id')->where('users.id',$id);
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}

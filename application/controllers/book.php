@@ -49,7 +49,8 @@ class Book extends CI_Controller {
 		$book['recent_cart'] = $q1;
 		//Prepare Header Data
 		$header['page_title'] = 'La Belle Aurore Books | ' .$book['bookview'][0]['title'];
-		
+		$header['meta_desc'] = character_limiter($book['bookview'][0]['description'], 300);		
+		$header['meta_keywords'] = '';
 		//Navigation
 		$navigation['page_cur_nav'] = 'book';
 
