@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 		
 		//Prepare Header Data
 		$header['page_title'] = 'Home';
-		
+		$header['meta_desc'] = 'La Belle Aurore Bookshop is a second-hand bookstore located in Hernan Cortes St., Mandaue City, Cebu. It was established in December 2009. It currently carries more than seven thousand volumes of used and overstock books';		
 		//Navigation
 		$navigation['page_cur_nav'] = 'home';
 

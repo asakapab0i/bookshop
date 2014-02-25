@@ -238,7 +238,7 @@ class Account extends CI_Controller {
 		$this->form_validation->set_rules('country','Country','required');
 		$this->form_validation->set_rules('street','Street','required');
 
-		$this->form_validation->set_rules('password','Password','required');
+		$this->form_validation->set_rules('password','Password','trim|required|min_length[6]|max_length[16]');
 		$this->form_validation->set_rules('cpassword','Password','required|matches[password]');
 
 		if ($this->form_validation->run() == FALSE){
@@ -297,12 +297,6 @@ class Account extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
-
-	public function change_pw(){
-
-		
-
-	}
 
 	//login_validate callback
 	public function checklogin($email, $password){
