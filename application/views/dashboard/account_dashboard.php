@@ -72,7 +72,7 @@ From your My Account Dashboard you have the ability to view a snapshot of your r
 						         			<tr>
 						         				<th>Order No.</th>
 						         				<th>Date</th>
-						         				<th>Ship To</th>
+						         				<th>Recipient</th>
 						         				<th>Order Total</th>
 
      <th>Package Status</th>

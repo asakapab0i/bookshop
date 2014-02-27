@@ -25,7 +25,7 @@
          			<tr>
          				<th>Order No.</th>
          				<th>Date</th>
-         				<th>Ship To</th>
+         				<th>Recipient</th>
          				<th>Order Total</th>
 					<th>Package Status</th>
          				<th>Order Status</th>

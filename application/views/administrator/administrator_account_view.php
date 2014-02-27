@@ -31,7 +31,7 @@
                     <div class="col-md-6">
                         
                         <div class="panel panel-default">
-                        <div class="panel-heading">Personal Information <span class="pull-right"><a href="<?php echo site_url('customer/account')?>">Edit</a></span></div>
+                        <div class="panel-heading">Personal Information</div>
                         <div class="panel-body">
                             <address>                
                             <strong>{fname} {lname}</strong>
@@ -54,7 +54,6 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">Address Information 
-                            <span class="pull-right"><a href="<?php echo site_url('customer/address')?>">Add</a></span>
                             </div>
                             <div class="panel-body">
                                 <address>                

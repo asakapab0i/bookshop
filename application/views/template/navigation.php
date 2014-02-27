@@ -371,12 +371,12 @@
 
     <?php 
 
-    $attributes = array('method' => 'GET','class' => 'input-group', 'id' => 'search');
-    echo form_open('book/search', $attributes);
+    $attributes = array('method' => 'POST','class' => 'input-group', 'id' => 'search');
+    echo form_open('book/search_results', $attributes);
 
     ?>
         
-          <input value="<?php echo (isset($term) ? $term:'')?>" placeholder="What will you find today?" type="text" name="search" id="search" class="form-control">
+          <input value="<?php echo (isset($term) ? $term:'')?>" placeholder="What will you find today?" type="text" name="term" id="search" class="form-control">
           <span class="input-group-btn">
             <button id="search-go" class="btn btn-success" type="submit">Go!</button>
           </span>

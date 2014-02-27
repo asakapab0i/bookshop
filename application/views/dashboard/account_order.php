@@ -159,11 +159,14 @@
                    if ($status == 'Pending') {
                      echo form_open('checkout/approve_order', '');
                      echo form_hidden('order_id', '{order_id}');
-                     echo '<button href="'.site_url('checkout/finish_pending').'" class="pull-right btn btn-xs btn-success">Finish Order</button>';
+                     #echo '<button href="'.site_url('checkout/finish_pending').'" class="pull-right btn btn-xs btn-success">Finish Order</button>';
                    }
                  
                  ?>
                  </p>
+		<p>
+		Package Status:<b> {package_status}</b>
+		</p>
 
                                
                                 </div>
@@ -178,7 +181,9 @@
 
                          <p>Customer Name: {fname} {lname}<br/>
                          Gender: {gender} <br/>
-                         Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
+                         Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a> <br/>
+			 Address: {street}
+			</p>
                           
                        
                         </div>

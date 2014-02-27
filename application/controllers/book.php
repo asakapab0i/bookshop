@@ -172,12 +172,11 @@ class Book extends CI_Controller {
 
         }
 
-	public function search(){
+	public function search_results(){
 
-		$term = $this->input->get('search');
+		$term = $this->input->post('term');
 		$term = urlencode($term);
-
-
+	
 		$mode = 'grid';
 		$book['term'] = $term;
 		$config['uri_segment'] = 8;

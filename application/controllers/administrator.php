@@ -506,7 +506,7 @@ class Administrator extends CI_Controller {
 
 	}
 	public function datatables_orders_staff(){
-		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,package_status,order_status')->from('orders')->join('users', 'users.id = orders.user_id');
+		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,package_status,order_status', FALSE)->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}
@@ -518,7 +518,7 @@ class Administrator extends CI_Controller {
 	}
 
 	public function datatables_orders_by_id($id){
-		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,order_status')->from('orders')->join('users', 'users.id = orders.user_id')->where('users.id',$id);
+		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,order_status',FALSE)->from('orders')->join('users', 'users.id = orders.user_id')->where('users.id',$id);
 		$datatables = $this->datatables->generate();
 		echo $datatables;
 	}
@@ -656,10 +656,10 @@ class Administrator extends CI_Controller {
 		$tableHeader = ['Days', 'Daily Income'];
 		$day_total[] = $tableHeader;
 		foreach($result as $key => $value) {
-			$odate = date('d', strtotime($value['dateorder']));
+			$odate = date('d-m-Y', strtotime($value['dateorder']));
 			$total = 0;
 			foreach($result2 as $key2 => $value2) {
-				$idate = date('d', strtotime($value2['dateorder']));
+				$idate = date('d-m-Y', strtotime($value2['dateorder']));
 				if ($odate == $idate) {
 					$total = $total + $value2['order_total'];			
 				}
@@ -668,8 +668,8 @@ class Administrator extends CI_Controller {
 			if ($day_total[$i][0] == $odate && $day_total[$i][1] == $total) {
 				continue;
 			}else{
-				$week = date('d', strtotime($value['dateorder']));
-				$day_total[] = [$week, $total];
+				$day = date('d-m-Y', strtotime($value['dateorder']));
+				$day_total[] = [$day, $total];
 			}
 
 

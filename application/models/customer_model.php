@@ -106,7 +106,6 @@ class Customer_model extends CI_model {
 		->where('order_id', $order_no)
 		->limit(1);
 		$sql = $this->db->get();
-
 		return $sql->result_array();
 
 	}

@@ -50,7 +50,7 @@ class Book_model extends CI_Model {
 
 
 	public function get_search_books($term){
-		$this->db->select('*')->from('books')->like('title', $term)->or_like('author', $term)->or_like('description', $term)->or_like('format', $term)->or_like('publisher', $term);
+		$this->db->select('*')->from('books')->like('title', $term)->or_like('author', $term)->or_like('isbn', $term)->or_like('format', $term)->or_like('publisher', $term);
 		$sql = $this->db->get();
 		return $sql->result_array();
 

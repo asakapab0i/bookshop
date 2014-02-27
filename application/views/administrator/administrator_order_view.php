@@ -133,7 +133,7 @@
                              
                                   <p>Order Date: {dateorder}</p>
                  <p>
-                 Order Status: <span class="order_status">{order_status}</span> &nbsp &nbsp &nbsp
+                 Order Status: <span class="order_status"><b>{order_status}</b></span> &nbsp &nbsp &nbsp
                 
                      <select id="admin_action">
                        <option value="">Set Status ---</option>
@@ -144,6 +144,9 @@
                     </select>
                
                  </p>
+		<p>
+		Package Status: <b>{package_status}</b> | <i><a href="<?php echo site_url('staff/order/{order_id}') ?>">Go to staff</a></i>
+		</p>
 
                                
                                 </div>
@@ -158,7 +161,7 @@
 
                          <p>Customer Name: {fname} {lname}</p>
                           <p>Email: <a href="mailto:{email}?subject=Billing Inquiry" "Mail">{email}</a></p>
-                          
+                          <p>Address: {street}</p>
                        
                         </div>
                     </div>
