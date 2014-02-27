@@ -175,7 +175,6 @@ class Book extends CI_Controller {
 	public function search_results(){
 
 		$term = $this->input->post('term');
-		$term = urlencode($term);
 	
 		$mode = 'grid';
 		$book['term'] = $term;
