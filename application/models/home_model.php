@@ -33,4 +33,10 @@ class Home_model extends CI_Model {
                 
         }
 
+	public function home_bestseller(){
+		$this->db->select('*')->from("books")->order_by('book_sold', 'DESC')->limit(4);
+		$sql = $this->db->get();
+		return $sql->result_array();
+	}
+
 }

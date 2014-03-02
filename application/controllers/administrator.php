@@ -210,6 +210,7 @@ class Administrator extends CI_Controller {
 
 
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
+		$this->form_validation->set_rules('condition', 'Book Condition', 'trim|required');
 		$this->form_validation->set_rules('author', 'Author', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
@@ -254,6 +255,7 @@ class Administrator extends CI_Controller {
 		$product_id = 'SKU'.$product_id; 
 
 		$form_data = array('title' => $this->input->post('title'),
+				'condition' => $this->input->post('condition'),	
 				'author' =>  ascii_to_entities($this->input->post('author')),
 				'description' => ascii_to_entities($this->input->post('description')),
 				'publisher' => $this->input->post('publisher'),
@@ -302,6 +304,7 @@ class Administrator extends CI_Controller {
 	public function book_edit($id){
 
 		$this->form_validation->set_rules('title', 'Book Title', 'trim|required');
+		$this->form_validation->set_rules('condition', 'Book Condition', 'trim|required');
 		$this->form_validation->set_rules('author', 'Author', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		$this->form_validation->set_rules('publisher', 'Publisher', 'trim|required');
@@ -314,6 +317,7 @@ class Administrator extends CI_Controller {
 
 
 		$form_data = array('title' => ascii_to_entities($this->input->post('title')),
+				'condition' => $this->input->post('condition'),
 				'author' => ascii_to_entities($this->input->post('author')),
 				'description' => ascii_to_entities($this->input->post('description')),
 				'publisher' => $this->input->post('publisher'),

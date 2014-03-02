@@ -38,6 +38,7 @@
 							   Publisher: {publisher} <br/>
 							   Format: {format} <br/>
 							   ISBN: {isbn} <br/>
+							   Condition: {condition}<br/>
 							   </small>
 							 
 							   <span class="label label-success">PHP {price}</span><small><br/>

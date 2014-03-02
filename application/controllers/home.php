@@ -22,6 +22,7 @@ class Home extends CI_Controller {
 		$main['ratings'] = $ratings = $this->home_model->home_ratings();
                 $main['random'] = $random = $this->home_model->home_random();
 		$main['most_viewed'] = $most_viewed = $this->home_model->home_mostviewed();
+		$main['bestseller'] = $bestseller = $this->home_model->home_bestseller();
 
 
                 //var_dump($main);
@@ -34,6 +35,17 @@ class Home extends CI_Controller {
 				}
 
 		}
+
+		
+		foreach ($bestseller as $key => $value) {
+				
+				foreach ($value as $key2 => $value2) {
+					$main['bestseller'][$key]['title'] = character_limiter($bestseller[$key]['title'], 20);
+				}
+
+		}
+
+		
 
 		foreach ($releases as $key => $value) {
 				

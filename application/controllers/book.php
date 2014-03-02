@@ -308,7 +308,7 @@ class Book extends CI_Controller {
 
 		 					}else{
 		 						$link = site_url('book/view/'.$result[$key]['product_id'].'/'.$result[$key]['product_url'].'/');
-		 						$result[$key] = array_merge($result[$key], array('available' => '<span class=""><a class="label label-danger" href="'.$link.'">Special</a></span>'));	
+		 						$result[$key] = array_merge($result[$key], array('available' => '<span class=""><a class="label label-danger" href="'.$link.'">Out of stock</a></span>'));	
 		 					}
 
 		 					

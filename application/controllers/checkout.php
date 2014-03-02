@@ -307,6 +307,7 @@ class Checkout extends CI_Controller {
 				 	$id = $value['id'];
 				 	$qty = $value['qty'];
 				 	$this->db->query("UPDATE books SET product_qty = product_qty - $qty WHERE product_id = '$id' ");
+					$this->db->query("UPDATE books SET book_sold = book_sold + 1 WHERE product_id = '$id' ");
 				 }
 				 	
 			

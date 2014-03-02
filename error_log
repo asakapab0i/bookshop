@@ -15,3 +15,5 @@
 [23-Feb-2014 08:57:38 Asia/Manila] PHP Parse error:  syntax error, unexpected '+', expecting ')' in /home/asakapab0i/public_html/application/controllers/administrator.php on line 495
 [23-Feb-2014 10:09:57 Asia/Manila] PHP Parse error:  syntax error, unexpected '$config' (T_VARIABLE) in /home/asakapab0i/public_html/application/controllers/administrator.php on line 230
 [23-Feb-2014 10:18:30 Asia/Manila] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/asakapab0i/public_html/application/controllers/administrator.php on line 318
+[02-Mar-2014 07:24:20 Asia/Manila] PHP Parse error:  syntax error, unexpected 'validation' (T_STRING) in /home/asakapab0i/public_html/application/controllers/administrator.php on line 213
+[02-Mar-2014 07:25:04 Asia/Manila] PHP Parse error:  syntax error, unexpected 'validation' (T_STRING) in /home/asakapab0i/public_html/application/controllers/administrator.php on line 307

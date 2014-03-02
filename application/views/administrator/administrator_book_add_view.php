@@ -65,6 +65,17 @@
   </div>
 </div>
 
+<div class="control-group">
+  <label class="control-label" for="title">Condition</label>
+  <div class="controls">
+   <select name="condition" required class="input-xlarge">
+	<option value="New">New</option>
+	<option value="Old">Old</option>
+	<option value="Slightly Used">Slightly Used</option>
+	</select>
+  </div>
+</div>
+
 <!-- Text input-->
 <div class="control-group">
   <label class="control-label" for="author">Author</label>
