@@ -22,10 +22,13 @@
         <meta name="viewport" content="width=device-width">
 	<meta charset="utf-8">
         <title>{page_title}</title>
-
+        <!-- Bootstrap Theme-->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/bootstrap2.css'?>">
+        <!-- Font Awesome-->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/font-awesome.min.css'?>">
         <!-- DataTables CSS -->
+        <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css'?>">
+        <!-- Datepicker -->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css'?>">
         <!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/css/custom.css'?>">
@@ -34,6 +37,7 @@
 	<!-- Vendor JS -->
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery.min.js'?> "></script>
         <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.min.js'?> "></script>
+        <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap-datepicker.js'?> "></script>
         <!-- Table Tools -->
         <script type="text/javascript" charset="utf8" src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js'?>"></script>
         <!-- Custom JS-->

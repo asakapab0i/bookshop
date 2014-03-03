@@ -8,6 +8,7 @@
             <a id="orders" href="<?php echo site_url('administrator/orders'); ?>" class="list-group-item ">Orders</a>
             <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
             <a id="reports" href="<?php echo site_url('administrator/accountlist'); ?>" class="list-group-item">Accounts</a>
+            <a id="sales" href="<?php echo site_url('administrator/sales'); ?>" class="list-group-item">Sales</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           
         </div>
@@ -24,8 +25,8 @@
             <div class="text-area col-md-12">
 
                     <div class="panel panel-default" id="panels">
-                        <div class="panel-heading">Bookstore Statistics</div>
-                            <div style="height: 200px; overflow:auto;"  class="panel-body">
+                        <div class="panel-heading">Bookstore Statistics <span class="pull-right">  </span></div>
+                            <div style="height: 200px; overflow:auto;" id="sales-show-area" class="panel-body">
                                 <div id="chart_div_days">
                                  </div>
                                 <div id="chart_div_weeks">

@@ -32,7 +32,7 @@ class Administrator extends CI_Controller {
 
 	public function index()
 	{
-		//Prepare Header Data
+        	//Prepare Header Data
 		$header['page_title'] = 'Administrator';
 
 		//Navigation
@@ -53,6 +53,34 @@ class Administrator extends CI_Controller {
 		//Page Footer
 		$this->load->view('template/footer');
 	}
+
+        public function sales($date = false){
+          if($date == false){
+            $date = date('Y-m-d');
+          }
+
+
+         	//Prepare Header Data
+		$header['page_title'] = 'Administrator';
+
+		//Navigation
+		$navigation['page_cur_nav'] = 'dashboard';
+
+                //Main Content
+                $sales['date'] = $date;
+                $sales['sales'] = $this->administrator_model->get_sales_by_date($date);
+		//Page Header
+		$this->parser->parse('template/header', $header);
+		//Page Nav
+		$this->load->view('template/navigation', $navigation);
+		//Page Main Content
+		$this->parser->parse('administrator/administrator_sales_view', $sales);
+		//Page Footer
+		$this->load->view('template/footer');
+
+              
+          
+        }
 
 	public function orders(){
 		//Prepare Header Data
@@ -508,7 +536,15 @@ class Administrator extends CI_Controller {
 		$config['overwrite'] = TRUE;
 		return $config;
 
-	}
+        }
+        public function datatables_sales($date){
+        $date = date('Y-m-d', strtotime($date));
+        $this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname', FALSE)->from('orders')
+          ->join('users', 'users.id = orders.user_id')->like('dateorder', $date);
+        $datatables = $this->datatables->generate();
+        echo $datatables;
+        
+        }
 	public function datatables_orders_staff(){
 		$this->datatables->select('order_id,order_total, dateorder, CONCAT(fname," ",lname) AS lname,package_status,order_status', FALSE)->from('orders')->join('users', 'users.id = orders.user_id');
 		$datatables = $this->datatables->generate();
@@ -744,7 +780,22 @@ class Administrator extends CI_Controller {
 
 	}
 
+        public function get_bookstore_sales_data($date){
+        
+                $sql = $this->db->query("SELECT order_id, SUM(order_total) as sales FROM orders WHERE order_status = 'Approved' AND dateorder LIKE '%$date%' GROUP BY dateorder ORDER BY dateorder ASC");
+                $result = $sql->result_array();
+                
+                $tableHeader = ['Sales', 'Income'];
+		$weekly[] = $tableHeader;
 
+		foreach($result as $key => $value){
+			$weekly[] = [$value['order_id'], (int)$value['sales']];
+		}
+
+		echo json_encode($weekly);
+
+
+        }
 
 }
 

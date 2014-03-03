@@ -70,7 +70,6 @@
                   <div class="controls">
                     <div class="btn-group">
                     <button type="submit" class="btn btn-info">Submit</button> 
-                    <button type="button" class="btn btn-danger">Forgot Password</button>
                   </div>
                   </div>
                 </div>

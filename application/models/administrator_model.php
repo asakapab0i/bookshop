@@ -16,7 +16,15 @@ class Administrator_model extends CI_Model {
 
 		return $sql->result_array();
 
-	}
+        }
+
+        public function get_sales_by_date($date){
+        	$sql = $this->db->query("SELECT order_id, order_total, dateorder, CONCAT(fname, ' ', lname) as name FROM orders LEFT JOIN users ON users.id = orders.user_id WHERE order_status = 'Approved' AND dateorder LIKE '%$date%'");
+                $result = $sql->result_array();
+                
+                return $result;
+
+        }
 
 	public function get_account($id){
 
