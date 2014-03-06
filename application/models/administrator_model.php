@@ -158,7 +158,7 @@ class Administrator_model extends CI_Model {
                     }
 
                     $recipients = implode(',',$email_array);
-                    var_dump($recipients);
+                    #var_dump($recipients);
           
 
 
@@ -173,7 +173,8 @@ class Administrator_model extends CI_Model {
 
                     $this->email->send();
 
-                    echo $this->email->print_debugger();
+                    #echo $this->email->print_debugger();
+			return;
 
   
                 }
