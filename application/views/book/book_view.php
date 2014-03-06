@@ -39,6 +39,8 @@
 							   Format: {format} <br/>
 							   ISBN: {isbn} <br/>
 							   Condition: {condition}<br/>
+                                                           Quantity: {product_qty}<br/>
+							   
 							   </small>
 							 
 							   <span class="label label-success">PHP {price}</span><small><br/>
