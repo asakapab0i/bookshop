@@ -25,6 +25,15 @@ class Administrator_model extends CI_Model {
                 return $result;
 
         }
+        
+        public function get_total_earning_by_date($date){
+        	$sql = $this->db->query("SELECT SUM(order_total) as totals FROM orders LEFT JOIN users ON users.id = orders.user_id WHERE order_status = 'Approved' AND dateorder LIKE '%$date%'");
+                $result = $sql->result_array();
+                
+                return $result;
+
+        }
+
 
 	public function get_account($id){
 

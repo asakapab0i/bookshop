@@ -69,6 +69,7 @@ class Administrator extends CI_Controller {
                 //Main Content
                 $sales['date'] = $date;
                 $sales['sales'] = $this->administrator_model->get_sales_by_date($date);
+                $sales['earnings'] = $this->administrator_model->get_total_earning_by_date($date);
 		//Page Header
 		$this->parser->parse('template/header', $header);
 		//Page Nav

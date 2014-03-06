@@ -39,7 +39,7 @@
 							   Format: {format} <br/>
 							   ISBN: {isbn} <br/>
 							   Condition: {condition}<br/>
-                                                           Quantity: {product_qty}<br/>
+                                                           <b>Availability: {product_qty}</b><br/>
 							   
 							   </small>
 							 

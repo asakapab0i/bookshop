@@ -56,6 +56,7 @@
 </tr>
 
 {/sales}
+<tr><b><td colspan="3"></td><td>Total Earnings</td><td>PHP {earnings}{totals}{/earnings}</td></b></tr>
     </tbody>
     <tfoot>
 
