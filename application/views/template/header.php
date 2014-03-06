@@ -29,7 +29,7 @@
         <!-- DataTables CSS -->
         <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css'?>">
         <!-- Datepicker -->
-        <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css'?>">
+        <link rel="stylesheet" href="<?php echo base_url() . 'assets/css/datepicker.css'?>">
         <!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php echo base_url() . 'assets/css/custom.css'?>">
 	<!-- Favicon -->

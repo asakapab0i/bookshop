@@ -9,7 +9,6 @@
             <a id="reports" href="<?php echo site_url('administrator/books'); ?>" class="list-group-item">Books</a>
             <a id="reports" href="<?php echo site_url('administrator/accountlist'); ?>" class="list-group-item">Accounts</a>
             <a id="sales" href="<?php echo site_url('administrator/sales'); ?>" class="list-group-item active">Sales</a>
-            <a id="sales" href="<?php echo site_url('administrator/sales'); ?>" class="list-group-item">Sales</a>
             <a id="settings" href="<?php echo site_url('administrator/settings'); ?>" class="list-group-item">Settings</a>
           
         </div>
@@ -27,7 +26,7 @@
 
                     <div class="panel panel-default" id="panels">
                         <div class="panel-heading">{date}'s Graph <span class="pull-right"> <input size="10" type="text" id="datepicker"> <button id="date-go" class="btn-xs btn btn-primary">Go</button> </span></div>
-                            <div style="height: 200px; overflow:auto;" id="sales-show-area" class="panel-body">
+                            <div id="sales-show-area" class="panel-body">
                             </div>
                     </div>
             </div>
@@ -53,7 +52,7 @@
 <td> {order_total} </td>
 <td> {dateorder} </td>
 <td> {name} </td>
-<td> <a class="btn btn-xs btn-primary" href="<?php echo site_url('administrator/order/{order_id}');?>">View</td>
+<td> <a class="btn btn-xs btn-primary" href="<?php echo site_url('administrator/order/{order_id}');?>">View</a></td>
 </tr>
 
 {/sales}
