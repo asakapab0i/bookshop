@@ -95,7 +95,8 @@ class Book_model extends CI_Model {
 		$sql = $this->db->get();
 
 		if ($sql->num_rows() == 0) {
-			$this->db->insert('wishlist', $data);
+                  $this->db->insert('wishlist', $data);
+                  $this->db->query("UPDATE books SET book_wishlist = book_wishlist + 1 WHERE product_id = '$product_id' ");
 		}else{
 			$this->session->set_flashdata('wishlist', 'The book is already exist in the wishlist.');
 		}

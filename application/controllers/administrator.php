@@ -366,13 +366,15 @@ class Administrator extends CI_Controller {
 		if ($this->form_validation->run() == False) {
 
 			$this->session->set_flashdata('edit_error', 'There is an error on the form field.');
-			// var_dump(validation_errors());
-			// die();
+			 var_dump(validation_errors());
+			 die();
 			redirect('administrator/book/'.$id.'');
 		}else{
 			$this->session->set_flashdata('edit_success', 'Book Successfully Edited!');
 			$this->administrator_model->update_book($form_data,$id);
-			redirect('administrator/book/'.$id.'');
+
+                        $this->administrator_model->check_if_email_to_wishlist($id);
+			#redirect('administrator/book/'.$id.'');
 		}
 
 
@@ -572,7 +574,7 @@ class Administrator extends CI_Controller {
 	public function datatables_books(){
 		$this
 			->datatables
-			->select('product_id, title, author, category, product_qty, price, dateadd')
+			->select('product_id, title, author, category,book_wishlist, book_sold,product_qty, price, dateadd')
 			->from('books');
 
 		$datatables = $this->datatables->generate('JSON');

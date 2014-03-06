@@ -123,6 +123,64 @@ class Administrator_model extends CI_Model {
 		return $sql->result_array();
 	}
 
+        public function check_if_email_to_wishlist($id){
+                $this->load->library('email');
+                $this->db->select('user_id')->from('wishlist')->where('product_id', $id);      
+                $check = $this->db->get();
+
+
+                if($check->num_rows() > 0){
+                    $check = $check->result_array();
+                    $email_array = array();
+              
+
+                    foreach($check as $key => $value){
+                      foreach($value as $user => $user_id){
+                      
+                        $this->db->select('email')->from('users')->where('id', $user_id);
+                        $emails = $this->db->get();
+                        $emails_resource = $emails->result_array();    
+
+                        foreach($emails_resource as $key => $emails){
+                          
+                          foreach($emails as $email){
+                          
+                              $email_array[] = $email;                        
+                          }                        
+      
+
+                        }
+                      
+                      } 
+                    
+                    
+                    
+                    }
+
+                    $recipients = implode(',',$email_array);
+                    var_dump($recipients);
+          
+
+
+
+
+                    $this->email->from('helpdesk@labelleaurorebookshop.com', 'Wishlist Notification');
+                    $this->email->to($recipients);
+                    $this->email->cc('helpdesk@labelleaurorebookshop.com');
+                    
+                    $this->email->subject('Your wishlisted book is now available in the store!');
+                    $this->email->message('Visit our store now to buy your favorite book.');
+
+                    $this->email->send();
+
+                    echo $this->email->print_debugger();
+
+  
+                }
+
+
+        }
+
 }
 
 /* End of file administrator_model.php */

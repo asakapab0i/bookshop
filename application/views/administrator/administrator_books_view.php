@@ -43,6 +43,8 @@
                    <th>Book Title</th>
                    <th>Author</th>
                    <th>Category</th>
+                   <th>Book Wishlist</th>
+                   <th>Book Sold</th>
                    <th>Qty</th>
                    <th>Price</th>
                    <th>Date Added</th>
@@ -73,7 +75,7 @@
     
                 $(document).ready(function() {
     $('#books-view').dataTable( {
-        "aaSorting": [[ 6, "desc" ]],
+        "aaSorting": [[ 8, "desc" ]],
         "bProcessing": true,
         "sAjaxSource": "<?php echo site_url('administrator/datatables_books'); ?>",
         "aoColumnDefs": [
@@ -83,7 +85,7 @@
 		//return '<a href="book/'+oObj.aData[0]+'" class="btn btn-xs btn-primary">View</a>';
 
                 },
-                "aTargets": [ 7 ],
+                "aTargets": [ 9 ],
                 "sDefaultContent": ""
             }
         ]
